@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=BattleManager
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=playerTeam\ enemy
+comment1.target=void\ addedToWorld(Character[],\ Character[])
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BattleManager\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=num
+comment3.target=Character[]\ bubbleSort(Character[])
+comment3.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
+comment4.params=arr
+comment4.target=boolean\ isPlayerTeamDead(Character[])
+comment5.params=arr
+comment5.target=boolean\ isEnemyTeamDead(Character[])
+numComments=6
