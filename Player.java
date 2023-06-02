@@ -26,7 +26,8 @@ public class Player extends Character
             if(getX() == 200){
                 atLocation = true;
             }
-        }   
+        }
+        
     }
 
 }
