@@ -19,7 +19,11 @@ public class GymWorld extends World
     public GymWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1, true);
+
+        super(800, 600, 1, true);
+        GreenfootImage backround = new GreenfootImage("GymStart.PNG");
+        backround.scale(backround.getWidth()/2, backround.getHeight()/2);
+        setBackground(backround);
         int tileLength = 50;
         int tileHeight = 50;
         int i = 0;
@@ -41,6 +45,8 @@ public class GymWorld extends World
         Coordinate coord = map.get(mapIndexX).get(mapIndexY);
 
         a.setLocation(coord.getXCoord(), coord.getYCoord());
+        System.out.println(coord.getXCoord());
+        System.out.println(coord.getYCoord());
 
     }
 }

@@ -1,5 +1,6 @@
 #Greenfoot project file
 class.Enemy.image=snake.png
+class.GymWorld.image=bathroom-tile.jpg
 class.MoveableCharacter.image=ppl1.png
 class.Player.image=ppl1.png
 dependency1.from=GymWorld
@@ -99,6 +100,6 @@ target8.x=0
 target8.y=0
 version=3.0.0
 width=1294
-world.lastInstantiated=MyWorld
+world.lastInstantiated=GymWorld
 xPosition=0
 yPosition=0

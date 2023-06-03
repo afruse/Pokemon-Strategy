@@ -26,23 +26,26 @@ public class MoveableCharacter extends Actor
         String key = Greenfoot.getKey();
         if (key != null)
         {
-            if (key.equals("W"))
+            if (key.equals("w"))
             {
-                w.moveCharacter(this, mapIndexX--, mapIndexY);
+                //System.out.println("w");
+                w.moveCharacter(this, --mapIndexX, mapIndexY);
             }
-            else if (key.equals("S"))
+            else if (key.equals("s"))
             {
-                w.moveCharacter(this, mapIndexX++, mapIndexY);
+                w.moveCharacter(this, ++mapIndexX, mapIndexY);
             }
-            if (key.equals("A"))
+            else if (key.equals("a"))
             {
-                w.moveCharacter(this, mapIndexX, mapIndexY--);
+                w.moveCharacter(this, mapIndexX, --mapIndexY);
             }
-            if (key.equals("D"))
+            else if (key.equals("d"))
             {
-                w.moveCharacter(this, mapIndexX, mapIndexY++);
-            }
+                System.out.println("X COORD " + mapIndexX + " Y COORD " + mapIndexY);
+                w.moveCharacter(this, mapIndexX, ++mapIndexY);
+                System.out.println("NEW X COORD " + mapIndexX + " Y COORD " + mapIndexY);
 
+            }
         }
     }
 
