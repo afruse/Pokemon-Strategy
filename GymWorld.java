@@ -20,9 +20,11 @@ public class GymWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
 
-        super(800, 600, 1, true);
+        super(700, 600, 1, true);
         GreenfootImage backround = new GreenfootImage("GymStart.PNG");
-        backround.scale(backround.getWidth()/2, backround.getHeight()/2);
+        int numer = 7;
+        int deno = 8;
+        backround.scale(numer*backround.getWidth()/deno, numer*backround.getHeight()/deno);
         setBackground(backround);
         int tileLength = 50;
         int tileHeight = 50;
@@ -41,12 +43,16 @@ public class GymWorld extends World
 
     }
 
-    public void moveCharacter(Actor a, int mapIndexX, int mapIndexY){
-        Coordinate coord = map.get(mapIndexX).get(mapIndexY);
-
-        a.setLocation(coord.getXCoord(), coord.getYCoord());
-        System.out.println(coord.getXCoord());
-        System.out.println(coord.getYCoord());
-
+    public boolean moveCharacter(Actor a, int mapIndexX, int mapIndexY){
+        try{
+            Coordinate coord = map.get(mapIndexX).get(mapIndexY);
+            a.setLocation(coord.getXCoord(), coord.getYCoord());
+            System.out.println(coord.getXCoord());
+            System.out.println(coord.getYCoord());
+            return true;
+        }
+        catch(IndexOutOfBoundsException e){
+            return false;
+        }
     }
 }
