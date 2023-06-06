@@ -102,7 +102,13 @@ public class MoveableCharacter extends Actor
             previousKey = key;
         }
     }
-
+    
+    protected void setMapIndexX(int x){
+        mapIndexX = x;
+    }
+    protected void setMapIndexY(int y){
+        mapIndexY = y;
+    }
     public boolean interact(){
         return true;
     }

@@ -13,8 +13,8 @@ public class GymWorld extends World
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
 
     //ArrayList<Coordinate> t = 
-    protected static final int tileLength = 50;
-    protected static final int tileHeight = 50;
+    protected int tileLength;
+    protected int tileHeight;
     /**
      * Constructor for objects of class GymWorld.
      * 
@@ -32,7 +32,9 @@ public class GymWorld extends World
         int i = 0;
         MoveableCharacter c = new MoveableCharacter(0,0);
         addObject(c,0,0);
-        for(int yStart = 0; yStart < this.getHeight(); yStart += tileHeight){
+        tileLength = c.getImage().getWidth();
+        tileHeight = c.getImage().getHeight();
+        for(int yStart = 60+ c.getImage().getHeight()/2; yStart < this.getHeight(); yStart += tileHeight){
             map.add(new ArrayList<Coordinate>());
             for(int xStart = c.getImage().getWidth()/2; xStart < this.getWidth(); xStart += tileLength){
                 Coordinate curCoord = new Coordinate(xStart, yStart);
@@ -41,7 +43,9 @@ public class GymWorld extends World
             i++;
         }
         //addObject(c, , );
-        c.setLocation(map.get(0).get(0).getXCoord(), map.get(0).get(0).getYCoord());
+        c.setLocation(map.get(map.size()-1).get(0).getXCoord(), map.get(map.size()-1).get(0).getYCoord());
+        c.setMapIndexX(map.size()-1);
+        c.setMapIndexY(0);
     }
 
     public int getTileHeight(){
