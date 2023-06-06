@@ -26,13 +26,13 @@ public class GymWorld extends World
         int deno = 8;
         backround.scale(numer*backround.getWidth()/deno, numer*backround.getHeight()/deno);
         setBackground(backround);
-        int tileLength = 50;
+        int tileLength = 79;
         int tileHeight = 50;
         int i = 0;
         for(int yStart = 0; yStart < this.getHeight(); yStart += tileHeight){
             map.add(new ArrayList<Coordinate>());
             for(int xStart = 0; xStart < this.getWidth(); xStart += tileLength){
-                Coordinate curCoord = new Coordinate(xStart, yStart);
+                Coordinate curCoord = new Coordinate(xStart + 39, yStart + 30);
                 System.out.println(i);
                 map.get(i).add(curCoord);
             }
