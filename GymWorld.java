@@ -26,7 +26,7 @@ public class GymWorld extends World
         GreenfootImage backround = new GreenfootImage("GymStart.PNG");
         int numer = 7;
         int deno = 8;
-        addObject(p,200,300);
+        //addObject(p,200,300);
         addObject(e,450,200);
         backround.scale(numer*backround.getWidth()/deno, numer*backround.getHeight()/deno);
         setBackground(backround);

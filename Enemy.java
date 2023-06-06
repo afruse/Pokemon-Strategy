@@ -44,9 +44,9 @@ public class Enemy extends Character
     {
         xCoor = this.getX();
         yCoor = this.getY();
-        ArrayList<Player> players = (ArrayList<Player>)getObjectsInRange(100, Player.class);
+        ArrayList<MoveableCharacter> players = (ArrayList<MoveableCharacter>)getObjectsInRange(100, MoveableCharacter.class);
 
-        for (Player v : players){
+        for (MoveableCharacter v : players){
             int differenceX = xCoor - v.getX();
             int differenceY = yCoor - v.getY();
             if(differenceX <= 10 && differenceY<= 10)
