@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Checker extends Actor
+public class BattleWorldChecker extends Actor
 {
     /**
      * Act - do whatever the Checker wants to do. This method is called whenever
@@ -17,13 +17,15 @@ public class Checker extends Actor
     {
         // Add your action code here.
     }
-    public Checker(){
-        
+
+    public BattleWorldChecker(){
+
     }
+
     protected boolean check(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
-        GymWorld w = (GymWorld)getWorld();
+        BattleWorld w = (BattleWorld)getWorld();
         ArrayList<Actor> actorList = (ArrayList<Actor>)w.getObjects(Actor.class);
         for(Actor a: actorList){
             if(a.getX() == x && a.getY() == y){

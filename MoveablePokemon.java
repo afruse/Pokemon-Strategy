@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MoveableCharacter extends Actor
+public class MoveablePokemon extends Actor
 {
     /**
      * Act - do whatever the MoveableCharacter wants to do. This method is called whenever
@@ -24,7 +24,7 @@ public class MoveableCharacter extends Actor
     GreenfootImage front = new GreenfootImage("front.png");
     GreenfootImage curImage;
     protected World world;
-    public MoveableCharacter(int mapIndexX, int mapIndexY){
+    public MoveablePokemon(int mapIndexX, int mapIndexY){
         this.mapIndexX = mapIndexX;
         this.mapIndexY = mapIndexY;
         previousMapIndexX = mapIndexX;
@@ -44,7 +44,7 @@ public class MoveableCharacter extends Actor
     {
         // Add your action code here.
 
-        GymWorld w = (GymWorld)getWorld();
+        BattleWorld w = (BattleWorld)getWorld();
         String key = Greenfoot.getKey();
 
         if (key != null)

@@ -20,7 +20,7 @@ public class GymWorld extends World
     protected int tileLength;
     protected int tileHeight;
     protected MoveableCharacter c = new MoveableCharacter(0,0);
-    //protected GreenfootImage[][]backroundOrder = new GreenfootImage[5][5];
+    //protected GreenfootImage[][]backroundOrder = new GreenfwootImage[5][5];
     protected boolean nextRoom = false;
     /**
      * Constructor for objects of class GymWorld.
@@ -29,8 +29,8 @@ public class GymWorld extends World
     public GymWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-
         super(700, 600, 1, true);
+
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         GreenfootImage image = new GreenfootImage("GymStart.png");
         image.scale(700,600);
@@ -88,7 +88,7 @@ public class GymWorld extends World
         setBackground(backround);
 
         int i = 0;
-        MoveableCharacter c = new MoveableCharacter(0,0);
+
         addObject(c,0,0);
         tileLength = this.getWidth()/9;
         tileHeight = c.getImage().getHeight();
@@ -186,7 +186,7 @@ public class GymWorld extends World
     public boolean checkObstruction(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
-        Checker c = new Checker();
+        GymWorldChecker c = new GymWorldChecker();
         addObject(c,0,0);
         boolean isObstruction = c.check(coord);
         removeObject(c);
