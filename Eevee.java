@@ -22,19 +22,29 @@ public class Eevee extends MoveablePokemon
     public void act()
     {
         // Add your action code here.
-        if(Greenfoot.mouseClicked(this)){
-            isClickedOn = true;
-            checkKeyPress();
-        }
-        if(isPlayer && isClickedOn){
-            //checkKeyPress();
-        }
-        else{
-            //Do some algorithim crap
+        if(isTurn){
+            if(Greenfoot.mouseClicked(this)){
+                isClickedOn = true;
+                //checkKeyPress();
+            }
+            if(isPlayer && isClickedOn){
+                if(checkKeyPress()){
+                    didAction = true;
+                }
+            }
+            else if(!isPlayer && isClickedOn){
+                //Do some algorithim crap
+                if(checkKeyPress()){
+                    System.out.println("Swap");
+                    didAction = true;
+                }
+            }
+
         }
         if(isFling){
             setRotation(getRotation()+5);
             setLocation(getX()+5, getY()+5);
         }
+
     }
 }

@@ -22,15 +22,21 @@ public class Pikachu extends MoveablePokemon
     public void act()
     {
         // Add your action code here.
+        if(isTurn){
+            didAction = false;
+            if(Greenfoot.mouseClicked(this)){
+                isClickedOn = true;
+            }
+            if(isPlayer && isClickedOn){
+                if(checkKeyPress()){
+                    didAction = true;
+                }
+            }
+            else{
+                //Do some algorithim crap
+            }
+        }
         
-         if(Greenfoot.mouseClicked(this)){
-            isClickedOn = true;
-        }
-        if(isPlayer && isClickedOn){
-            checkKeyPress();
-        }
-        else{
-            //Do some algorithim crap
-        }
+
     }
 }

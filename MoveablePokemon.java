@@ -29,6 +29,9 @@ public class MoveablePokemon extends Actor
     protected boolean sucessfulMovement;
 
     protected boolean isClickedOn = false;
+
+    protected boolean didAction = false;
+
     String previousKey;
     GreenfootImage left = new GreenfootImage("left.png");
     GreenfootImage right = new GreenfootImage("left.png");
@@ -56,57 +59,69 @@ public class MoveablePokemon extends Actor
     public void act()
     {
         // Add your action code here.
-        
+
     }
 
-    protected void checkKeyPress(){
+    protected boolean checkKeyPress(){
         BattleWorld w = (BattleWorld)getWorld();
         String key = Greenfoot.getKey();
 
         if (key != null)
         {
+            System.out.println(key);
             previousMapIndexX = mapIndexX;
             previousMapIndexY = mapIndexY;
             if (key.equals("w"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, --mapIndexX, mapIndexY);
+                System.out.println("w");
+
             }
             else if (key.equals("s"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, ++mapIndexX, mapIndexY);
+                System.out.println("s");
 
             }
             else if (key.equals("a"))
             {
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, --mapIndexY);
+                System.out.println("a");
 
             }
             else if (key.equals("d"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
-
+                System.out.println("d");
             }
             if (key.equals("space")){
                 //Queue<MoveablePokemon> battleOrder = w.getBattleOrder();
                 //ATTACK FOOL
                 //Check top of battleOrder to see if the player is close
-                
-                
+
                 //Do some attack
                 this.setFling();
                 attack();
                 sucessfulMovement = true;
             }
+            previousKey = key;
+            isClickedOn = false;
+
             if(!sucessfulMovement){
                 mapIndexX = previousMapIndexX;
                 mapIndexY = previousMapIndexY;
-            } 
-            previousKey = key;
-            isClickedOn = false;
+                return false;
+            }
+            else{
+                System.out.println("TRUE");
+
+                return true;
+            }
         }
+        return false;
     }
 
     /*
@@ -117,6 +132,10 @@ public class MoveablePokemon extends Actor
     }
     }
      */
+
+    protected boolean getDidAction(){
+        return didAction;
+    }
 
     protected int getMapIndexX(){
         return mapIndexX;
@@ -166,6 +185,7 @@ public class MoveablePokemon extends Actor
 
     public void flipTurn(){
         if(isTurn){
+            didAction = false;
             isTurn = false;
         }
         else{

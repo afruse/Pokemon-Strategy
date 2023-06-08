@@ -26,7 +26,7 @@ public class StartTest extends World
     }
 
     public void act(){
-        if(Greenfoot.isKeyDown("space")){
+        if(Greenfoot.isKeyDown("tab")){
             Greenfoot.setWorld(new BattleWorld(playerTeam,enemyTeam));
         }
     }

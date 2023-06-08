@@ -49,25 +49,36 @@ public class BattleManager extends Actor
             //End game
         }
         MoveablePokemon curChar = battleOrder.peek();
-        curChar.flipTurn();
+        BattleOrderActionBlock topBlock = visualBattleOrder.peek();
+        if(!curChar.getIsTurn()){
+            curChar.flipTurn();
+            System.out.println(curChar.getClass());
+        }
 
-        if(curChar.getIsTurn()){
-
+        if(curChar.getIsTurn() && !curChar.getDidAction()){
+            //System.out.println(curChar.getClass());
+            //leave empty
         }
         else{
-            battleOrder.poll();
+            curChar = battleOrder.poll();
+            topBlock = visualBattleOrder.poll();
             battleOrder.add(curChar);
+            visualBattleOrder.add(topBlock);
+            curChar.flipTurn();
         }
     }
 
     public void renderVisualBattleOrder(){
         BattleWorld w = (BattleWorld)getWorld();
-        
+        ArrayList<BattleOrderActionBlock> battleOrderActionBlockList = (ArrayList<BattleOrderActionBlock>)w.getObjects(BattleOrderActionBlock.class);
+        for(BattleOrderActionBlock p: battleOrderActionBlockList){
+            w.removeObject(p);
+        }
         int x = 25;
         int y = 25;
-        int yIncrement = 20;
-        int xIncrement = 0;
+
         for(BattleOrderActionBlock p : visualBattleOrder){
+            int yIncrement = p.getImage().getHeight()/2;
             w.addObject(p, x, y);
             y+= yIncrement;
         }
