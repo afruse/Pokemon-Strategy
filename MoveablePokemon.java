@@ -12,6 +12,12 @@ public class MoveablePokemon extends Actor
      * Act - do whatever the MoveableCharacter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    protected boolean atLocation = false;
+    protected boolean isPlayer;
+    protected int speed;
+    protected int health = 100;
+    protected boolean isTurn = false;
+
     protected int mapIndexX;
     protected int mapIndexY;
     protected int previousMapIndexX;
@@ -44,6 +50,10 @@ public class MoveablePokemon extends Actor
     {
         // Add your action code here.
 
+        checkKeyPress();
+    }
+
+    protected void checkKeyPress(){
         BattleWorld w = (BattleWorld)getWorld();
         String key = Greenfoot.getKey();
 
@@ -84,7 +94,7 @@ public class MoveablePokemon extends Actor
             else if (key.equals("d"))
             {
                 if(!key.equals(previousKey)){
-                    
+
                     setImage(right);
                     curImage = right;
                 }
@@ -102,14 +112,41 @@ public class MoveablePokemon extends Actor
             previousKey = key;
         }
     }
-    
+
     protected void setMapIndexX(int x){
         mapIndexX = x;
     }
+
     protected void setMapIndexY(int y){
         mapIndexY = y;
     }
+
     public boolean interact(){
         return true;
+    }
+
+    public boolean getIsPlayer(){
+        return isPlayer;
+    }
+
+    public int getSpeed(){
+        return speed;
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public void flipTurn(){
+        if(isTurn){
+            isTurn = false;
+        }
+        else{
+            isTurn = true;
+        }
+    }
+
+    public boolean getIsTurn(){
+        return isTurn;
     }
 }

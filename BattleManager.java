@@ -10,19 +10,19 @@ import java.util.ArrayList;
  */
 public class BattleManager extends Actor
 {
-    Queue<Character> battleOrder = new LinkedList<>();
-    Character[] playerTeam;
-    Character[] enemy;
+    Queue<MoveablePokemon> battleOrder = new LinkedList<>();
+    MoveablePokemon[] playerTeam;
+    MoveablePokemon[] enemy;
     //ArrayList<Actor> speedOrder = new ArrayList();
     /**
      * Act - do whatever the BattleManager wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public void addedToWorld(Character[] playerTeam, Character[] enemy){
+    public void addedToWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemy){
         this.playerTeam = playerTeam;
         this.enemy = enemy;
-        Character[] speedOrder = new Character[playerTeam.length + enemy.length];
+        MoveablePokemon[] speedOrder = new MoveablePokemon[playerTeam.length + enemy.length];
         int a;
         for(a = 0; a < playerTeam.length; a++){
             speedOrder[a] = playerTeam[a];
@@ -39,7 +39,7 @@ public class BattleManager extends Actor
         if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemy)){
             
         }
-        Character curChar = battleOrder.peek();
+        MoveablePokemon curChar = battleOrder.peek();
         curChar.flipTurn();
         
         if(curChar.getIsTurn()){
@@ -58,7 +58,7 @@ public class BattleManager extends Actor
     }
      */
 
-    public static Character[] bubbleSort (Character[] num)
+    public static MoveablePokemon[] bubbleSort (MoveablePokemon[] num)
     {
         boolean done = false;
         for (int i = 0; i < num.length && !done; i++) {
@@ -67,7 +67,7 @@ public class BattleManager extends Actor
 
                 if (num[x - 1].getSpeed() > num[x].getSpeed()) {
 
-                    Character temp = num[x - 1];
+                    MoveablePokemon temp = num[x - 1];
                     num[x - 1] = num[x];
                     num[x] = temp;
                     done = false;
@@ -77,7 +77,7 @@ public class BattleManager extends Actor
         return num;
     }
 
-    public boolean isPlayerTeamDead(Character[] arr){
+    public boolean isPlayerTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
             if(arr[i].getHealth() > 0){
                 return false;
@@ -86,7 +86,7 @@ public class BattleManager extends Actor
         return true;
     }
 
-    public boolean isEnemyTeamDead(Character[] arr){
+    public boolean isEnemyTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
             if(arr[i].getHealth() > 0){
                 return false;
