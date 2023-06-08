@@ -32,8 +32,7 @@ public class BattleWorld extends World
         b = new BattleManager(playerTeam, enemyTeam);
         MoveablePokemon c = playerTeam[0];
         MoveablePokemon e = enemyTeam[0];
-        
-        
+
         addObject(e,0,0);
         addObject(c,0,0);
 
@@ -53,12 +52,15 @@ public class BattleWorld extends World
         c.setMapIndexX(map.size()-1);
         c.setMapIndexY(4);
         e.setLocation(map.get(2).get(5).getXCoord(), map.get(2).get(5).getYCoord());
-
+        GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
+        setBackground(backround);
+        addObject(b, 0,0);
     }
 
     public Queue<MoveablePokemon> getBattleOrder(){
         return b.getBattleOrder();
     }
+
     public int getTileHeight(){
         return  tileHeight;
     }

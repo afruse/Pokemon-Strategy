@@ -7,12 +7,14 @@ comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BattleManager\ wants\ to\ do.\ Th
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=java.util.Queue\ getBattleOrder()
-comment4.params=num
-comment4.target=MoveablePokemon[]\ bubbleSort(MoveablePokemon[])
-comment4.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
-comment5.params=arr
-comment5.target=boolean\ isPlayerTeamDead(MoveablePokemon[])
+comment3.target=void\ renderVisualBattleOrder()
+comment4.params=
+comment4.target=java.util.Queue\ getBattleOrder()
+comment5.params=num
+comment5.target=MoveablePokemon[]\ bubbleSort(MoveablePokemon[])
+comment5.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
 comment6.params=arr
-comment6.target=boolean\ isEnemyTeamDead(MoveablePokemon[])
-numComments=7
+comment6.target=boolean\ isPlayerTeamDead(MoveablePokemon[])
+comment7.params=arr
+comment7.target=boolean\ isEnemyTeamDead(MoveablePokemon[])
+numComments=8

@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public class BattleManager extends Actor
 {
+    Queue<BattleOrderActionBlock> visualBattleOrder = new LinkedList<>();
+
     Queue<MoveablePokemon> battleOrder = new LinkedList<>();
     MoveablePokemon[] playerTeam;
     MoveablePokemon[] enemyTeam;
@@ -22,6 +24,7 @@ public class BattleManager extends Actor
     public BattleManager(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam){
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
+
         MoveablePokemon[] speedOrder = new MoveablePokemon[playerTeam.length + enemyTeam.length];
         int a;
         for(a = 0; a < playerTeam.length; a++){
@@ -32,29 +35,48 @@ public class BattleManager extends Actor
         for(int i = 0; i < speedOrder.length; i++){
             battleOrder.add(speedOrder[i]);
         }
+
+        for(MoveablePokemon p: battleOrder){
+            visualBattleOrder.add(new BattleOrderActionBlock(p.getImage()));
+        }
+
     }
-    
 
     public void act()
     {
+        renderVisualBattleOrder();
         if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemyTeam)){
-            
+            //End game
         }
         MoveablePokemon curChar = battleOrder.peek();
         curChar.flipTurn();
-        
+
         if(curChar.getIsTurn()){
-            
+
         }
         else{
             battleOrder.poll();
             battleOrder.add(curChar);
         }
     }
-    
+
+    public void renderVisualBattleOrder(){
+        BattleWorld w = (BattleWorld)getWorld();
+        
+        int x = 25;
+        int y = 25;
+        int yIncrement = 20;
+        int xIncrement = 0;
+        for(BattleOrderActionBlock p : visualBattleOrder){
+            w.addObject(p, x, y);
+            y+= yIncrement;
+        }
+    }
+
     public Queue<MoveablePokemon> getBattleOrder(){
         return battleOrder;
     }
+
     /**
      * MyWorld world = (MyWorld) getWorld();
     if(battleOrder.peek().getIsPlayer()){
@@ -98,4 +120,5 @@ public class BattleManager extends Actor
         }
         return true;
     }
+
 }
