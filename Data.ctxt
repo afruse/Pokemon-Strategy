@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Data
+comment1.params=
+comment1.target=Data()
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment3.params=
+comment3.target=java.lang.String\ getLastName()
+comment4.params=
+comment4.target=int\ getPartySize()
+comment5.params=
+comment5.target=java.lang.String\ getSpecialRequest()
+numComments=6

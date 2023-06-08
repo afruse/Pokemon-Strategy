@@ -57,10 +57,7 @@ public class LoadSave
     public ArrayList<String[]> getInfo(){
         return arrayTokens;
     }
-    public int getHP()
-    {
     
-    }
     /**
      * To analyze the awkward tokens in Visa's CSV files:
      * - Comma-separated but ..
