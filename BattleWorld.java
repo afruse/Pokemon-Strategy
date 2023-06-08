@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Queue;
+import java.util.LinkedList;
 import java.util.ArrayList;
 
 /**
@@ -9,25 +11,38 @@ import java.util.ArrayList;
  */
 public class BattleWorld extends World
 {
+    BattleManager b;
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     protected int tileLength;
     protected int tileHeight;
+    MoveablePokemon[] playerTeam;
+    MoveablePokemon[] enemyTeam;
     /**
      * Constructor for objects of class BattleWorld.
      * 
      */
-    public BattleWorld()
+    public BattleWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam)
     {    
+        //Add a parameter to get an array for play party and another array for enemy party
+
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
-        MoveablePokemon c = new MoveablePokemon(0,0);
+        this.playerTeam = playerTeam;
+        this.enemyTeam = enemyTeam;
+        b = new BattleManager(playerTeam, enemyTeam);
+        MoveablePokemon c = playerTeam[0];
+        MoveablePokemon e = enemyTeam[0];
+        
+        
+        addObject(e,0,0);
         addObject(c,0,0);
-        tileLength = this.getWidth()/9;
-        tileHeight = c.getImage().getHeight();
+
+        tileLength = 50;
+        tileHeight = 50;
         int i = 0;
-        for(int yStart = 3*c.getImage().getHeight()/4; yStart < this.getHeight()-(3*tileHeight/4); yStart += tileHeight){
+        for(int yStart = tileHeight/4; yStart < this.getHeight()-tileHeight/4; yStart += tileHeight){
             map.add(new ArrayList<Coordinate>());
-            for(int xStart = c.getImage().getWidth()/2; xStart < this.getWidth(); xStart += tileLength){
+            for(int xStart = tileLength/4; xStart < this.getWidth()-tileLength/4; xStart += tileLength){
                 Coordinate curCoord = new Coordinate(xStart+15, yStart);
                 map.get(i).add(curCoord);
             }
@@ -37,9 +52,13 @@ public class BattleWorld extends World
         c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
         c.setMapIndexX(map.size()-1);
         c.setMapIndexY(4);
+        e.setLocation(map.get(2).get(5).getXCoord(), map.get(2).get(5).getYCoord());
 
     }
 
+    public Queue<MoveablePokemon> getBattleOrder(){
+        return b.getBattleOrder();
+    }
     public int getTileHeight(){
         return  tileHeight;
     }

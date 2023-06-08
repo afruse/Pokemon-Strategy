@@ -12,31 +12,32 @@ public class BattleManager extends Actor
 {
     Queue<MoveablePokemon> battleOrder = new LinkedList<>();
     MoveablePokemon[] playerTeam;
-    MoveablePokemon[] enemy;
+    MoveablePokemon[] enemyTeam;
     //ArrayList<Actor> speedOrder = new ArrayList();
     /**
      * Act - do whatever the BattleManager wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public void addedToWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemy){
+    public BattleManager(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam){
         this.playerTeam = playerTeam;
-        this.enemy = enemy;
-        MoveablePokemon[] speedOrder = new MoveablePokemon[playerTeam.length + enemy.length];
+        this.enemyTeam = enemyTeam;
+        MoveablePokemon[] speedOrder = new MoveablePokemon[playerTeam.length + enemyTeam.length];
         int a;
         for(a = 0; a < playerTeam.length; a++){
             speedOrder[a] = playerTeam[a];
-            speedOrder[a + playerTeam.length] = enemy[a];
+            speedOrder[a + playerTeam.length] = enemyTeam[a];
         }
         speedOrder = bubbleSort(speedOrder);
         for(int i = 0; i < speedOrder.length; i++){
             battleOrder.add(speedOrder[i]);
         }
     }
+    
 
     public void act()
     {
-        if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemy)){
+        if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemyTeam)){
             
         }
         MoveablePokemon curChar = battleOrder.peek();
@@ -50,7 +51,10 @@ public class BattleManager extends Actor
             battleOrder.add(curChar);
         }
     }
-
+    
+    public Queue<MoveablePokemon> getBattleOrder(){
+        return battleOrder;
+    }
     /**
      * MyWorld world = (MyWorld) getWorld();
     if(battleOrder.peek().getIsPlayer()){

@@ -32,7 +32,7 @@ public class GymWorld extends World
         super(700, 600, 1, true);
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        GreenfootImage image = new GreenfootImage("GymStart.png");
+        GreenfootImage image = new GreenfootImage("GymStart.PNG");
         image.scale(700,600);
         backroundOrder[0] = image;
         image = new GreenfootImage("GymEnd.PNG");

@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.ArrayList;
 /**
  * Write a description of class MoveableCharacter here.
  * 
@@ -12,6 +14,8 @@ public class MoveablePokemon extends Actor
      * Act - do whatever the MoveableCharacter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+
+    protected boolean isFling = false;
     protected boolean atLocation = false;
     protected boolean isPlayer;
     protected int speed;
@@ -23,6 +27,8 @@ public class MoveablePokemon extends Actor
     protected int previousMapIndexX;
     protected int previousMapIndexY;
     protected boolean sucessfulMovement;
+
+    protected boolean isClickedOn = false;
     String previousKey;
     GreenfootImage left = new GreenfootImage("left.png");
     GreenfootImage right = new GreenfootImage("left.png");
@@ -30,7 +36,8 @@ public class MoveablePokemon extends Actor
     GreenfootImage front = new GreenfootImage("front.png");
     GreenfootImage curImage;
     protected World world;
-    public MoveablePokemon(int mapIndexX, int mapIndexY){
+    public MoveablePokemon(int mapIndexX, int mapIndexY, boolean isPlayer){
+        this.isPlayer = isPlayer;
         this.mapIndexX = mapIndexX;
         this.mapIndexY = mapIndexY;
         previousMapIndexX = mapIndexX;
@@ -49,8 +56,7 @@ public class MoveablePokemon extends Actor
     public void act()
     {
         // Add your action code here.
-
-        checkKeyPress();
+        
     }
 
     protected void checkKeyPress(){
@@ -63,54 +69,75 @@ public class MoveablePokemon extends Actor
             previousMapIndexY = mapIndexY;
             if (key.equals("w"))
             {
-                if(!key.equals(previousKey)){
-                    setImage(back);
-                    curImage = back;
-                }
-                else{
-                    sucessfulMovement = w.moveCharacter(this, --mapIndexX, mapIndexY);
-                }
+
+                sucessfulMovement = w.moveCharacter(this, --mapIndexX, mapIndexY);
             }
             else if (key.equals("s"))
             {
-                if(!key.equals(previousKey)){
-                    setImage(front);
-                    curImage = front;
-                }
-                else{
-                    sucessfulMovement = w.moveCharacter(this, ++mapIndexX, mapIndexY);
-                }
+
+                sucessfulMovement = w.moveCharacter(this, ++mapIndexX, mapIndexY);
+
             }
             else if (key.equals("a"))
             {
-                if(!key.equals(previousKey)){
-                    setImage(left);
-                    curImage = left;
-                }
-                else{
-                    sucessfulMovement = w.moveCharacter(this, mapIndexX, --mapIndexY);
-                }
+                sucessfulMovement = w.moveCharacter(this, mapIndexX, --mapIndexY);
+
             }
             else if (key.equals("d"))
             {
-                if(!key.equals(previousKey)){
 
-                    setImage(right);
-                    curImage = right;
-                }
-                else{
-                    sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
-                }
+                sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
+
             }
-            else if (key.equals("space")){
-
+            if (key.equals("space")){
+                //Queue<MoveablePokemon> battleOrder = w.getBattleOrder();
+                //ATTACK FOOL
+                //Check top of battleOrder to see if the player is close
+                
+                
+                //Do some attack
+                this.setFling();
+                attack();
+                sucessfulMovement = true;
             }
             if(!sucessfulMovement){
                 mapIndexX = previousMapIndexX;
                 mapIndexY = previousMapIndexY;
-            }
+            } 
             previousKey = key;
+            isClickedOn = false;
         }
+    }
+
+    /*
+     * for(MoveablePokemon item: battleOrder){
+    if(!item.getIsPlayer()){
+    System.out.println("RAN");
+    item.setFling();
+    }
+    }
+     */
+
+    protected int getMapIndexX(){
+        return mapIndexX;
+    }
+
+    protected int getMapIndexY(){
+        return mapIndexY;
+    }
+
+    protected boolean checkValidAttack(){
+
+        //Check if the player is hitting ally or not
+        //Check top of the battle order
+        //Check if the current attacker is close enough
+
+        return true;
+    }
+
+    protected boolean attack(){
+        //Do soemthing
+        return false;
     }
 
     protected void setMapIndexX(int x){
@@ -148,5 +175,9 @@ public class MoveablePokemon extends Actor
 
     public boolean getIsTurn(){
         return isTurn;
+    }
+
+    public void setFling(){
+        isFling = true;
     }
 }
