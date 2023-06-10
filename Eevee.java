@@ -23,27 +23,38 @@ public class Eevee extends MoveablePokemon
     {
         // Add your action code here.
         if(isTurn){
-            if(Greenfoot.mouseClicked(this)){
-                isClickedOn = true;
-                //checkKeyPress();
-            }
-            if(isPlayer && isClickedOn){
+
+            if(isPlayer){
                 if(checkKeyPress()){
                     didAction = true;
                 }
             }
-            else if(!isPlayer && isClickedOn){
+            else if(!isPlayer){
                 //Do some algorithim crap
                 if(checkKeyPress()){
-                    System.out.println("Swap");
                     didAction = true;
                 }
             }
 
         }
-        if(isFling){
-            setRotation(getRotation()+5);
-            setLocation(getX()+5, getY()+5);
+        else if(Greenfoot.mouseClicked(this)){
+            if(gettingAttacked){
+                gettingAttacked = false;
+            }
+            else{
+                gettingAttacked = true;
+            }
+        }
+        if(gettingAttacked){
+            String key = Greenfoot.getKey();
+            if(key != null){
+                if(key.equals("space")){
+                    System.out.println("Attacked");
+                    //Get cur person's turn and end their turn
+                    gettingAttacked = false; 
+                }
+
+            }
         }
 
     }

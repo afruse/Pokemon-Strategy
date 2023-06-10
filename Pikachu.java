@@ -24,19 +24,46 @@ public class Pikachu extends MoveablePokemon
         // Add your action code here.
         if(isTurn){
             didAction = false;
-            if(Greenfoot.mouseClicked(this)){
-                isClickedOn = true;
+
+            if(Greenfoot.mouseClicked(MoveablePokemon.class)){
+                if(getMouseDistance(this) > this.getImage().getWidth()){
+                    attacking = true;
+                }
+                //get distance from mouse x,y & compare if not close to cur turn
+                //Do attack
             }
-            if(isPlayer && isClickedOn){
+            if(isPlayer){
                 if(checkKeyPress()){
                     didAction = true;
+                    isClickedOn = false;
                 }
             }
-            else{
+            else if(attacking){
+                if(checkAttack()){
+                    didAction = true;
+                    attacking = false;
+                }
                 //Do some algorithim crap
             }
         }
-        
+        else if(Greenfoot.mouseClicked(this) && !isTurn){
+            if(gettingAttacked){
+                gettingAttacked = false;
+            }
+            else{
+                gettingAttacked = true;
+            }
+        }
+        if(gettingAttacked){
+            String key = Greenfoot.getKey();
+            if(key != null){
+                if(key.equals("space")){
+                    System.out.println("Attacked");
+                    gettingAttacked = false; 
+                }
+            }
+
+        }
 
     }
 }

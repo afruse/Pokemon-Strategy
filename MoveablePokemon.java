@@ -15,12 +15,15 @@ public class MoveablePokemon extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
+    protected boolean gettingAttacked = false;;
+
     protected boolean isFling = false;
     protected boolean atLocation = false;
     protected boolean isPlayer;
     protected int speed;
     protected int health = 100;
     protected boolean isTurn = false;
+    protected boolean attacking = false;
 
     protected int mapIndexX;
     protected int mapIndexY;
@@ -68,45 +71,32 @@ public class MoveablePokemon extends Actor
 
         if (key != null)
         {
-            System.out.println(key);
+            //System.out.println(key);
             previousMapIndexX = mapIndexX;
             previousMapIndexY = mapIndexY;
             if (key.equals("w"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, --mapIndexX, mapIndexY);
-                System.out.println("w");
 
             }
             else if (key.equals("s"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, ++mapIndexX, mapIndexY);
-                System.out.println("s");
 
             }
             else if (key.equals("a"))
             {
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, --mapIndexY);
-                System.out.println("a");
 
             }
             else if (key.equals("d"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
-                System.out.println("d");
             }
-            if (key.equals("space")){
-                //Queue<MoveablePokemon> battleOrder = w.getBattleOrder();
-                //ATTACK FOOL
-                //Check top of battleOrder to see if the player is close
 
-                //Do some attack
-                this.setFling();
-                attack();
-                sucessfulMovement = true;
-            }
             previousKey = key;
             isClickedOn = false;
 
@@ -116,8 +106,25 @@ public class MoveablePokemon extends Actor
                 return false;
             }
             else{
-                System.out.println("TRUE");
 
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkAttack(){
+        String key = Greenfoot.getKey();
+        if (key != null)
+        {
+            if (key.equals("space")){
+                //Queue<MoveablePokemon> battleOrder = w.getBattleOrder();
+                //ATTACK FOOL
+                //Check top of battleOrder to see if the player is close
+
+                //Do some attack
+
+                sucessfulMovement = true;
                 return true;
             }
         }
@@ -200,4 +207,15 @@ public class MoveablePokemon extends Actor
     public void setFling(){
         isFling = true;
     }
+    
+    
+    public double getMouseDistance(MoveablePokemon p){
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        int x = mouse.getX();
+        int y = mouse.getY();
+        return Math.sqrt(Math.pow(p.getX()-x, 2) + Math.pow(p.getY()-y,2));
+    }
+    
+    
+    
 }

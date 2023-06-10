@@ -52,7 +52,7 @@ public class BattleManager extends Actor
         BattleOrderActionBlock topBlock = visualBattleOrder.peek();
         if(!curChar.getIsTurn()){
             curChar.flipTurn();
-            System.out.println(curChar.getClass());
+            //  System.out.println(curChar.getClass());
         }
 
         if(curChar.getIsTurn() && !curChar.getDidAction()){
