@@ -11,16 +11,16 @@ public class GymWorld extends World
 {
     //ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
-    //protected int imageIndexX = 2;
-    //protected int imageIndexY = 4;
-    protected int imageIndex = 0;
-    protected GreenfootImage[] backroundOrder = new GreenfootImage[2];
+    //protected int roomIndexX = 2;
+    //protected int roomIndexY = 4;
+    protected int roomIndex = 0;
+    protected RoomInfo[] roomOrder = new RoomInfo[2];
 
     //ArrayList<Coordinate> t = 
     protected int tileLength;
     protected int tileHeight;
     protected MoveableCharacter c = new MoveableCharacter(0,0);
-    //protected GreenfootImage[][]backroundOrder = new GreenfwootImage[5][5];
+    //protected GreenfootImage[][]roomOrder = new GreenfwootImage[5][5];
     protected boolean nextRoom = false;
     /**
      * Constructor for objects of class GymWorld.
@@ -32,44 +32,44 @@ public class GymWorld extends World
         super(700, 600, 1, true);
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        GreenfootImage image = new GreenfootImage("GymStart.PNG");
-        image.scale(700,600);
-        backroundOrder[0] = image;
-        image = new GreenfootImage("GymEnd.PNG");
-        image.scale(700,600);
-        backroundOrder[1] = image;
-        GreenfootImage backround = backroundOrder[0];
+        int roomIndex = 0;
+        roomOrder[0] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600);
+
+        roomOrder[1] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600);
+        GreenfootImage backround = roomOrder[0].getRoomImage();
+
+        setBackground(roomOrder[0].getRoomImage());
         /*GreenfootImage image = new GreenfootImage("GymStart.png");
-        backroundOrder[4][2] = image;
-        
+        roomOrder[4][2] = image;
+
         image = new GreenfootImage("[3][1]");
-        backroundOrder[3][1] = image;
-        
+        roomOrder[3][1] = image;
+
         image = new GreenfootImage("[2][0]");
-        backroundOrder[2][0] = image;
-        
+        roomOrder[2][0] = image;
+
         image = new GreenfootImage("[1][1]");
-        backroundOrder[1][1] = image;
-        
+        roomOrder[1][1] = image;
+
         //Right side
         image = new GreenfootImage("[3][3]");
-        backroundOrder[3][3] = image;
-        
+        roomOrder[3][3] = image;
+
         image = new GreenfootImage("[2][4]");
-        backroundOrder[2][4] = image;
-        
+        roomOrder[2][4] = image;
+
         image = new GreenfootImage("[1][3]");
-        backroundOrder[1][3] = image;
-        
+        roomOrder[1][3] = image;
+
         //Middle
         image = new GreenfootImage("[2][2]");
-        backroundOrder[2][2] = image;
-        
+        roomOrder[2][2] = image;
+
         image = new GreenfootImage("GymEnd.PNG");
         image.scale(700,600);
-        backroundOrder[0][2] = image;
-        GreenfootImage backround = backroundOrder[2][1];
-        */
+        roomOrder[0][2] = image;
+        GreenfootImage backround = roomOrder[2][1];
+         */
         /**
          * How it looks
          *   0  1  2  3  4
@@ -100,11 +100,20 @@ public class GymWorld extends World
             }
             i++;
         }
+
+        roomOrder[0].addObstruction(map.get(2).get(3)); //Person
+        roomOrder[0].addObstruction(map.get(2).get(1)); //Rock Left upper
+        roomOrder[0].addObstruction(map.get(3).get(1)); //Rock Left Lower
+
+        roomOrder[0].addObstruction(map.get(3).get(7)); //Rock Right Lower
+        roomOrder[0].addObstruction(map.get(2).get(7)); //Rock Right upper
+
         //addObject(c, , );
         c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
         c.setMapIndexX(map.size()-1);
         c.setMapIndexY(4);
 
+        changeObstructionLayout(roomOrder[roomIndex].getObstructionList());
         //1-2 for left
         //8-9 for right entrance
     }
@@ -120,9 +129,11 @@ public class GymWorld extends World
     public boolean moveCharacter(MoveableCharacter a, int mapIndexX, int mapIndexY){
         try{
             nextRoom = false;
-            if(mapIndexX == -1 && (mapIndexY == 1 || mapIndexY == 7) && imageIndex < 1){
-                imageIndex++;
-                setBackground(backroundOrder[imageIndex]);
+            if(mapIndexX == -1 && (mapIndexY == 1 || mapIndexY == 7) && roomIndex < 1){
+                roomIndex++;
+                setBackground(roomOrder[roomIndex].getRoomImage());
+                changeObstructionLayout(roomOrder[roomIndex].getObstructionList());
+
                 if(mapIndexY == 1){
                     a.setLocation(map.get(map.size()-1).get(1).getXCoord(), map.get(map.size()-1).get(1).getYCoord());
                     a.setMapIndexX(map.size()-1);
@@ -140,12 +151,14 @@ public class GymWorld extends World
 
                 }
                 nextRoom = true;
+
                 return true;
             }
-            if(mapIndexX == 5 && (mapIndexY == 1 || mapIndexY == 2|| mapIndexY == 6 || mapIndexY == 7) && imageIndex > 0){
+            if(mapIndexX == 5 && (mapIndexY == 1 || mapIndexY == 2|| mapIndexY == 6 || mapIndexY == 7) && roomIndex > 0){
 
-                imageIndex--;
-                setBackground(backroundOrder[imageIndex]);
+                roomIndex--;
+                setBackground(roomOrder[roomIndex].getRoomImage());
+                changeObstructionLayout(roomOrder[roomIndex].getObstructionList());
                 //changeObstructionLayout();
                 if(mapIndexY == 1 || mapIndexY == 2){
                     a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
@@ -199,16 +212,16 @@ public class GymWorld extends World
         int y = coord.getYCoord();
         return true;
     }
-    
+
     public void changeObstructionLayout(ArrayList<Coordinate> locations){
         ArrayList<Obstruction> list = (ArrayList<Obstruction>)getObjects(Obstruction.class);
         for(Obstruction l: list){
             removeObject(l);
         }
-        
+
         for(Coordinate c: locations){
             addObject(new Obstruction(tileLength, tileHeight), c.getXCoord(), c.getYCoord());
         }
-        
+
     }
 }

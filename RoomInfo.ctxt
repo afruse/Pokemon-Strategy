@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=RoomInfo
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ RoomInfo\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=image\ x\ y
+comment1.target=RoomInfo(greenfoot.GreenfootImage,\ int,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ RoomInfo\r\n
+comment2.params=c
+comment2.target=void\ addObstruction(Coordinate)
+comment3.params=
+comment3.target=java.util.ArrayList\ getObstructionList()
+comment4.params=
+comment4.target=greenfoot.GreenfootImage\ getRoomImage()
+numComments=5
