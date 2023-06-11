@@ -77,13 +77,15 @@ public class MoveablePokemon extends Actor
     }
 
     public void doSomething(){
-        if(isTurn){
+        if(isTurn && getWorld().getClass() == BattleWorld.class){
 
             if(isPlayer){
                 if(isFirstRun){
                     didMove = false;
                     isTurnEnd = false;
                     isFirstRun = false;
+                    victim = null;
+
                 }
                 if(!didMove && !attacking){
                     if(checkKeyPress("")){
@@ -101,13 +103,10 @@ public class MoveablePokemon extends Actor
 
                     if (key != null)
                     {
-                        System.out.println("a");
-                        System.out.println(key);
-
                         //Check if it will error comparing a 0 length stirng with "c" or "v"
                         if (key.equals("c")){
                             didMove = true;
-                            System.out.println("c ATTACK");
+                            //System.out.println("c ATTACK " );
                             //check if close enough
                             if(checkValidHit(cAttackRange, this, victim)){
                                 attackAnimationSwitch(this, victim, scenario);
@@ -116,12 +115,11 @@ public class MoveablePokemon extends Actor
                             else{
                                 System.out.println("TOO SHORT");
                             }
-                            attacking = false;
 
                         }
                         else if(key.equals("v")){
                             didMove = true;
-                            System.out.println("v ATTACK");
+                            //System.out.println("v ATTACK " );
 
                             //check if close enough
                             if(checkValidHit(vAttackRange, this, victim)){
@@ -131,7 +129,6 @@ public class MoveablePokemon extends Actor
                             else{
                                 System.out.println("TOO SHORT");
                             }
-                            attacking = false;
 
                         }
                     }
@@ -147,12 +144,19 @@ public class MoveablePokemon extends Actor
                     isTurnEnd = false;
                     isFirstRun = false;
                     triedAttack = false;
+                    attacking = false;
+                    victim = null;
                 }
-                if(!didMove && !attacking){
-                    if(checkKeyPress(getRandomDirectionKey())){
+                if(!didMove){
+                    if((Math.abs(getClosestPlayer().getMapIndexX() - this.getMapIndexX()) + Math.abs(getClosestPlayer().getMapIndexY() - this.getMapIndexY())) > 1 && checkKeyPress(getRandomDirectionKey())){
                         didMove = true;
                     }
+                    else{
+                        didMove = true;
+                    }
+                    //System.out.println("AAAA");
                     attacking = enemyCheckVictim();
+                    //System.out.println("Is Attacking? " + attacking);
 
                 }
                 if(attacking){
@@ -169,31 +173,35 @@ public class MoveablePokemon extends Actor
                     //check if it is close enough to hit
                     if (enemyAttackType.equals("c")){
                         didMove = true;
-                        System.out.println("c ATTACK");
+                        //System.out.println("c ATTACK " + cAttackRange);
+
                         //check if close enough
+                        attackAnimationSwitch(this, victim, scenario);
+                        /**
                         if(checkValidHit(cAttackRange, this, victim)){
-                            attackAnimationSwitch(this, victim, scenario);
-                            attacking = false;
 
                         }
                         else{
-                            System.out.println("TOO SHORT");
+                        System.out.println("TOO SHORT");
                         }
+                         */
 
                     }
                     else if(enemyAttackType.equals("v")){
                         didMove = true;
-                        System.out.println("v ATTACK");
+                        //System.out.println("v ATTACK " + vAttackRange);
+
+                        attackAnimationSwitch(this, victim, scenario);
 
                         //check if close enough
+                        /**
                         if(checkValidHit(vAttackRange, this, victim)){
-                            attackAnimationSwitch(this, victim, scenario);
-                            attacking = false;
 
                         }
                         else{
-                            System.out.println("TOO SHORT");
+                        System.out.println("TOO SHORT");
                         }
+                         */
                     }
 
                     //Do some algorithim crap
@@ -219,7 +227,7 @@ public class MoveablePokemon extends Actor
                 curChar.enemyHit(this);
 
             }
-            else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() != this.getX() && curChar.getVictim().getY() != this.getY()){
+            else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() == this.getX() && curChar.getVictim().getY() == this.getY()){
                 curChar.enemyUnHit();
             }
         }
@@ -280,23 +288,27 @@ public class MoveablePokemon extends Actor
             {
 
                 sucessfulMovement = w.moveCharacter(this, --mapIndexX, mapIndexY);
+                //System.out.println(option);
 
             }
             else if (option.equals("s"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, ++mapIndexX, mapIndexY);
+                //System.out.println(option);
 
             }
             else if (option.equals("a"))
             {
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, --mapIndexY);
-
+                //System.out.println(option);
             }
             else if (option.equals("d"))
             {
 
                 sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
+                //System.out.println(option);
+
             }
 
             previousKey = option;
@@ -319,14 +331,18 @@ public class MoveablePokemon extends Actor
         BattleWorld w = (BattleWorld)getWorld();
         ArrayList<MoveablePokemon> list =(ArrayList<MoveablePokemon>)w.getObjects(MoveablePokemon.class);
         for(MoveablePokemon p : list){
-            if(checkValidHit(cAttackRange, this, p)){
-                p = victim;
+            //System.out.println((this.getMapIndexX() != p.getMapIndexX() && this.getMapIndexY() != this.getMapIndexY()) + " AND THIS");
+            System.out.println(cAttackRange + "             A  A A A TTACK ARANGE");
+            if(checkValidHit(cAttackRange, this, p) && p.getIsPlayer()){
+                victim = p;
                 return true;
             }
         }
         for(MoveablePokemon p : list){
-            if(checkValidHit(vAttackRange, this, p)){
-                p = victim;
+            //System.out.println(vAttackRange + "             A  A A A TTACK ARANGE");
+
+            if(checkValidHit(vAttackRange, this, p) && p.getIsPlayer()){
+                victim = p;
                 return true;
             }
         }
@@ -339,13 +355,11 @@ public class MoveablePokemon extends Actor
         ArrayList<MoveablePokemon> list =(ArrayList<MoveablePokemon>)w.getObjects(MoveablePokemon.class);
         for(MoveablePokemon p : list){
             if(checkValidHit(cAttackRange, this, p)){
-                p = victim;
                 return "c";
             }
         }
         for(MoveablePokemon p : list){
             if(checkValidHit(vAttackRange, this, p)){
-                p = victim;
                 return "v";
             }
         }
@@ -366,6 +380,7 @@ public class MoveablePokemon extends Actor
     public void setExit(){
         isTurnEnd = true;
         isFirstRun = true;
+        attacking = false;
     }
 
     public String checkAttack(){
@@ -528,30 +543,71 @@ public class MoveablePokemon extends Actor
     }
 
     public String getRandomDirectionKey(){
-        int num = Greenfoot.getRandomNumber(4);
-        if(num == 0){
-            return "w";
+        MoveablePokemon closestPokeman = getClosestPlayer();
+        int savedDifY = Math.abs(this.getMapIndexY()- closestPokeman.getMapIndexY());
+        int savedDifX = Math.abs(this.getMapIndexX() - closestPokeman.getMapIndexX());
+        if(savedDifX >= savedDifY){
+            if(closestPokeman.getMapIndexX() < this.getMapIndexX()){
+                return "w";
+            }
+            else{
+                return "s";
+            }
         }
-        else if(num == 1){
-            return "s";
+        else{
+            if(closestPokeman.getMapIndexY() < this.getMapIndexY()){
+                return "a";
+            }
+            else{
+                //System.out.println("left");
+                return "d";
+            }
         }
-        else if(num == 2){
-            return "a";
+
+    }
+
+    public MoveablePokemon getClosestPlayer(){
+        BattleWorld w = (BattleWorld)getWorld();
+        ArrayList<MoveablePokemon> list =(ArrayList<MoveablePokemon>)w.getObjects(MoveablePokemon.class);
+        int gridDistance = 1000000000;
+
+        MoveablePokemon closestPokeman = null;
+        for(MoveablePokemon p : list){
+            int difY = Math.abs(this.getMapIndexY()- p.getMapIndexY());
+            int difX = Math.abs(this.getMapIndexX() - p.getMapIndexX());
+            if((difX + difY) < gridDistance && p.getIsPlayer()){
+                gridDistance = difX + difY;
+                closestPokeman = p;
+            }
         }
-        else if(num == 3){
-            return "d";
-        }
-        return null;
+        //System.out.println(closestPokeman.getClass());
+        return closestPokeman;
     }
 
     protected boolean checkValidHit(int hitRange, MoveablePokemon attacker, MoveablePokemon victim){
-        int difY = Math.abs(attacker.getY()- victim.getY());
-        int difX = Math.abs(attacker.getX() - victim.getY());
+        int difY = Math.abs(attacker.getMapIndexY()- victim.getMapIndexY());
+        int difX = Math.abs(attacker.getMapIndexX() - victim.getMapIndexX());
+        /*
+        
+        System.out.println("X " + attacker.getMapIndexX() + "            " + victim.getMapIndexX());
+        System.out.println("Y " + attacker.getMapIndexY() + "            " + victim.getMapIndexY());
 
-        BattleWorld w = (BattleWorld)getWorld();
-        if(((difY/50) + (difX/50)) <= hitRange){
+        System.out.println("HIT RANGE " + hitRange); 
+        System.out.println(difX + " DIF X");
+        System.out.println(difY + " DIF Y");
+        System.out.println(((difY + difX) <= hitRange) + " AND " + (difY+difY != 0));
+        System.out.println("DIF X + DIF Y = " + (difX + difY) + "             " + (difX+difY != 0));
+         */
+        if((difY + difX) <= hitRange && ((difX+difY) != 0)){
+            //System.out.println(attacker.getClass() + " AND " + victim.getClass());
+
             return true;
         }
+
         return false;
+    }
+
+    protected void setAttackingFalse(){
+        attacking = false;
     }
 }

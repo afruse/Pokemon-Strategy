@@ -13,13 +13,14 @@ public class Eevee extends MoveablePokemon
      * Act - do whatever the Eevee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    protected int cAttackRange = 1;
-    protected int vAttackRange = 2;
+   
     public Eevee(int mapIndexX, int mapIndexY, boolean isPlayer){
         super(mapIndexX,mapIndexY, isPlayer);
         GreenfootImage image = new GreenfootImage("images/Pokemon/eevee.png");
         setImage(image);
         int speed = 1;
+        cAttackRange = 1;
+        vAttackRange = 2;
     }
 
     public void act()

@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Pikachu extends MoveablePokemon
 {
-    protected int cAttackRange = 1;
-    protected int vAttackRange = 2;
     /**
      * Act - do whatever the Pikachu wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,6 +17,8 @@ public class Pikachu extends MoveablePokemon
         GreenfootImage image = new GreenfootImage("images/Pokemon/pika.png");
         setImage(image);
         int speed = 2;
+        cAttackRange = 1;
+        vAttackRange = 2;
     }
 
     public void act()
