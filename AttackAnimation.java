@@ -15,6 +15,8 @@ public class AttackAnimation extends World
     MoveablePokemon top;
     MoveablePokemon bottom;
     BattleWorld bw;
+    MoveablePokemon attacker;
+    MoveablePokemon victim;
     /**
      * Constructor for objects of class AttackAnimation.
      * 
@@ -24,6 +26,9 @@ public class AttackAnimation extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
+        this.attacker = attacker;
+        this.victim = victim;
+       
         this.bw = bw;
         this.scenario = scenario;
         if(attacker.getIsPlayer()){
@@ -37,7 +42,7 @@ public class AttackAnimation extends World
         addObject(bottom, -200,  500);
         addObject(top,-100, 200);
     }
-    
+
     public void act(){
         if(!bottomAtLocation){
             bottom.move(5);
@@ -51,7 +56,7 @@ public class AttackAnimation extends World
                 topAtLocation = true;
             }
         }
-        
+
         if(topAtLocation && bottomAtLocation){
             if(scenario == 1){
                 //enemy is attacked
@@ -59,13 +64,13 @@ public class AttackAnimation extends World
             else if(scenario == 2){
                 //player gets attacked
             }
-            
+
         }
-        
+
         if(finished){
+            attacker.setAttackingFalse();
             Greenfoot.setWorld(bw);
         }
     }
 
-    
 }
