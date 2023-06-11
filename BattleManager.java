@@ -15,6 +15,7 @@ public class BattleManager extends Actor
     Queue<MoveablePokemon> battleOrder = new LinkedList<>();
     MoveablePokemon[] playerTeam;
     MoveablePokemon[] enemyTeam;
+    MoveablePokemon curChar;
     //ArrayList<Actor> speedOrder = new ArrayList();
     /**
      * Act - do whatever the BattleManager wants to do. This method is called whenever
@@ -48,18 +49,18 @@ public class BattleManager extends Actor
         if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemyTeam)){
             //End game
         }
-        MoveablePokemon curChar = battleOrder.peek();
+        curChar = battleOrder.peek();
         BattleOrderActionBlock topBlock = visualBattleOrder.peek();
         if(!curChar.getIsTurn()){
             curChar.flipTurn();
             //  System.out.println(curChar.getClass());
         }
 
-        if(curChar.getIsTurn() && !curChar.getDidAction()){
+        if(curChar.getIsTurn() && !curChar.getDidMove()){
             //System.out.println(curChar.getClass());
             //leave empty
         }
-        else{
+        else if(curChar.getIsTurnEnd()){
             curChar = battleOrder.poll();
             topBlock = visualBattleOrder.poll();
             battleOrder.add(curChar);
@@ -86,6 +87,10 @@ public class BattleManager extends Actor
 
     public Queue<MoveablePokemon> getBattleOrder(){
         return battleOrder;
+    }
+    
+    public MoveablePokemon getCurChar(){
+        return curChar;
     }
 
     /**

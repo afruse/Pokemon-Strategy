@@ -68,6 +68,10 @@ public class BattleWorld extends World
     public int getTileLength(){
         return tileLength;
     }
+    
+    public MoveablePokemon getCurChar(){
+        return b.getCurChar();
+    }
 
     public boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
         try{

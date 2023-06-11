@@ -10,11 +10,13 @@ comment3.params=
 comment3.target=void\ renderVisualBattleOrder()
 comment4.params=
 comment4.target=java.util.Queue\ getBattleOrder()
-comment5.params=num
-comment5.target=MoveablePokemon[]\ bubbleSort(MoveablePokemon[])
-comment5.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
-comment6.params=arr
-comment6.target=boolean\ isPlayerTeamDead(MoveablePokemon[])
+comment5.params=
+comment5.target=MoveablePokemon\ getCurChar()
+comment6.params=num
+comment6.target=MoveablePokemon[]\ bubbleSort(MoveablePokemon[])
+comment6.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
 comment7.params=arr
-comment7.target=boolean\ isEnemyTeamDead(MoveablePokemon[])
-numComments=8
+comment7.target=boolean\ isPlayerTeamDead(MoveablePokemon[])
+comment8.params=arr
+comment8.target=boolean\ isEnemyTeamDead(MoveablePokemon[])
+numComments=9
