@@ -129,7 +129,7 @@ public class BattleManager extends Actor
 
     public boolean isPlayerTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
@@ -138,7 +138,7 @@ public class BattleManager extends Actor
 
     public boolean isEnemyTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
