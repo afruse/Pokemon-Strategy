@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=GifIntroWorldBackground
+comment1.params=
+comment1.target=GifIntroWorldBackground()
+comment2.params=
+comment2.target=greenfoot.GreenfootImage\ getImage()
+comment3.params=
+comment3.target=void\ act()
+numComments=4
