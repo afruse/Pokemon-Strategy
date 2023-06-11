@@ -17,6 +17,11 @@ public class BattleWorld extends World
     protected int tileHeight;
     MoveablePokemon[] playerTeam;
     MoveablePokemon[] enemyTeam;
+
+    MoveablePokemon curAttacker;
+    MoveablePokemon curVictim;
+    
+    protected boolean justStarted = true;
     /**
      * Constructor for objects of class BattleWorld.
      * 
@@ -30,9 +35,10 @@ public class BattleWorld extends World
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
         b = new BattleManager(playerTeam, enemyTeam);
+        curAttacker = b.getCurChar();
+        curVictim = b.getCurChar();
         MoveablePokemon c = playerTeam[0];
         MoveablePokemon e = enemyTeam[0];
-
         addObject(e,0,0);
         addObject(c,0,0);
 
@@ -55,6 +61,19 @@ public class BattleWorld extends World
         GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
         setBackground(backround);
         addObject(b, 0,0);
+        justStarted = false;
+    }
+
+    public void setCurAttacker(MoveablePokemon p){
+        curAttacker = p;
+    }
+
+    public void setCurVictim(MoveablePokemon p){
+        curVictim = p;
+    }
+
+    public void act(){
+       
     }
 
     public Queue<MoveablePokemon> getBattleOrder(){
@@ -68,9 +87,13 @@ public class BattleWorld extends World
     public int getTileLength(){
         return tileLength;
     }
-    
+
     public MoveablePokemon getCurChar(){
         return b.getCurChar();
+    }
+
+    public ArrayList<ArrayList<Coordinate>> getMap(){
+        return map;
     }
 
     public boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
@@ -105,5 +128,8 @@ public class BattleWorld extends World
         int x = coord.getXCoord();
         int y = coord.getYCoord();
         return true;
+    }
+    public void endCharTurn(){
+        b.endTurn();
     }
 }

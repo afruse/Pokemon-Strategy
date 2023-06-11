@@ -32,7 +32,7 @@ public class GymWorld extends World
         super(700, 600, 1, true);
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        GreenfootImage image = new GreenfootImage("GymStart.png");
+        GreenfootImage image = new GreenfootImage("GymStart.PNG");
         image.scale(700,600);
         backroundOrder[0] = image;
         image = new GreenfootImage("GymEnd.PNG");
@@ -146,6 +146,7 @@ public class GymWorld extends World
 
                 imageIndex--;
                 setBackground(backroundOrder[imageIndex]);
+                //changeObstructionLayout();
                 if(mapIndexY == 1 || mapIndexY == 2){
                     a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
                     a.setMapIndexX(0);
@@ -197,5 +198,17 @@ public class GymWorld extends World
         int x = coord.getXCoord();
         int y = coord.getYCoord();
         return true;
+    }
+    
+    public void changeObstructionLayout(ArrayList<Coordinate> locations){
+        ArrayList<Obstruction> list = (ArrayList<Obstruction>)getObjects(Obstruction.class);
+        for(Obstruction l: list){
+            removeObject(l);
+        }
+        
+        for(Coordinate c: locations){
+            addObject(new Obstruction(tileLength, tileHeight), c.getXCoord(), c.getYCoord());
+        }
+        
     }
 }

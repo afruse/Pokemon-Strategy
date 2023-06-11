@@ -1,49 +1,33 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BattleOrderActionBlock here.
+ * Write a description of class human here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BattleOrderActionBlock extends Actor
+public class Human extends Actor
 {
-    String role;
     protected boolean hurt = false;
     protected int timer = 0;
     protected int shake = 8;
-    boolean isAfterMath = false;
-    int afterMathTime = 0;
+    
+    public Human()
+    {
+        this.getImage().scale(100, 100);
+    }
+    
     /**
-     * Act - do whatever the BattleOrderActionBlock wants to do. This method is called whenever
+     * Act - do whatever the human wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public BattleOrderActionBlock(GreenfootImage image){
-        setImage(image);
-    }
-
     public void act()
     {
-        if(isTouching(Attack.class) && role.equals("victim")){
-            isAfterMath = true;
-            setHurt(true);
-        }
-        else if(isAfterMath && afterMathTime < 60){
-            afterMathTime++;
-            
-        }
-        else{
-            setHurt(false);
-        }
         if (hurt)
         {
             timer++;
             getHit();
         }
-    }
-    
-    public void setRole(String role){
-        this.role = role;
     }
     
     public void getHit()
@@ -85,7 +69,7 @@ public class BattleOrderActionBlock extends Actor
             timer = 0;
         }
     }
-
+    
     public void setHurt(boolean b)
     {
         hurt = b;

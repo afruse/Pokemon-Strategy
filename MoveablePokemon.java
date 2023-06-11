@@ -14,6 +14,14 @@ public class MoveablePokemon extends Actor
      * Act - do whatever the MoveableCharacter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootImage animationImage;
+    GreenfootImage image;
+    protected int imageMulti = 2;
+    protected boolean alreadyAttacked = false;
+
+    protected String cAttackString;
+    protected String vAttackString;
+
     protected boolean triedAttack = false;
     protected String enemyAttackType;
     protected int cAttackRange;
@@ -70,6 +78,10 @@ public class MoveablePokemon extends Actor
         curImage = front;
     }
 
+    public GreenfootImage getAnimationImage(){
+        return animationImage;
+    }
+
     public void act()
     {
         // Add your action code here.
@@ -77,8 +89,8 @@ public class MoveablePokemon extends Actor
     }
 
     public void doSomething(){
-        if(isTurn && getWorld().getClass() == BattleWorld.class){
 
+        if(isTurn && getWorld().getClass() == BattleWorld.class){
             if(isPlayer){
                 if(isFirstRun){
                     didMove = false;
@@ -109,7 +121,8 @@ public class MoveablePokemon extends Actor
                             //System.out.println("c ATTACK " );
                             //check if close enough
                             if(checkValidHit(cAttackRange, this, victim)){
-                                attackAnimationSwitch(this, victim, scenario);
+                                attacking = false;
+                                attackAnimationSwitch(this, victim, scenario, this.getCAttack());
 
                             }
                             else{
@@ -123,7 +136,8 @@ public class MoveablePokemon extends Actor
 
                             //check if close enough
                             if(checkValidHit(vAttackRange, this, victim)){
-                                attackAnimationSwitch(this, victim, scenario);
+                                attacking = false;
+                                attackAnimationSwitch(this, victim, scenario, this.getVAttack());
 
                             }
                             else{
@@ -146,6 +160,7 @@ public class MoveablePokemon extends Actor
                     triedAttack = false;
                     attacking = false;
                     victim = null;
+                    //alreadyAttacked = false;
                 }
                 if(!didMove){
                     if((Math.abs(getClosestPlayer().getMapIndexX() - this.getMapIndexX()) + Math.abs(getClosestPlayer().getMapIndexY() - this.getMapIndexY())) > 1 && checkKeyPress(getRandomDirectionKey())){
@@ -156,10 +171,11 @@ public class MoveablePokemon extends Actor
                     }
                     //System.out.println("AAAA");
                     attacking = enemyCheckVictim();
-                    //System.out.println("Is Attacking? " + attacking);
 
+                    //System.out.println("Is Attacking? " + attacking);
                 }
                 if(attacking){
+
                     if(isPlayer){
                         scenario = 1;
                     }
@@ -171,12 +187,14 @@ public class MoveablePokemon extends Actor
                     // loop through list of players
                     // get the closest player
                     //check if it is close enough to hit
+                    BattleWorld bw = (BattleWorld)getWorld();
+                    bw.endCharTurn();
                     if (enemyAttackType.equals("c")){
                         didMove = true;
                         //System.out.println("c ATTACK " + cAttackRange);
 
                         //check if close enough
-                        attackAnimationSwitch(this, victim, scenario);
+                        attackAnimationSwitch(this, victim, scenario, this.getCAttack());
                         /**
                         if(checkValidHit(cAttackRange, this, victim)){
 
@@ -190,8 +208,8 @@ public class MoveablePokemon extends Actor
                     else if(enemyAttackType.equals("v")){
                         didMove = true;
                         //System.out.println("v ATTACK " + vAttackRange);
-
-                        attackAnimationSwitch(this, victim, scenario);
+                        setExit();
+                        attackAnimationSwitch(this, victim, scenario, this.getVAttack());
 
                         //check if close enough
                         /**
@@ -332,7 +350,7 @@ public class MoveablePokemon extends Actor
         ArrayList<MoveablePokemon> list =(ArrayList<MoveablePokemon>)w.getObjects(MoveablePokemon.class);
         for(MoveablePokemon p : list){
             //System.out.println((this.getMapIndexX() != p.getMapIndexX() && this.getMapIndexY() != this.getMapIndexY()) + " AND THIS");
-            System.out.println(cAttackRange + "             A  A A A TTACK ARANGE");
+            //System.out.println(cAttackRange + "             A  A A A TTACK ARANGE");
             if(checkValidHit(cAttackRange, this, p) && p.getIsPlayer()){
                 victim = p;
                 return true;
@@ -411,10 +429,26 @@ public class MoveablePokemon extends Actor
     }
     }
      */
-    public void attackAnimationSwitch(MoveablePokemon attacker, MoveablePokemon victim, int scenario){
+    public void attackAnimationSwitch(MoveablePokemon attacker, MoveablePokemon victim, int scenario, String attack){
 
         BattleWorld bw = (BattleWorld)getWorld();
-        Greenfoot.setWorld(new AttackAnimation(bw, attacker, victim, scenario));
+        //attacker.swapToAnimationImage();
+        //victim.swapToAnimationImage();
+        //bw.setCurAttacker(attacker);
+        //bw.setCurVictim(victim);
+        Queue<MoveablePokemon> battleOrder = bw.getBattleOrder();
+        //setExit();
+        Greenfoot.setWorld(new AttackAnimation(bw, attacker.getAnimationImage(), victim.getAnimationImage(), scenario, attack));
+
+    }
+
+    public void swapToAnimationImage(){
+        setImage(animationImage);
+    }
+
+    public void swapToGridImage(){
+        System.out.println("RAN");
+        setImage(image);
     }
 
     protected boolean getIsTurnEnd(){
@@ -588,7 +622,7 @@ public class MoveablePokemon extends Actor
         int difY = Math.abs(attacker.getMapIndexY()- victim.getMapIndexY());
         int difX = Math.abs(attacker.getMapIndexX() - victim.getMapIndexX());
         /*
-        
+
         System.out.println("X " + attacker.getMapIndexX() + "            " + victim.getMapIndexX());
         System.out.println("Y " + attacker.getMapIndexY() + "            " + victim.getMapIndexY());
 
@@ -610,4 +644,13 @@ public class MoveablePokemon extends Actor
     protected void setAttackingFalse(){
         attacking = false;
     }
+
+    protected String getCAttack(){
+        return cAttackString;
+    }
+
+    protected String getVAttack(){
+        return vAttackString;
+    }
+
 }

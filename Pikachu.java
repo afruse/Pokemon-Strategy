@@ -14,20 +14,21 @@ public class Pikachu extends MoveablePokemon
      */
     public Pikachu(int mapIndexX, int mapIndexY, boolean isPlayer){
         super(mapIndexX,mapIndexY, isPlayer);
-        GreenfootImage image = new GreenfootImage("images/Pokemon/pika.png");
+        image = new GreenfootImage("images/Pokemon/pika.png");
+        animationImage = new GreenfootImage("images/Pokemon/pika.png");
+        animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
         int speed = 2;
         cAttackRange = 1;
         vAttackRange = 2;
+        cAttackString = "Quick Attack";
+        vAttackString = "Thunder Shock";
     }
 
     public void act()
     {
         // Add your action code here.
         doSomething();
-            
-        
 
     }
-
 }

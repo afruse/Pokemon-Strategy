@@ -16,7 +16,11 @@ public class Eevee extends MoveablePokemon
    
     public Eevee(int mapIndexX, int mapIndexY, boolean isPlayer){
         super(mapIndexX,mapIndexY, isPlayer);
-        GreenfootImage image = new GreenfootImage("images/Pokemon/eevee.png");
+        cAttackString = "Bite";
+        vAttackString = "Sand Attack";
+        image = new GreenfootImage("images/Pokemon/eevee.png");
+        animationImage = new GreenfootImage("images/Pokemon/eevee.png");
+        animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
         int speed = 1;
         cAttackRange = 1;
@@ -29,4 +33,5 @@ public class Eevee extends MoveablePokemon
        
         doSomething();
     }
+    
 }
