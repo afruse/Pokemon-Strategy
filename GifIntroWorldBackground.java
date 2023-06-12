@@ -17,13 +17,17 @@ public class GifIntroWorldBackground extends Actor {
         actCount = 0;
     }
     public GreenfootImage getImage(){
-        return images.get(0);
+        GreenfootImage image = new GreenfootImage(images.get(0));
+        image.scale(700, 600);
+        return image;
     }
     
     public void act() {
         if (actCount % 10 == 0) {
             // Change image every 7 acts
-            getWorld().setBackground(images.get(currentImageIndex));
+            GreenfootImage image = new GreenfootImage(images.get(currentImageIndex));
+            image.scale(700, 600);
+            getWorld().setBackground(image);
             currentImageIndex++;
             if (currentImageIndex >= images.size()) {
                 currentImageIndex = 0;

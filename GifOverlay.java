@@ -8,4 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GifOverlay extends Actor
 {
+    public GifOverlay(){
+        GreenfootImage image = new GreenfootImage("GIF_Overlay.png");
+        image.scale(700, 600);
+        setImage(image);
+    }
 }
