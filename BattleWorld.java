@@ -54,10 +54,12 @@ public class BattleWorld extends StorageWorld
             i++;
         }
         //addObject(c, , );
-        c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
-        c.setMapIndexX(map.size()-1);
+        c.setLocation(map.get(map.size()-3).get(4).getXCoord(), map.get(map.size()-3).get(4).getYCoord());
+        c.setMapIndexX(map.size()-3);
         c.setMapIndexY(4);
-        e.setLocation(map.get(2).get(5).getXCoord(), map.get(2).get(5).getYCoord());
+        e.setLocation(map.get(3).get(5).getXCoord(), map.get(3).get(5).getYCoord());
+        e.setMapIndexX(3);
+        e.setMapIndexY(5);
         GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
         setBackground(backround);
         addObject(b, 0,0);

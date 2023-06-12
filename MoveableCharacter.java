@@ -99,15 +99,20 @@ public class MoveableCharacter extends Actor
                 mapIndexX = previousMapIndexX;
                 mapIndexY = previousMapIndexY;
             }
+            else{
+                System.out.println(mapIndexX + "    " + mapIndexY);
+            }
             previousKey = key;
         }
     }
     
     protected void setMapIndexX(int x){
         mapIndexX = x;
+        //previousMapIndexX = x;
     }
     protected void setMapIndexY(int y){
         mapIndexY = y;
+        //previousMapIndexY = y;
     }
     public boolean interact(){
         return true;

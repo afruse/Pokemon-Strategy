@@ -17,7 +17,7 @@ public class MoveablePokemon extends Actor
 
     protected GreenfootImage hpLayout = new GreenfootImage("HpBar.png");
     protected SuperStatBar hpBar;
-    
+
     protected int baseDef;
     protected int baseAtk;
     protected int baseHp;
@@ -68,10 +68,9 @@ public class MoveablePokemon extends Actor
 
     protected boolean didMove = false;
 
-    
     protected int lvl;
     String previousKey;
-    
+
     GreenfootImage curImage;
     protected World world;
 
@@ -86,10 +85,8 @@ public class MoveablePokemon extends Actor
         previousMapIndexY = mapIndexY;
         int height = 60;
         int width = 90;
-        
-       
-    }
 
+    }
     public GreenfootImage getAnimationImage(){
         return animationImage;
     }
@@ -99,18 +96,23 @@ public class MoveablePokemon extends Actor
         // Add your action code here.
 
     }
-    
+
     public void spawnStatBar(int x, int y){
         int length = 80;
         int height = 5;
         hpBar = new SuperStatBar(maxHp, hp, null, length, height, 0, Color.GREEN, Color.GRAY, false,Color.BLACK, 1);
         HpBarLayout hpLayout= new HpBarLayout();
+        HpBarIcon icon= new HpBarIcon(this.getImage());
         getWorld().addObject(hpLayout, x, y);
         getWorld().addObject(hpBar, x-10, y);
+        getWorld().addObject(icon, x+55, y);
+
     }
+
     public void updateStatBar(){
         hpBar.update(hp);
     }
+
     public void doSomething(){
 
         if(isTurn && getWorld().getClass() == BattleWorld.class){
@@ -410,7 +412,7 @@ public class MoveablePokemon extends Actor
     public boolean checkExit(){
         String key = Greenfoot.getKey();
         if (key != null){
-            if(key.equals("end")){
+            if(key.equals("p")){
                 isTurnEnd = true;
                 isFirstRun = true;
             }
@@ -517,7 +519,6 @@ public class MoveablePokemon extends Actor
         return isPlayer;
     }
 
-    
     public void flipTurn(){
         if(isTurn){
             didMove = false;

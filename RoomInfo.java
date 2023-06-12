@@ -12,15 +12,23 @@ public class RoomInfo
     // instance variables - replace the example below with your own
 
     GreenfootImage image;
+    protected boolean hasTopLeft = false;
+    protected boolean hasTopRight = false;
+    protected boolean hasBottomLeft = false;
+    protected boolean hasBottomRight = false;
     
     ArrayList<Coordinate> obstructionList = new ArrayList<Coordinate>();
     
     /**
      * Constructor for objects of class RoomInfo
      */
-    public RoomInfo(GreenfootImage image, int x, int y)
+    public RoomInfo(GreenfootImage image, int x, int y, boolean hasTopLeft, boolean hasTopRight, boolean hasBottomLeft, boolean hasBottomRight)
     {
         image.scale(x,y);
+        this.hasTopLeft = hasTopLeft;
+        this.hasTopRight = hasTopRight;
+        this.hasBottomLeft = hasBottomLeft;
+        this.hasBottomRight = hasBottomRight;
         this.image = image;
     }
     
@@ -36,5 +44,22 @@ public class RoomInfo
     public GreenfootImage getRoomImage(){
         return image;
     }
+    
+    public boolean getHasTopLeft(){
+        return hasTopLeft;
+    }
+    public boolean getHasTopRight(){
+        return hasTopRight;
+    }
+    
+    public boolean getHasBottomLeft(){
+        return hasBottomLeft;
+    }
+    
+    public boolean getHasBottomRight(){
+        return hasBottomRight;
+    }
+    
+    
     
 }
