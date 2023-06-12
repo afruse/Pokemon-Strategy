@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=BattleWorld
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=playerTeam\ enemyTeam\ gw
-comment1.target=BattleWorld(MoveablePokemon[],\ MoveablePokemon[],\ GymWorld)
+comment1.params=gw
+comment1.target=BattleWorld(GymWorld)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BattleWorld.\r\n\ \r\n
 comment10.params=a\ mapIndexX\ mapIndexY
 comment10.target=boolean\ moveCharacter(MoveablePokemon,\ int,\ int)
@@ -12,6 +12,8 @@ comment12.params=coord
 comment12.target=boolean\ checkEnemy(Coordinate)
 comment13.params=
 comment13.target=void\ endCharTurn()
+comment14.params=
+comment14.target=void\ switchToGymWorld()
 comment2.params=p
 comment2.target=void\ setCurAttacker(MoveablePokemon)
 comment3.params=p
@@ -28,4 +30,4 @@ comment8.params=
 comment8.target=MoveablePokemon\ getCurChar()
 comment9.params=
 comment9.target=java.util.ArrayList\ getMap()
-numComments=14
+numComments=15

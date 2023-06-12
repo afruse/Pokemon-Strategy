@@ -466,6 +466,7 @@ public class MoveablePokemon extends Actor
     public void doDamage(int victimDef, int movePower){
         int damage = (((2*lvl/5)+2 * movePower * this.getAtk()/victimDef)/50)+2;
         victim.setHp(victim.getHp() - damage);
+        System.out.println(victim.getClass() + "   " + victim.getHp());
     }
 
     public void swapToAnimationImage(){

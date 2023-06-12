@@ -9,14 +9,13 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BattleWorld extends World
+public class BattleWorld extends StorageWorld
 {
     BattleManager b;
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     protected int tileLength;
     protected int tileHeight;
-    MoveablePokemon[] playerTeam;
-    MoveablePokemon[] enemyTeam;
+    
 
     MoveablePokemon curAttacker;
     MoveablePokemon curVictim;
@@ -27,12 +26,11 @@ public class BattleWorld extends World
      * Constructor for objects of class BattleWorld.
      * 
      */
-    public BattleWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam, GymWorld gw)
+    public BattleWorld(GymWorld gw)
     {    
         //Add a parameter to get an array for play party and another array for enemy party
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(700, 600, 1);
         this.gw = gw;
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
@@ -133,5 +131,8 @@ public class BattleWorld extends World
     }
     public void endCharTurn(){
         b.endTurn();
+    }
+    public void switchToGymWorld(){
+        Greenfoot.setWorld(gw);
     }
 }

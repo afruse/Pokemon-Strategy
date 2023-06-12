@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GymWorld extends World
+public class GymWorld extends StorageWorld
 {
     //ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
@@ -29,7 +29,6 @@ public class GymWorld extends World
     public GymWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(700, 600, 1, true);
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         int roomIndex = 0;
@@ -202,13 +201,9 @@ public class GymWorld extends World
     public boolean checkEnemy(MoveableCharacter p){
         if(roomIndex == 1){
             if(p.getMapIndexX() == 0 && p.getMapIndexY() == 4){
-                Pikachu c = new Pikachu(0,0, true, 5);
-                Eevee e = new Eevee(2,5,false, 5);
-                MoveablePokemon[] playerTeam = {c};
-                MoveablePokemon[] enemyTeam = {e};
                 GymWorld gw = this;
 
-                Greenfoot.setWorld(new BattleWorld(playerTeam,enemyTeam, gw));
+                Greenfoot.setWorld(new BattleWorld(gw));
                 return true;
             }
         }

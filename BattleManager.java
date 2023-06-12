@@ -45,9 +45,14 @@ public class BattleManager extends Actor
 
     public void act()
     {
+        BattleWorld bw = (BattleWorld)getWorld();
         renderVisualBattleOrder();
-        if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemyTeam)){
+        if(isPlayerTeamDead(playerTeam)){
+            bw.switchToGymWorld();
             //End game
+        }
+        if(isEnemyTeamDead(enemyTeam)){
+            bw.switchToGymWorld();
         }
         curChar = battleOrder.peek();
         BattleOrderActionBlock topBlock = visualBattleOrder.peek();
