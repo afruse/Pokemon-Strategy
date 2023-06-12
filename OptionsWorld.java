@@ -14,6 +14,7 @@ public class OptionsWorld extends World
      * 
      */
     private SelectAni selectUp;
+    private boolean newFile;
     private SelectAni selectDown;
     public OptionsWorld()
     {    
@@ -31,10 +32,16 @@ public class OptionsWorld extends World
         if(Greenfoot.isKeyDown("UP")){
             selectUp.setLocation(244, 65);
             selectDown.setLocation(244, 85);
+            newFile = false;
         }
         if(Greenfoot.isKeyDown("DOWN")){
             selectUp.setLocation(244, 160);
             selectDown.setLocation(244, 180);
+            newFile = true;
+        }
+        if(Greenfoot.isKeyDown("ENTER")){
+            World w = new TypingWorld(newFile);
+            Greenfoot.setWorld(w);
         }
     }
 }
