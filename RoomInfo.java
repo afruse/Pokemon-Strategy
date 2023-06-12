@@ -28,6 +28,7 @@ public class RoomInfo
         obstructionList.add(c);
     }
     
+    
     public ArrayList<Coordinate> getObstructionList(){
         return obstructionList;
     }

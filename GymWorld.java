@@ -108,6 +108,7 @@ public class GymWorld extends World
         roomOrder[0].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[0].addObstruction(map.get(2).get(7)); //Rock Right upper
 
+        //roomOrder[1].addObstruction(map.get(0).get(4), true);
         //addObject(c, , );
         c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
         c.setMapIndexX(map.size()-1);
@@ -129,6 +130,7 @@ public class GymWorld extends World
     public boolean moveCharacter(MoveableCharacter a, int mapIndexX, int mapIndexY){
         try{
             nextRoom = false;
+
             if(mapIndexX == -1 && (mapIndexY == 1 || mapIndexY == 7) && roomIndex < 1){
                 roomIndex++;
                 setBackground(roomOrder[roomIndex].getRoomImage());
@@ -195,6 +197,22 @@ public class GymWorld extends World
         catch(IndexOutOfBoundsException e){
             return false;
         }
+    }
+
+    public boolean checkEnemy(MoveableCharacter p){
+        if(roomIndex == 1){
+            if(p.getMapIndexX() == 0 && p.getMapIndexY() == 4){
+                Pikachu c = new Pikachu(0,0, true, 5);
+                Eevee e = new Eevee(2,5,false, 5);
+                MoveablePokemon[] playerTeam = {c};
+                MoveablePokemon[] enemyTeam = {e};
+                GymWorld gw = this;
+
+                Greenfoot.setWorld(new BattleWorld(playerTeam,enemyTeam, gw));
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean checkObstruction(Coordinate coord){

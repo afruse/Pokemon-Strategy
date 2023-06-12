@@ -93,7 +93,7 @@ public class MoveableCharacter extends Actor
                 }
             }
             else if (key.equals("space")){
-
+                w.checkEnemy(this);
             }
             if(!sucessfulMovement){
                 mapIndexX = previousMapIndexX;
@@ -111,5 +111,12 @@ public class MoveableCharacter extends Actor
     }
     public boolean interact(){
         return true;
+    }
+    
+    protected int getMapIndexX(){
+        return mapIndexX;
+    }
+    protected int getMapIndexY(){
+        return mapIndexY;
     }
 }

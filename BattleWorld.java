@@ -22,16 +22,18 @@ public class BattleWorld extends World
     MoveablePokemon curVictim;
     
     protected boolean justStarted = true;
+    GymWorld gw;
     /**
      * Constructor for objects of class BattleWorld.
      * 
      */
-    public BattleWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam)
+    public BattleWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam, GymWorld gw)
     {    
         //Add a parameter to get an array for play party and another array for enemy party
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
+        this.gw = gw;
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
         b = new BattleManager(playerTeam, enemyTeam);
