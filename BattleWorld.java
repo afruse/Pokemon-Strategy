@@ -9,30 +9,36 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BattleWorld extends World
+public class BattleWorld extends StorageWorld
 {
     BattleManager b;
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     protected int tileLength;
     protected int tileHeight;
-    MoveablePokemon[] playerTeam;
-    MoveablePokemon[] enemyTeam;
+    
+
+    MoveablePokemon curAttacker;
+    MoveablePokemon curVictim;
+    
+    protected boolean justStarted = true;
+    GymWorld gw;
     /**
      * Constructor for objects of class BattleWorld.
      * 
      */
-    public BattleWorld(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam)
+    public BattleWorld(GymWorld gw)
     {    
         //Add a parameter to get an array for play party and another array for enemy party
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(700, 600, 1);
+        this.gw = gw;
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
         b = new BattleManager(playerTeam, enemyTeam);
+        curAttacker = b.getCurChar();
+        curVictim = b.getCurChar();
         MoveablePokemon c = playerTeam[0];
         MoveablePokemon e = enemyTeam[0];
-
         addObject(e,0,0);
         addObject(c,0,0);
 
@@ -48,13 +54,32 @@ public class BattleWorld extends World
             i++;
         }
         //addObject(c, , );
-        c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
-        c.setMapIndexX(map.size()-1);
+        c.setLocation(map.get(map.size()-3).get(4).getXCoord(), map.get(map.size()-3).get(4).getYCoord());
+        c.setMapIndexX(map.size()-3);
         c.setMapIndexY(4);
-        e.setLocation(map.get(2).get(5).getXCoord(), map.get(2).get(5).getYCoord());
+        e.setLocation(map.get(3).get(5).getXCoord(), map.get(3).get(5).getYCoord());
+        e.setMapIndexX(3);
+        e.setMapIndexY(5);
         GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
         setBackground(backround);
         addObject(b, 0,0);
+        justStarted = false;
+        
+        
+        c.spawnStatBar(100, getHeight()-50);
+        e.spawnStatBar(100, 50);
+    }
+
+    public void setCurAttacker(MoveablePokemon p){
+        curAttacker = p;
+    }
+
+    public void setCurVictim(MoveablePokemon p){
+        curVictim = p;
+    }
+
+    public void act(){
+       
     }
 
     public Queue<MoveablePokemon> getBattleOrder(){
@@ -68,9 +93,13 @@ public class BattleWorld extends World
     public int getTileLength(){
         return tileLength;
     }
-    
+
     public MoveablePokemon getCurChar(){
         return b.getCurChar();
+    }
+
+    public ArrayList<ArrayList<Coordinate>> getMap(){
+        return map;
     }
 
     public boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
@@ -105,5 +134,11 @@ public class BattleWorld extends World
         int x = coord.getXCoord();
         int y = coord.getYCoord();
         return true;
+    }
+    public void endCharTurn(){
+        b.endTurn();
+    }
+    public void switchToGymWorld(){
+        Greenfoot.setWorld(gw);
     }
 }

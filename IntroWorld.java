@@ -18,10 +18,10 @@ public class IntroWorld extends World
     public IntroWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(480, 320, 1, false); 
+        super(700, 600, 1, false); 
         backGroundAni = new GifIntroWorldBackground();
         addObject(backGroundAni, -400, -300);
-        addObject(new GifOverlay(), 240, 160);
+        addObject(new GifOverlay(), 350, 300);
         setBackground(backGroundAni.getImage());
     }
     /**

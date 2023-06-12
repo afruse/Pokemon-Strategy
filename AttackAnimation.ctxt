@@ -1,9 +1,20 @@
 #BlueJ class context
 comment0.target=AttackAnimation
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ AttackAnimation\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=bw\ attacker\ victim\ scenario
-comment1.target=AttackAnimation(BattleWorld,\ MoveablePokemon,\ MoveablePokemon,\ int)
+comment1.params=bw\ attackerImage\ victimImage\ scenario\ attackType
+comment1.target=AttackAnimation(BattleWorld,\ greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ int,\ java.lang.String)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ AttackAnimation.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=attack\ attacker\ victim
+comment3.target=void\ doAttack(java.lang.String,\ BattleOrderActionBlock,\ BattleOrderActionBlock)
+comment3.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ new\ BattleOrderActionBlock(attacker);\r\n
+comment4.params=pokemon
+comment4.target=void\ bite(BattleOrderActionBlock)
+comment5.params=pokemon
+comment5.target=void\ thunderbolt(BattleOrderActionBlock)
+comment6.params=a\ b
+comment6.target=void\ sandAttack(BattleOrderActionBlock,\ BattleOrderActionBlock)
+comment7.params=b
+comment7.target=void\ setThundering(boolean)
+numComments=8

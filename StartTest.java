@@ -14,8 +14,8 @@ public class StartTest extends World
      * 
      */
 
-    Pikachu c = new Pikachu(0,0, true);
-    Eevee e = new Eevee(2,5,false);
+    Pikachu c = new Pikachu(0,0, true, 5);
+    Eevee e = new Eevee(2,5,false, 5);
     MoveablePokemon[] playerTeam = {c};
     MoveablePokemon[] enemyTeam = {e};
     public StartTest()
@@ -27,7 +27,7 @@ public class StartTest extends World
 
     public void act(){
         if(Greenfoot.isKeyDown("tab")){
-            Greenfoot.setWorld(new BattleWorld(playerTeam,enemyTeam));
+            //Greenfoot.setWorld(new BattleWorld(playerTeam,enemyTeam, ));
         }
     }
 }

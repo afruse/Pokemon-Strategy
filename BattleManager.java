@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 public class BattleManager extends Actor
 {
-    Queue<BattleOrderActionBlock> visualBattleOrder = new LinkedList<>();
+    Queue<BattleOrderActionBlock> visualBattleOrder = new LinkedList<BattleOrderActionBlock>();
 
-    Queue<MoveablePokemon> battleOrder = new LinkedList<>();
+    Queue<MoveablePokemon> battleOrder = new LinkedList<MoveablePokemon>();
     MoveablePokemon[] playerTeam;
     MoveablePokemon[] enemyTeam;
     MoveablePokemon curChar;
@@ -45,9 +45,14 @@ public class BattleManager extends Actor
 
     public void act()
     {
+        BattleWorld bw = (BattleWorld)getWorld();
         renderVisualBattleOrder();
-        if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemyTeam)){
+        if(isPlayerTeamDead(playerTeam)){
+            bw.switchToGymWorld();
             //End game
+        }
+        if(isEnemyTeamDead(enemyTeam)){
+            bw.switchToGymWorld();
         }
         curChar = battleOrder.peek();
         BattleOrderActionBlock topBlock = visualBattleOrder.peek();
@@ -69,17 +74,25 @@ public class BattleManager extends Actor
         }
     }
 
+    public void endTurn(){
+        MoveablePokemon curChar = battleOrder.poll();
+        BattleOrderActionBlock topBlock = visualBattleOrder.poll();
+        battleOrder.add(curChar);
+        visualBattleOrder.add(topBlock);
+        curChar.flipTurn();
+    }
+
     public void renderVisualBattleOrder(){
         BattleWorld w = (BattleWorld)getWorld();
         ArrayList<BattleOrderActionBlock> battleOrderActionBlockList = (ArrayList<BattleOrderActionBlock>)w.getObjects(BattleOrderActionBlock.class);
         for(BattleOrderActionBlock p: battleOrderActionBlockList){
             w.removeObject(p);
         }
-        int x = 25;
+        int x = w.getWidth()-25;
         int y = 25;
 
         for(BattleOrderActionBlock p : visualBattleOrder){
-            int yIncrement = p.getImage().getHeight()/2;
+            int yIncrement = (p.getImage().getHeight()/2) + 15;
             w.addObject(p, x, y);
             y+= yIncrement;
         }
@@ -88,7 +101,7 @@ public class BattleManager extends Actor
     public Queue<MoveablePokemon> getBattleOrder(){
         return battleOrder;
     }
-    
+
     public MoveablePokemon getCurChar(){
         return curChar;
     }
@@ -121,7 +134,7 @@ public class BattleManager extends Actor
 
     public boolean isPlayerTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
@@ -130,7 +143,7 @@ public class BattleManager extends Actor
 
     public boolean isEnemyTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
