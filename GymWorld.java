@@ -15,7 +15,7 @@ public class GymWorld extends StorageWorld
     //protected int roomIndexY = 4;
     protected int roomIndexX;
     protected int roomIndexY;
-    protected RoomInfo[][] roomOrder = new RoomInfo[5][5];
+    
 
     //ArrayList<Coordinate> t = 
     protected int tileLength;
@@ -34,29 +34,7 @@ public class GymWorld extends StorageWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         roomIndexY = 4;
         roomIndexX = 2;
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
-
-        roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
-
-        setBackground(roomOrder[4][2].getRoomImage());
-
-        //Other Rooms
-        roomOrder[3][1] = new RoomInfo(new GreenfootImage("[3][1].png"), 700, 600, true, true, false, true);
-
-        roomOrder[2][0] = new RoomInfo(new GreenfootImage("[2][0].png"), 700, 600, false, true, false, true);
-
-        roomOrder[1][1] = new RoomInfo(new GreenfootImage("[1][1].png"), 700, 600,false, true, true, true);
-
-        //Right side
-        roomOrder[3][3] = new RoomInfo(new GreenfootImage("[3][3].png"), 700, 600, true, true, true, false);
-
-        //roomOrder[2][4] = new RoomInfo(new GreenfootImage("[2][4].png"), 700, 600,true, false, true, false);
-
-        roomOrder[1][3] = new RoomInfo(new GreenfootImage("[1][3].png"), 700, 600, true, false, true, true);
-
-        //Middle
-        roomOrder[2][2] = new RoomInfo(new GreenfootImage("[2][2].png"), 700, 600, true, true, true, true);
-
+       
         /**
          * How it looks
          *   0  1  2  3  4
@@ -65,7 +43,7 @@ public class GymWorld extends StorageWorld
          * 2  X    X     X
          * 3    X     X
          * 4       X
-         * [2][2],[2][4],[1][3]
+         * [2][2]
          * X = Room
          */
         //int numer = 7;
@@ -91,7 +69,7 @@ public class GymWorld extends StorageWorld
         roomOrder[4][2].addObstruction(map.get(2).get(3)); //Person
         roomOrder[4][2].addObstruction(map.get(2).get(1)); //Rock Left upper
         roomOrder[4][2].addObstruction(map.get(3).get(1)); //Rock Left Lower
-
+        
         roomOrder[4][2].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[4][2].addObstruction(map.get(2).get(7)); //Rock Right upper
 

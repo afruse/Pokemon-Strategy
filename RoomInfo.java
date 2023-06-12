@@ -17,6 +17,7 @@ public class RoomInfo
     protected boolean hasBottomLeft = false;
     protected boolean hasBottomRight = false;
     
+    protected MoveablePokemon[] enemyTeam;
     ArrayList<Coordinate> obstructionList = new ArrayList<Coordinate>();
     
     /**
@@ -30,6 +31,9 @@ public class RoomInfo
         this.hasBottomLeft = hasBottomLeft;
         this.hasBottomRight = hasBottomRight;
         this.image = image;
+    }
+    public void addEnemyTeam(MoveablePokemon[] a){
+        enemyTeam = a;
     }
     
     public void addObstruction(Coordinate c){
