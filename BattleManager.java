@@ -88,7 +88,7 @@ public class BattleManager extends Actor
         for(BattleOrderActionBlock p: battleOrderActionBlockList){
             w.removeObject(p);
         }
-        int x = 25;
+        int x = w.getWidth()-25;
         int y = 25;
 
         for(BattleOrderActionBlock p : visualBattleOrder){

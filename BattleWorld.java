@@ -62,6 +62,10 @@ public class BattleWorld extends StorageWorld
         setBackground(backround);
         addObject(b, 0,0);
         justStarted = false;
+        
+        
+        c.spawnStatBar(100, getHeight()-50);
+        e.spawnStatBar(100, 50);
     }
 
     public void setCurAttacker(MoveablePokemon p){

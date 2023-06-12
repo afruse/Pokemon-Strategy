@@ -15,6 +15,9 @@ public class MoveablePokemon extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
+    protected GreenfootImage hpLayout = new GreenfootImage("HpBar.png");
+    protected SuperStatBar hpBar;
+    
     protected int baseDef;
     protected int baseAtk;
     protected int baseHp;
@@ -68,10 +71,7 @@ public class MoveablePokemon extends Actor
     
     protected int lvl;
     String previousKey;
-    GreenfootImage left = new GreenfootImage("left.png");
-    GreenfootImage right = new GreenfootImage("left.png");
-    GreenfootImage back = new GreenfootImage("back.png");
-    GreenfootImage front = new GreenfootImage("front.png");
+    
     GreenfootImage curImage;
     protected World world;
 
@@ -86,13 +86,8 @@ public class MoveablePokemon extends Actor
         previousMapIndexY = mapIndexY;
         int height = 60;
         int width = 90;
-        left.scale(height, width);
-        front.scale(height,width);
-        back.scale(height,width);
-        right.mirrorHorizontally();
-        right.scale(height,width);
-        setImage(front);
-        curImage = front;
+        
+       
     }
 
     public GreenfootImage getAnimationImage(){
@@ -104,7 +99,18 @@ public class MoveablePokemon extends Actor
         // Add your action code here.
 
     }
-
+    
+    public void spawnStatBar(int x, int y){
+        int length = 80;
+        int height = 5;
+        hpBar = new SuperStatBar(maxHp, hp, null, length, height, 0, Color.GREEN, Color.GRAY, false,Color.BLACK, 1);
+        HpBarLayout hpLayout= new HpBarLayout();
+        getWorld().addObject(hpLayout, x, y);
+        getWorld().addObject(hpBar, x-10, y);
+    }
+    public void updateStatBar(){
+        hpBar.update(hp);
+    }
     public void doSomething(){
 
         if(isTurn && getWorld().getClass() == BattleWorld.class){
@@ -467,6 +473,7 @@ public class MoveablePokemon extends Actor
         int damage = (((2*lvl/5)+2 * movePower * this.getAtk()/victimDef)/50)+2;
         victim.setHp(victim.getHp() - damage);
         System.out.println(victim.getClass() + "   " + victim.getHp());
+        victim.updateStatBar();
     }
 
     public void swapToAnimationImage(){

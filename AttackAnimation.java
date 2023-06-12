@@ -85,7 +85,7 @@ public class AttackAnimation extends World
             else if(getObjects(Attack.class).size() == 0){
                 actsAfterMove++;
             }
-            if(actsAfterMove == 75){
+            if(actsAfterMove == 60){
                 finished = true;
 
             }
