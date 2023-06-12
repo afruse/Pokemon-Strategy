@@ -16,8 +16,9 @@ public class TypingWorld extends World
      */
     private String entry = "";
     private GreenfootImage[] images = new GreenfootImage[26];
-    private int spaceNumber = 1;
+    private int spaceNumber = 0;
     private HashMap<String, GreenfootImage> characters = new HashMap<String, GreenfootImage>();
+    private SimpleTimer timer = new SimpleTimer();
     public TypingWorld(boolean newFile)
     {    
         super(700, 600, 1, false);
@@ -27,10 +28,19 @@ public class TypingWorld extends World
         for(int i = 0; i < images.length; i++){
             images[i] = new GreenfootImage("Alphabet" + (i+1) + ".png");
         }
-    }
-    public void act(){
         for(int i = 0; i < 26; i++){
             characters.put(String.valueOf((char)(97 + i)), images[i]);
+        }
+        timer.mark();
+    }
+    public void act(){
+        if(timer.millisElapsed() > 300){
+        //String nonsense = Greenfoot.getKey();
+        if(spaceNumber == 0){
+            String key = Greenfoot.getKey();
+            if(key != null){
+                spaceNumber++;
+            }
         }
         if(spaceNumber == 1){
             String key = Greenfoot.getKey();
@@ -88,9 +98,10 @@ public class TypingWorld extends World
                 spaceNumber++;
             }
         }
-        if(Greenfoot.getKey() == "ENTER"){
+        if(Greenfoot.isKeyDown("ENTER")){
             //call file with name entry + .txt
         }
         System.out.println(spaceNumber);
+        }
     }
 }
