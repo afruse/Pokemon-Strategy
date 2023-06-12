@@ -34,13 +34,12 @@ public class GymWorld extends StorageWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         roomIndexY = 4;
         roomIndexX = 2;
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.png"), 700,600, true, true, false, false);
+        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
 
         roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
 
         setBackground(roomOrder[4][2].getRoomImage());
 
-        GreenfootImage image = new GreenfootImage("GymStart.png");
         //Other Rooms
         roomOrder[3][1] = new RoomInfo(new GreenfootImage("[3][1].png"), 700, 600, true, true, false, true);
 
@@ -53,11 +52,10 @@ public class GymWorld extends StorageWorld
 
         //roomOrder[2][4] = new RoomInfo(new GreenfootImage("[2][4].png"), 700, 600,true, false, true, false);
 
-        //roomOrder[1][3] = new RoomInfo(new GreenfootImage("[1][3].png"), 700, 600, true, false, true, true);
+        roomOrder[1][3] = new RoomInfo(new GreenfootImage("[1][3].png"), 700, 600, true, false, true, true);
 
         //Middle
         roomOrder[2][2] = new RoomInfo(new GreenfootImage("[2][2].png"), 700, 600, true, true, true, true);
-
 
         /**
          * How it looks
@@ -126,18 +124,18 @@ public class GymWorld extends StorageWorld
 
                 //changeObstructionLayout();
                 if(mapIndexY == 1 || mapIndexY == 2){
-                    a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
+                    a.setLocation(map.get(0).get(7).getXCoord(), map.get(0).get(7).getYCoord());
                     a.setMapIndexX(0);
-                    a.setMapIndexY(1);
+                    a.setMapIndexY(7);
                     roomIndexX--;
                     //Switch to next array image
                     //Function to add all enemy
                 }
                 else if(mapIndexY == 7 || mapIndexY == 6){
-
-                    a.setLocation(map.get(0).get(7).getXCoord(), map.get(0).get(7).getYCoord());
+                    a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
                     a.setMapIndexX(0);
-                    a.setMapIndexY(7);
+                    a.setMapIndexY(1);
+                   
                     roomIndexX++;
                     //Switch to next array image
                     //Function to add all enemy
