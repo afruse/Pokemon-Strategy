@@ -74,10 +74,10 @@ public class LoadSave
         int HP;
         String currentWorld, pokemon, coordinates;
         
-        String fileName;
+        String fileName = "x";
         System.out.println("What would you like to name the file? (include extension)");
-        scan.nextLine();
-        fileName = scan.nextLine();
+        //scan.nextLine();
+        //fileName = scan.nextLine();
         // Somehow taking data and assigning it to these variables
         // If more than one set, use a for loop to constantly write to file
         
