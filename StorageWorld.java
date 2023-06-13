@@ -13,7 +13,9 @@ public class StorageWorld extends World
     static Eevee eevee = new Eevee(2,5,false, 5, 0, startXpNeeded);
     static MoveablePokemon[] playerTeam = {pikachu};
     static MoveablePokemon[] enemyTeamYEAH = {eevee};
-
+    
+    
+   
     /**
 
     FIRST FLOOR - EASY
@@ -102,5 +104,11 @@ public class StorageWorld extends World
 
         
         
+    }
+    
+    protected void setPokemonTeam(String[][]team){
+        if(team[0][0].equals("Pikachu")){
+            //Pikachu p1 = new Pikachu(0,0, true, String)
+        }
     }
 }
