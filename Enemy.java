@@ -9,20 +9,17 @@ import java.util.ArrayList;
  */
 public class Enemy extends Character
 {
-    
+
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int xCoor, yCoor;
-    
-    
+
     public Enemy()
     {
-    
+
         
-        
-            
     }
     public void addedToWorld(){
         isPlayer = false;
@@ -39,7 +36,7 @@ public class Enemy extends Character
         }
         this.isInRange();
     }
-    
+
     public void isInRange()
     {
         xCoor = this.getX();
@@ -51,17 +48,13 @@ public class Enemy extends Character
             int differenceY = yCoor - v.getY();
             if(differenceX <= 10 && differenceY<= 10)
             {
-                
-                    getWorld().removeObject(this);
-                    
-                
+
+                getWorld().removeObject(this);
+
             }
         }
-        
-    
+
     }
-    
-    
     
     
 }

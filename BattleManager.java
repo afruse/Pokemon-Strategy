@@ -10,45 +10,100 @@ import java.util.ArrayList;
  */
 public class BattleManager extends Actor
 {
-    Queue<Character> battleOrder = new LinkedList<>();
-    Character[] playerTeam;
-    Character[] enemy;
+    Queue<BattleOrderActionBlock> visualBattleOrder = new LinkedList<BattleOrderActionBlock>();
+
+    Queue<MoveablePokemon> battleOrder = new LinkedList<MoveablePokemon>();
+    MoveablePokemon[] playerTeam;
+    MoveablePokemon[] enemyTeam;
+    MoveablePokemon curChar;
     //ArrayList<Actor> speedOrder = new ArrayList();
     /**
      * Act - do whatever the BattleManager wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public void addedToWorld(Character[] playerTeam, Character[] enemy){
+    public BattleManager(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam){
         this.playerTeam = playerTeam;
-        this.enemy = enemy;
-        Character[] speedOrder = new Character[playerTeam.length + enemy.length];
+        this.enemyTeam = enemyTeam;
+
+        MoveablePokemon[] speedOrder = new MoveablePokemon[playerTeam.length + enemyTeam.length];
         int a;
         for(a = 0; a < playerTeam.length; a++){
             speedOrder[a] = playerTeam[a];
-            speedOrder[a + playerTeam.length] = enemy[a];
+            speedOrder[a + playerTeam.length] = enemyTeam[a];
         }
         speedOrder = bubbleSort(speedOrder);
         for(int i = 0; i < speedOrder.length; i++){
             battleOrder.add(speedOrder[i]);
         }
+
+        for(MoveablePokemon p: battleOrder){
+            visualBattleOrder.add(new BattleOrderActionBlock(p.getImage()));
+        }
+
     }
 
     public void act()
     {
-        if(isPlayerTeamDead(playerTeam) || isEnemyTeamDead(enemy)){
-            
+        BattleWorld bw = (BattleWorld)getWorld();
+        renderVisualBattleOrder();
+        if(isPlayerTeamDead(playerTeam)){
+            bw.switchToGymWorld();
+            //End game
         }
-        Character curChar = battleOrder.peek();
-        curChar.flipTurn();
-        
-        if(curChar.getIsTurn()){
-            
+        if(isEnemyTeamDead(enemyTeam)){
+            bw.switchToGymWorld();
         }
-        else{
-            battleOrder.poll();
+        curChar = battleOrder.peek();
+        BattleOrderActionBlock topBlock = visualBattleOrder.peek();
+        if(!curChar.getIsTurn()){
+            curChar.flipTurn();
+            //  System.out.println(curChar.getClass());
+        }
+
+        if(curChar.getIsTurn() && !curChar.getDidMove()){
+            //System.out.println(curChar.getClass());
+            //leave empty
+        }
+        else if(curChar.getIsTurnEnd()){
+            curChar = battleOrder.poll();
+            topBlock = visualBattleOrder.poll();
             battleOrder.add(curChar);
+            visualBattleOrder.add(topBlock);
+            curChar.flipTurn();
         }
+    }
+
+    public void endTurn(){
+        MoveablePokemon curChar = battleOrder.poll();
+        BattleOrderActionBlock topBlock = visualBattleOrder.poll();
+        battleOrder.add(curChar);
+        visualBattleOrder.add(topBlock);
+        curChar.flipTurn();
+    }
+
+    public void renderVisualBattleOrder(){
+        BattleWorld w = (BattleWorld)getWorld();
+        ArrayList<BattleOrderActionBlock> battleOrderActionBlockList = (ArrayList<BattleOrderActionBlock>)w.getObjects(BattleOrderActionBlock.class);
+        for(BattleOrderActionBlock p: battleOrderActionBlockList){
+            w.removeObject(p);
+        }
+        int x = w.getWidth()-25;
+        int y = 25;
+
+        for(BattleOrderActionBlock p : visualBattleOrder){
+            int yIncrement = (p.getImage().getHeight()/2) + 15;
+            w.addObject(p, x, y);
+            y+= yIncrement;
+        }
+    }
+
+    public Queue<MoveablePokemon> getBattleOrder(){
+        return battleOrder;
+    }
+
+    public MoveablePokemon getCurChar(){
+        return curChar;
     }
 
     /**
@@ -58,7 +113,7 @@ public class BattleManager extends Actor
     }
      */
 
-    public static Character[] bubbleSort (Character[] num)
+    public static MoveablePokemon[] bubbleSort (MoveablePokemon[] num)
     {
         boolean done = false;
         for (int i = 0; i < num.length && !done; i++) {
@@ -67,7 +122,7 @@ public class BattleManager extends Actor
 
                 if (num[x - 1].getSpeed() > num[x].getSpeed()) {
 
-                    Character temp = num[x - 1];
+                    MoveablePokemon temp = num[x - 1];
                     num[x - 1] = num[x];
                     num[x] = temp;
                     done = false;
@@ -77,21 +132,22 @@ public class BattleManager extends Actor
         return num;
     }
 
-    public boolean isPlayerTeamDead(Character[] arr){
+    public boolean isPlayerTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
         return true;
     }
 
-    public boolean isEnemyTeamDead(Character[] arr){
+    public boolean isEnemyTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
-            if(arr[i].getHealth() > 0){
+            if(arr[i].getHp() > 0){
                 return false;
             }
         }
         return true;
     }
+
 }

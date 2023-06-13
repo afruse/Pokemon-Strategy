@@ -23,7 +23,7 @@ public class MoveableCharacter extends Actor
     GreenfootImage back = new GreenfootImage("back.png");
     GreenfootImage front = new GreenfootImage("front.png");
     GreenfootImage curImage;
-
+    protected World world;
     public MoveableCharacter(int mapIndexX, int mapIndexY){
         this.mapIndexX = mapIndexX;
         this.mapIndexY = mapIndexY;
@@ -93,11 +93,14 @@ public class MoveableCharacter extends Actor
                 }
             }
             else if (key.equals("space")){
-
+                w.checkEnemy(this);
             }
             if(!sucessfulMovement){
                 mapIndexX = previousMapIndexX;
                 mapIndexY = previousMapIndexY;
+            }
+            else{
+                System.out.println(mapIndexX + "    " + mapIndexY);
             }
             previousKey = key;
         }
@@ -105,11 +108,20 @@ public class MoveableCharacter extends Actor
     
     protected void setMapIndexX(int x){
         mapIndexX = x;
+        //previousMapIndexX = x;
     }
     protected void setMapIndexY(int y){
         mapIndexY = y;
+        //previousMapIndexY = y;
     }
     public boolean interact(){
         return true;
+    }
+    
+    protected int getMapIndexX(){
+        return mapIndexX;
+    }
+    protected int getMapIndexY(){
+        return mapIndexY;
     }
 }
