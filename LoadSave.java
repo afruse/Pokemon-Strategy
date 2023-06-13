@@ -28,8 +28,8 @@ public class LoadSave
 
     public void addData(String currentWorld, String coordinates, String HP, String pokemon) {
         String[] adding = {currentWorld, coordinates, HP, pokemon};
-        Data guest = new Data(adding);
-        memoryList.add(guest);
+        //Data guest = new Data(adding);
+        //memoryList.add(guest);
         
     }
 

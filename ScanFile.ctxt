@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=ScanFile
+comment1.params=file
+comment1.target=ScanFile(java.lang.String)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=int\ getTransactions()
+comment4.params=
+comment4.target=java.util.ArrayList\ getInfo()
+comment5.params=input
+comment5.target=java.lang.String[]\ getTokens(java.lang.String)
+comment5.text=\r\n\ To\ analyze\ the\ awkward\ tokens\ in\ Visa's\ CSV\ files\:\r\n\ -\ Comma-separated\ but\ ..\r\n\ -\ Sometimes\ there\ are\ comma's\ in\ the\ name,\ within\ quotes\r\n\ -\r\n
+numComments=6
