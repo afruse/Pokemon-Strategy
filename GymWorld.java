@@ -141,7 +141,7 @@ public class GymWorld extends StorageWorld
         //8-9 for right entrance
     }
     public void loadData(Data data){
-        c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord())
+        //c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
         //roomIndexX =  data.getCurrentWorld().charAt(0)
         
         

@@ -15,11 +15,12 @@ public class BattleWorld extends StorageWorld
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     protected int tileLength;
     protected int tileHeight;
-    
+
     protected MoveablePokemon[] enemyTeam;
     MoveablePokemon curAttacker;
     MoveablePokemon curVictim;
-    
+    MovementDecider decider = new MovementDecider();
+
     protected boolean justStarted = true;
     GymWorld gw;
     /**
@@ -64,10 +65,14 @@ public class BattleWorld extends StorageWorld
         setBackground(backround);
         addObject(b, 0,0);
         justStarted = false;
-        
-        
+
+        addObject(decider, 25, 300);
         c.spawnStatBar(100, getHeight()-50);
         e.spawnStatBar(100, 50);
+    }
+
+    public int getMovement(){
+        return decider.decideMovements();
     }
 
     public void setCurAttacker(MoveablePokemon p){
@@ -79,7 +84,7 @@ public class BattleWorld extends StorageWorld
     }
 
     public void act(){
-       
+
     }
 
     public Queue<MoveablePokemon> getBattleOrder(){
@@ -135,9 +140,11 @@ public class BattleWorld extends StorageWorld
         int y = coord.getYCoord();
         return true;
     }
+
     public void endCharTurn(){
         b.endTurn();
     }
+
     public void switchToGymWorld(){
         Greenfoot.setWorld(gw);
     }

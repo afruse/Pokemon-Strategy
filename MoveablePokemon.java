@@ -15,6 +15,7 @@ public class MoveablePokemon extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
+    protected int movement;
     protected GreenfootImage hpLayout = new GreenfootImage("HpBar.png");
     protected SuperStatBar hpBar;
     protected SuperStatBar expBar;
@@ -74,7 +75,7 @@ public class MoveablePokemon extends Actor
 
     protected int lvl;
     String previousKey;
-
+    protected boolean waiting = false;
     GreenfootImage curImage;
     protected World world;
     protected String attackKey = "c";
@@ -154,32 +155,50 @@ public class MoveablePokemon extends Actor
     public void doSomething(){
 
         if(isTurn && getWorld().getClass() == BattleWorld.class){
-            if(isPlayer){
+            BattleWorld bw = (BattleWorld)getWorld();
+            if(isFirstRun && isPlayer){
+                movement = bw.getMovement();
+                didMove = false;
+                isTurnEnd = false;
+                isFirstRun = false;
+                victim = null;
+            }
+            if(isFirstRun && !isPlayer){
+                movement = bw.getMovement();
+
+                didMove = false;
+                isTurnEnd = false;
+                isFirstRun = false;
+                victim = null;
+
+                attacking = false;
+                triedAttack = false;
+            }
+            if(waiting){
+
+            }
+            else if(isPlayer){
+
                 if(Greenfoot.isKeyDown("tab")){
                     setAttackOutline();
                 }
                 else{
                     removeAllSelectTiles();
                 }
-                
+
                 if(Greenfoot.isKeyDown("c")){
                     attackKey = "c";
                 }
                 else if(Greenfoot.isKeyDown("v")){
                     attackKey = "v";
                 }
-                if(isFirstRun){
-                    didMove = false;
-                    isTurnEnd = false;
-                    isFirstRun = false;
-                    victim = null;
 
-                }
-
-               
                 if(!didMove && !attacking){
-                    if(checkKeyPress("")){
-                        didMove = true;
+                    if(checkKeyPress("") && movement > 0){
+                        movement--;
+                        if(movement == 0){
+                            didMove = true;
+                        }
                     }
                 }
 
@@ -219,18 +238,11 @@ public class MoveablePokemon extends Actor
             }
             else{
                 //If its enemy/AI [not ai just algorithin :(]
-                if(isFirstRun){
-                    didMove = false;
-                    isTurnEnd = false;
-                    isFirstRun = false;
-                    triedAttack = false;
-                    attacking = false;
-                    victim = null;
-                    //alreadyAttacked = false;
-                }
-                if(!didMove){
-                    if((Math.abs(getClosestPlayer().getMapIndexX() - this.getMapIndexX()) + Math.abs(getClosestPlayer().getMapIndexY() - this.getMapIndexY())) > 1 && checkKeyPress(getRandomDirectionKey())){
-                        didMove = true;
+
+                if(movement > 0){
+                    if((Math.abs(getClosestPlayer().getMapIndexX() - this.getMapIndexX()) + Math.abs(getClosestPlayer().getMapIndexY() - this.getMapIndexY())) > movement && checkKeyPress(getRandomDirectionKey())){
+                        movement--;
+
                     }
                     else{
                         didMove = true;
@@ -239,6 +251,9 @@ public class MoveablePokemon extends Actor
                     attacking = enemyCheckVictim();
 
                     //System.out.println("Is Attacking? " + attacking);
+                }
+                else{
+                    didMove = true;
                 }
                 if(attacking){
 
@@ -253,7 +268,6 @@ public class MoveablePokemon extends Actor
                     // loop through list of players
                     // get the closest player
                     //check if it is close enough to hit
-                    BattleWorld bw = (BattleWorld)getWorld();
                     bw.endCharTurn();
                     if (enemyAttackType.equals("c")){
                         didMove = true;
@@ -317,8 +331,6 @@ public class MoveablePokemon extends Actor
         }
 
     }
-
-    
 
     protected boolean checkKeyPress(String option){
         BattleWorld w = (BattleWorld)getWorld();
@@ -831,4 +843,11 @@ public class MoveablePokemon extends Actor
         updateStatExpBar();
     }
 
+    protected void setWait(){
+        waiting = true;
+    }
+
+    protected void unSetWait(){
+        waiting = false;
+    }
 }
