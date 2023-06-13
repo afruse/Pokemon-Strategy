@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Options
+comment1.params=waitList
+comment1.target=Options(java.util.ArrayList)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Guests\r\n\ @param\ waitList\ \ the\ ArrayList\ containing\ the\ information\ from\ the\ waitList\ scanned\ by\ scanGuest\r\n
+comment2.params=firstName\ lastName\ groupSize\ request
+comment2.target=void\ addToList(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ adds\ a\ new\ reservation\ to\ the\ list\r\n\ \r\n\ @param\ firstName\ takes\ input\ of\ the\ reservations\ first\ name\r\n\ @param\ lastName\ \ takes\ unput\ of\ reservations\ last\ name\r\n\ @param\ groupSize\ takes\ input\ of\ the\ size\ of\ reservation\ party\r\n\ @param\ request\ \ \ takes\ input\ of\ any\ request\ reservation\ might\ have\r\n
+comment3.params=
+comment3.target=void\ removeFromList()
+comment3.text=\r\n\ removes\ first\ reservation\ from\ list\r\n
+comment4.params=
+comment4.target=java.lang.String[]\ viewFirst()
+comment4.text=\r\n\ prints\ and\ returns\ first\ in\ the\ list\r\n\ \r\n\ @return\ String[]\ the\ information\ fo\ first\ on\ list\r\n
+comment5.params=
+comment5.target=java.util.ArrayList\ saveChanges()
+comment5.text=\r\n\ returns\ the\ current\ changes\ to\ the\ waitlist\ so\ Intro\ can\ save\ it\ to\ file\r\n\ \r\n\ @return\ \ ArrayList<String[]>\ the\ ArrayList\ containing\ all\ the\ information\r\n
+comment6.params=
+comment6.target=boolean\ loadNewFile()
+comment6.text=\r\n\ loads\ a\ new\ file\r\n\ \r\n\ @return\ boolean\ \ whether\ or\ not\ to\ load\ new\ file\r\n
+comment7.params=
+comment7.target=boolean\ exit()
+comment7.text=\r\n\ prints\ out\ exit\ statement\r\n\ \r\n\ @return\ boolean\ \ whether\ or\ not\ to\ exit\ program\r\n
+comment8.params=
+comment8.target=java.util.ArrayList\ viewEntire()
+comment8.text=\r\n\ prints\ and\ returns\ entire\ reservation\ list\r\n\ \r\n\ @return\ ArrayList<String[]>\ returns\ arrayList\ containing\ reservation\ list\r\n
+numComments=9
