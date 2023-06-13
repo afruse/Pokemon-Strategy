@@ -13,31 +13,31 @@ import java.io.*;
 import java.util.*;
 
 public class Data {
-    private String firstName;
-    private String lastName;
-    private int partySize;
-    private String specialRequest;
+    private String currentWorld;
+    private String coordinates;
+    private int HP;
+    private String pokemon;
 
-    public Data(/*String firstName, String lastName, int partySize, String specialRequest*/) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.partySize = partySize;
-        this.specialRequest = specialRequest;
+    public Data(String currentWorld, String coordinates, int HP, String pokemon) {
+        this.currentWorld = currentWorld;
+        this.coordinates = coordinates;
+        this.HP = HP;
+        this.pokemon = pokemon;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getCurrentWorld() {
+        return currentWorld;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getCoordinates() {
+        return coordinates;
     }
 
-    public int getPartySize() {
-        return partySize;
+    public int getHP() {
+        return HP;
     }
 
-    public String getSpecialRequest() {
-        return specialRequest;
+    public String getPokemon() {
+        return pokemon;
     }
 }

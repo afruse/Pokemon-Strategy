@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Data
-comment1.params=
-comment1.target=Data()
+comment1.params=currentWorld\ coordinates\ HP\ pokemon
+comment1.target=Data(java.lang.String,\ java.lang.String,\ int,\ java.lang.String)
 comment2.params=
-comment2.target=java.lang.String\ getFirstName()
+comment2.target=java.lang.String\ getCurrentWorld()
 comment3.params=
-comment3.target=java.lang.String\ getLastName()
+comment3.target=java.lang.String\ getCoordinates()
 comment4.params=
-comment4.target=int\ getPartySize()
+comment4.target=int\ getHP()
 comment5.params=
-comment5.target=java.lang.String\ getSpecialRequest()
+comment5.target=java.lang.String\ getPokemon()
 numComments=6
