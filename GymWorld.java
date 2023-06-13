@@ -97,7 +97,7 @@ public class GymWorld extends StorageWorld
             nextRoom = false;
             //If boss room
             if(mapIndexX == 5 && (mapIndexY == 1 || mapIndexY == 2|| mapIndexY == 6 || mapIndexY == 7) && roomIndexX == 2 && roomIndexY == 0){
-                System.out.println("Boss");
+                //System.out.println("Boss");
                 roomIndexY++;
 
                 //changeObstructionLayout();
@@ -125,7 +125,7 @@ public class GymWorld extends StorageWorld
             }
             //If moving up
             if(mapIndexX == -1 && ((mapIndexY == 1 && roomOrder[roomIndexY][roomIndexX].getHasTopLeft())|| (mapIndexY == 7 && roomOrder[roomIndexY][roomIndexX].getHasTopRight()))){
-                System.out.println("Up " + mapIndexX);
+                //System.out.println("Up " + mapIndexX);
 
                 roomIndexY--;
 
@@ -150,12 +150,12 @@ public class GymWorld extends StorageWorld
                 setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
                 changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
                 nextRoom = true;
-                System.out.println(a.getMapIndexX());
+                //System.out.println(a.getMapIndexX());
                 return true;
             }
             //if moving down
             if(mapIndexX == 5 && (mapIndexY == 1 && roomOrder[roomIndexY][roomIndexX].getHasBottomLeft()|| (mapIndexY == 7 && roomOrder[roomIndexY][roomIndexX].getHasBottomRight()))){
-                System.out.println((mapIndexX == 5 && ((mapIndexY == 1 && roomOrder[roomIndexY][roomIndexX].getHasBottomLeft())|| (mapIndexY == 7 && roomOrder[roomIndexY][roomIndexX].getHasBottomRight())) ) + " Down " + mapIndexX);
+                //System.out.println((mapIndexX == 5 && ((mapIndexY == 1 && roomOrder[roomIndexY][roomIndexX].getHasBottomLeft())|| (mapIndexY == 7 && roomOrder[roomIndexY][roomIndexX].getHasBottomRight())) ) + " Down " + mapIndexX);
 
                 roomIndexY++;
 
@@ -180,7 +180,7 @@ public class GymWorld extends StorageWorld
                 setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
                 changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
                 nextRoom = true;
-                System.out.println(a.getMapIndexX());
+                //System.out.println(a.getMapIndexX());
 
                 return true;
             }
@@ -205,11 +205,11 @@ public class GymWorld extends StorageWorld
     }
 
     public boolean checkEnemy(MoveableCharacter p){
-        if(roomIndexY == 0 && roomIndexX == 2){
-            if(p.getMapIndexX() == 0 && p.getMapIndexY() == 4){
+        if(roomOrder[roomIndexY][roomIndexX].getHasEnemyTeam()){
+            if(p.getMapIndexX() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexX() && p.getMapIndexY() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexY()){
                 GymWorld gw = this;
 
-                Greenfoot.setWorld(new BattleWorld(gw));
+                Greenfoot.setWorld(new BattleWorld(gw, roomOrder[roomIndexY][roomIndexX].getEnemyTeam()));
                 return true;
             }
         }

@@ -12,8 +12,8 @@ public class Pikachu extends MoveablePokemon
      * Act - do whatever the Pikachu wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Pikachu(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl){
-        super(mapIndexX,mapIndexY, isPlayer, lvl);
+    public Pikachu(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
+        super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         image = new GreenfootImage("images/Pokemon/pika.png");
         animationImage = new GreenfootImage("images/Pokemon/pika.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);

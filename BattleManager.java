@@ -48,10 +48,26 @@ public class BattleManager extends Actor
         BattleWorld bw = (BattleWorld)getWorld();
         renderVisualBattleOrder();
         if(isPlayerTeamDead(playerTeam)){
+
+            for(int i = 0; i < playerTeam.length; i++){
+                playerTeam[i].gainXp(enemyTeam[0].getLvl()/2);
+                playerTeam[i].healToFull();
+            }
+
+            for(int i = 0; i < enemyTeam.length; i++){
+                enemyTeam[i].healToFull();
+            }
             bw.switchToGymWorld();
             //End game
         }
         if(isEnemyTeamDead(enemyTeam)){
+            for(int i = 0; i < playerTeam.length; i++){
+                playerTeam[i].gainXp(enemyTeam[0].getLvl()+5);
+                playerTeam[i].healToFull();
+            }
+            for(int i = 0; i < enemyTeam.length; i++){
+                enemyTeam[i].healToFull();
+            }
             bw.switchToGymWorld();
         }
         curChar = battleOrder.peek();
