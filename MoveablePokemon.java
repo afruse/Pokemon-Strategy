@@ -161,6 +161,13 @@ public class MoveablePokemon extends Actor
                 else{
                     removeAllSelectTiles();
                 }
+                
+                if(Greenfoot.isKeyDown("c")){
+                    attackKey = "c";
+                }
+                else if(Greenfoot.isKeyDown("v")){
+                    attackKey = "v";
+                }
                 if(isFirstRun){
                     didMove = false;
                     isTurnEnd = false;
@@ -169,21 +176,8 @@ public class MoveablePokemon extends Actor
 
                 }
 
-                if(Greenfoot.mouseClicked(this) ){
-                    settingKeyAttackKey = true;
-                    enemyUnHit();
-                    enemySet = false;
-                }
-                else if(settingKeyAttackKey){
-                    String selectedAttack = Greenfoot.getKey();
-                    if(selectedAttack != null && (selectedAttack.equals("c") || selectedAttack.equals("v"))){
-                        attackKey = selectedAttack;
-                        settingKeyAttackKey = false;
-                        System.out.println("KEY SET TO " + attackKey);
-                    }
-
-                }
-                else if(!didMove && !attacking){
+               
+                if(!didMove && !attacking){
                     if(checkKeyPress("")){
                         didMove = true;
                     }

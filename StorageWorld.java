@@ -67,7 +67,7 @@ public class StorageWorld extends World
          * 
          * X = Room
          */
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.png"), 700,600, true, true, false, false);
+        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
         
         
         roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
