@@ -26,8 +26,9 @@ public class LoadSave
     }
     
 
-    public void addData(String currentWorld, String coordinates, int HP, String pokemon) {
-        Data guest = new Data(currentWorld,coordinates, HP, pokemon);
+    public void addData(String currentWorld, String coordinates, String HP, String pokemon) {
+        String[] adding = {currentWorld, coordinates, HP, pokemon};
+        Data guest = new Data(adding);
         memoryList.add(guest);
         
     }
@@ -42,8 +43,8 @@ public class LoadSave
             for (Data data : memoryList) {
                 System.out.println("World: " + data.getCurrentWorld());
                 System.out.println("HP: " + data.getHP());
-                System.out.println("Current Coordinates: " + data.getCoordinates());
-                System.out.println("Pokemon: " +  data.getPokemon());
+                System.out.println("Current Coordinates: " + data.getCoordinateX() + ", " + data.getCoordinateY());
+                //System.out.println("Pokemon: " +  data.getPokemon1());
             }
         }
     }
@@ -57,8 +58,8 @@ public class LoadSave
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(fileName));
             for (Data guest : memoryList) {
-                writer.println(guest.getCurrentWorld() + "," + guest.getHP() + "," +
-                        guest.getCoordinates() + "," + guest.getPokemon());
+                //writer.println(guest.getCurrentWorld() + "," + guest.getHP() + "," +
+                 //       guest.getCoordinates() + "," + guest.getPokemon());
             }
             writer.close();
             //

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TypingWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ TypingWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=import\ greenfoot.*;\ \ //\ (World,\ Actor,\ GreenfootImage,\ Greenfoot\ and\ MouseInfo)\r\nimport\ java.util.HashMap;\r\nimport\ java.util.List;\r\n/**\r\n\ Write\ a\ description\ of\ class\ TypingWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=newFile
 comment1.target=TypingWorld(boolean)
 comment2.params=
