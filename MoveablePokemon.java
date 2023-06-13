@@ -77,7 +77,7 @@ public class MoveablePokemon extends Actor
 
     GreenfootImage curImage;
     protected World world;
-    protected String attackKey;
+    protected String attackKey = "c";
     MoveablePokemon victim;
     protected boolean enemyHit = false;
     protected boolean enemySet;
