@@ -58,8 +58,7 @@ public class LoadSave
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(fileName));
             for (Data guest : memoryList) {
-                //writer.println(guest.getCurrentWorld() + "," + guest.getHP() + "," +
-                 //       guest.getCoordinates() + "," + guest.getPokemon());
+                writer.println(guest.getCurrentWorld() + "," + guest.getHP() + "," + guest.getCoordinateX() + "," + guest.getCoordinateY() + "," + guest.getPokemon1() + guest.getPokemon2());
             }
             writer.close();
             //

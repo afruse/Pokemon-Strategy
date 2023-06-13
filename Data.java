@@ -61,6 +61,12 @@ public class Data {
     
         return lvl;
     }
+    public String getPokemon1(){
+        return pokemon1;
+    }
+    public String getPokemon2(){
+        return pokemon2;
+    }
     public String getXP() {
         return XP;
     }
