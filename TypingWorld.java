@@ -101,7 +101,7 @@ public class TypingWorld extends World
         if(Greenfoot.isKeyDown("ENTER")){
             //call file with name entry + .txt
         }
-        System.out.println(spaceNumber);
+        //System.out.println(spaceNumber);
         }
     }
 }
