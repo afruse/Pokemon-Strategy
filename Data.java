@@ -43,7 +43,8 @@ public class Data {
     public void updateChanges(ArrayList<String []> values){
         this.values = values;
     }
-    public void saveChanges(String fileName){
+    public void saveChanges(String fileName, ArrayList<String []> values){
+        this.values = values;
         ArrayList<String[]> waitList = values;
             try{
                 System.out.println(fileName);
