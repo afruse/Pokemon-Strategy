@@ -19,9 +19,11 @@ public class TypingWorld extends World
     private int spaceNumber = 0;
     private HashMap<String, GreenfootImage> characters = new HashMap<String, GreenfootImage>();
     private SimpleTimer timer = new SimpleTimer();
+    private boolean newFile;
     public TypingWorld(boolean newFile)
     {    
         super(700, 600, 1, false);
+        this.newFile = newFile;
         GreenfootImage image = new GreenfootImage("EnterFileName.png");
         image.scale(700, 600);
         setBackground(image);
@@ -99,7 +101,9 @@ public class TypingWorld extends World
             }
         }
         if(Greenfoot.isKeyDown("ENTER")){
-            //call file with name entry + .txt
+            if(!newFile){
+                Data d = new Data(entry + ".csv");
+            }
         }
         //System.out.println(spaceNumber);
         }
