@@ -71,21 +71,26 @@ public class Data {
     public String getCurrentWorld() {
         return currentWorld;
     }
-    public String getCoordinateX() {
-        return coordinateX;
+    public int getCoordinateX() {
+        return Integer.parseInt(coordinateX);
     }
-    public String getCoordinateY() {
-        return coordinateY;
+    public int getCoordinateY() {
+        return Integer.parseInt(coordinateY);
     }
-    public String getBeatBoss() {
-        return beatBoss;
+    public boolean getBeatBoss() {
+        if(beatBoss.equals("true")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-    public String getHP() {
-        return HP;
+    public int getHP() {
+        return Integer.parseInt(HP);
     }
-    public String getLvl()
+    public int getLvl()
     {
-        return lvl;
+        return Integer.parseInt(lvl);
     }
     public String getPokemon1(){
         return pokemon1;
@@ -93,22 +98,22 @@ public class Data {
     public String getPokemon2(){
         return pokemon2;
     }
-    public String getXP() {
-        return XP;
+    public int getXP() {
+        return Integer.parseInt(XP);
     }
-    public String getXPNeeded() {
-        return XP_needed;
+    public int getXPNeeded() {
+        return Integer.parseInt(XP_needed);
     }
-    public String getHP2()
+    public int getHP2()
     {
-        return HP2;
+        return Integer.parseInt(HP2);
     }
-    public String getXP2()
+    public int getXP2()
     {
-        return XP2;
+        return Integer.parseInt(XP2);
     }
-    public String getXP_needed1()
+    public int getXP_needed1()
     {
-        return XP_needed2;
+        return Integer.parseInt(XP_needed2);
     }
 }
