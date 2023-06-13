@@ -82,7 +82,6 @@ public class MoveablePokemon extends Actor
     protected boolean enemyHit = false;
     protected boolean enemySet;
     protected boolean settingKeyAttackKey;
-    protected boolean attackOutline = true;
     public MoveablePokemon(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
         this.curXp = curXp;
         this.xpNeeded = xpNeeded;
@@ -156,7 +155,19 @@ public class MoveablePokemon extends Actor
 
         if(isTurn && getWorld().getClass() == BattleWorld.class){
             if(isPlayer){
-
+                if(Greenfoot.isKeyDown("tab")){
+                    setAttackOutline();
+                }
+                else{
+                    removeAllSelectTiles();
+                }
+                
+                if(Greenfoot.isKeyDown("c")){
+                    attackKey = "c";
+                }
+                else if(Greenfoot.isKeyDown("v")){
+                    attackKey = "v";
+                }
                 if(isFirstRun){
                     didMove = false;
                     isTurnEnd = false;
@@ -164,29 +175,14 @@ public class MoveablePokemon extends Actor
                     victim = null;
 
                 }
-                if(attackOutline){
-                    setAttackOutline();
-                }
-                if(Greenfoot.mouseClicked(this)){
-                    settingKeyAttackKey = true;
-                    attackOutline = false;
-                    enemyUnHit();
-                    enemySet = false;
-                }
-                else if(settingKeyAttackKey){
-                    String selectedAttack = Greenfoot.getKey();
-                    if(selectedAttack != null && (selectedAttack.equals("c") || selectedAttack.equals("v"))){
-                        attackKey = selectedAttack;
-                        settingKeyAttackKey = false;
-                        System.out.println("KEY SET TO " + attackKey);
-                    }
 
-                }
-                else if(!didMove && !attacking){
+               
+                if(!didMove && !attacking){
                     if(checkKeyPress("")){
                         didMove = true;
                     }
                 }
+
                 if(attacking){
                     if(isPlayer){
                         scenario = 1;
@@ -314,21 +310,20 @@ public class MoveablePokemon extends Actor
             else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() != this.getX() && curChar.getVictim().getY() != this.getY()){
                 //If it is another actor
                 curChar.enemyHit(this);
-                attackOutline = true;
             }
             else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() == this.getX() && curChar.getVictim().getY() == this.getY()){
-                attackOutline = false;
                 curChar.readyToAttack();
             }
         }
 
     }
 
+    
+
     protected boolean checkKeyPress(String option){
         BattleWorld w = (BattleWorld)getWorld();
         if(option.length() == 0){
             String key = Greenfoot.getKey();
-
             if (key != null)
             {
                 //System.out.println(key);
@@ -419,13 +414,43 @@ public class MoveablePokemon extends Actor
 
     public void setAttackOutline(){
         BattleWorld bw = (BattleWorld)getWorld();
-        int mouseX = Greenfoot.getMouseInfo().getX();
-        int mouseY = Greenfoot.getMouseInfo().getY();
-        int difX = mouseX- this.getX();
-        int difY = mouseY- this.getY();
-        int xTiles = difX/bw.getTileLength();
-        int yTiles = difY/bw.getTileHeight();
-        
+        removeAllSelectTiles();
+        bw.addObject(new SelectTile(), this.getX()+ bw.getTileLength(), this.getY());
+        bw.addObject(new SelectTile(), this.getX()- bw.getTileLength(), this.getY());
+        bw.addObject(new SelectTile(), this.getX(), this.getY()- bw.getTileHeight());
+        bw.addObject(new SelectTile(), this.getX(), this.getY()+ bw.getTileHeight());
+        if(attackKey.equals("v")){
+            bw.addObject(new SelectTile(), this.getX()+ 2*bw.getTileLength(), this.getY());
+            bw.addObject(new SelectTile(), this.getX()- 2*bw.getTileLength(), this.getY());
+            bw.addObject(new SelectTile(), this.getX(), this.getY()- 2*bw.getTileHeight());
+            bw.addObject(new SelectTile(), this.getX(), this.getY()+ 2*bw.getTileHeight());
+            bw.addObject(new SelectTile(), this.getX()+ bw.getTileLength(), this.getY() + bw.getTileHeight());
+            bw.addObject(new SelectTile(), this.getX()- bw.getTileLength(), this.getY() + bw.getTileHeight());
+            bw.addObject(new SelectTile(), this.getX()+ bw.getTileLength(), this.getY() - bw.getTileHeight());
+            bw.addObject(new SelectTile(), this.getX()- bw.getTileLength(), this.getY() - bw.getTileHeight());
+
+        }
+        /**
+         *    x
+         *  x x x
+         *x x 0 x x
+         *  x x x
+         *    x
+         * 
+         *  x 
+         *x 0 x
+         *  x
+         * 
+         */
+
+    }
+
+    public void removeAllSelectTiles(){
+        BattleWorld w = (BattleWorld)getWorld();
+        ArrayList<SelectTile> selectTileList = (ArrayList<SelectTile>)w.getObjects(SelectTile.class);
+        for(SelectTile p: selectTileList){
+            w.removeObject(p);
+        }
     }
 
     public boolean enemyCheckVictim(){
@@ -753,6 +778,16 @@ public class MoveablePokemon extends Actor
 
     protected String getCAttack(){
         return cAttackString;
+    }
+
+    protected int getAttackRange(String a){
+        if(a.equals("c")){
+            return cAttackRange;
+        }
+        else if(a.equals("v")){
+            return vAttackRange;
+        }
+        return 0;
     }
 
     protected String getVAttack(){

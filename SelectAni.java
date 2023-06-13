@@ -18,6 +18,17 @@ public class SelectAni extends Actor
             setRotation(180);
         }
     }
+    public SelectAni(boolean upSideDown, boolean mirrored){
+        image = new GreenfootImage("Select_ind.png");
+        image.scale((int)(image.getWidth()/1.50), (int)(image.getHeight()/1.50));
+        setImage(image);
+        if(upSideDown){
+            setRotation(180);
+        }
+        if(mirrored){
+            image.mirrorHorizontally();
+        }
+    }
     public void act(){
         if(image.getTransparency() > 0 && !appearing){
             image.setTransparency(image.getTransparency() - 5);
