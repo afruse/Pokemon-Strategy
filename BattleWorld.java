@@ -16,7 +16,7 @@ public class BattleWorld extends StorageWorld
     protected int tileLength;
     protected int tileHeight;
     
-
+    protected MoveablePokemon[] enemyTeam;
     MoveablePokemon curAttacker;
     MoveablePokemon curVictim;
     
@@ -26,7 +26,7 @@ public class BattleWorld extends StorageWorld
      * Constructor for objects of class BattleWorld.
      * 
      */
-    public BattleWorld(GymWorld gw)
+    public BattleWorld(GymWorld gw, MoveablePokemon[] enemyTeam)
     {    
         //Add a parameter to get an array for play party and another array for enemy party
 

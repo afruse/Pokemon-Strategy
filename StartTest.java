@@ -14,10 +14,10 @@ public class StartTest extends World
      * 
      */
 
-    Pikachu c = new Pikachu(0,0, true, 5);
-    Eevee e = new Eevee(2,5,false, 5);
-    MoveablePokemon[] playerTeam = {c};
-    MoveablePokemon[] enemyTeam = {e};
+    //Pikachu c = new Pikachu(0,0, true, 5);
+    //Eevee e = new Eevee(2,5,false, 5);
+    //MoveablePokemon[] playerTeam = {c};
+    //MoveablePokemon[] enemyTeam = {e};
     public StartTest()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.

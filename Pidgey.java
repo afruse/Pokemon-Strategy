@@ -13,8 +13,8 @@ public class Pidgey extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Pidgey(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl){
-        super(mapIndexX,mapIndexY, isPlayer, lvl);
+    public Pidgey(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
+        super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Quick Attack";
         vAttackString = "Gust";
         image = new GreenfootImage("images/Pokemon/pidgey.png");

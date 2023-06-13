@@ -14,8 +14,8 @@ public class Misdreavus extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Misdreavus(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl){
-        super(mapIndexX,mapIndexY, isPlayer, lvl);
+    public Misdreavus(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
+        super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Confusion";
         vAttackString = "Spite";
         image = new GreenfootImage("images/Pokemon/misdreavus.png");

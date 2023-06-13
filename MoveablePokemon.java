@@ -17,6 +17,10 @@ public class MoveablePokemon extends Actor
 
     protected GreenfootImage hpLayout = new GreenfootImage("HpBar.png");
     protected SuperStatBar hpBar;
+    protected SuperStatBar expBar;
+
+    protected int xpNeeded;
+    protected int curXp;
 
     protected int baseDef;
     protected int baseAtk;
@@ -76,7 +80,9 @@ public class MoveablePokemon extends Actor
 
     MoveablePokemon victim;
     protected boolean enemyHit = false;
-    public MoveablePokemon(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl){
+    public MoveablePokemon(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
+        this.curXp = curXp;
+        this.xpNeeded = xpNeeded;
         this.lvl = lvl;
         this.isPlayer = isPlayer;
         this.mapIndexX = mapIndexX;
@@ -87,6 +93,7 @@ public class MoveablePokemon extends Actor
         int width = 90;
 
     }
+
     public GreenfootImage getAnimationImage(){
         return animationImage;
     }
@@ -103,9 +110,13 @@ public class MoveablePokemon extends Actor
         hpBar = new SuperStatBar(maxHp, hp, null, length, height, 0, Color.GREEN, Color.GRAY, false,Color.BLACK, 1);
         HpBarLayout hpLayout= new HpBarLayout();
         HpBarIcon icon= new HpBarIcon(this.getImage());
+
+        expBar = new SuperStatBar(xpNeeded, curXp, null, length, height-2,0,Color.BLUE, Color.GRAY, false, Color.BLACK,1);
+
         getWorld().addObject(hpLayout, x, y);
         getWorld().addObject(hpBar, x-10, y);
         getWorld().addObject(icon, x+55, y);
+        getWorld().addObject(expBar, x-10, y+10);
 
     }
 
@@ -113,6 +124,30 @@ public class MoveablePokemon extends Actor
         hpBar.update(hp);
     }
 
+    public void updateStatExpBar(){
+        if(curXp > xpNeeded){
+            while(curXp> xpNeeded){
+                int xpDif = curXp-xpNeeded;
+                curXp += 5;
+                curXp = xpDif;
+                lvl++;
+            }
+            updateStates();
+        }
+        hpBar.update(curXp);
+    }
+
+    public void updateStates(){
+        maxHp = (int)Math.floor((baseHp*2)*lvl/100) + lvl + 10;
+        hp = maxHp;
+        atk = (int)Math.floor((baseAtk*2)*lvl/100) + 5;
+        def = (int)Math.floor((baseDef*2)*lvl/100) + 5;
+        speed = (int)Math.floor((baseSpeed*2)*lvl/100) + 5;
+    }
+
+    public void healToFull(){
+        hp = maxHp;
+    }
     public void doSomething(){
 
         if(isTurn && getWorld().getClass() == BattleWorld.class){
@@ -474,7 +509,7 @@ public class MoveablePokemon extends Actor
     public void doDamage(int victimDef, int movePower){
         int damage = (((2*lvl/5)+2 * movePower * this.getAtk()/victimDef)/50)+2;
         victim.setHp(victim.getHp() - damage);
-        System.out.println(victim.getClass() + "   " + victim.getHp());
+        //System.out.println(victim.getClass() + "   " + victim.getHp());
         victim.updateStatBar();
     }
 
@@ -483,7 +518,7 @@ public class MoveablePokemon extends Actor
     }
 
     public void swapToGridImage(){
-        System.out.println("RAN");
+        //System.out.println("RAN");
         setImage(image);
     }
 
@@ -704,8 +739,18 @@ public class MoveablePokemon extends Actor
     protected int getCPower(){
         return cPower;
     }
+    
+    protected int getLvl(){
+        return lvl;
+    }
 
     protected void setHp(int newHp){
         hp = newHp;
     }
+    
+    protected void gainXp(int xp){
+        curXp += xp;
+        updateStatExpBar();
+    }
+
 }

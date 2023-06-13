@@ -16,8 +16,12 @@ public class RoomInfo
     protected boolean hasTopRight = false;
     protected boolean hasBottomLeft = false;
     protected boolean hasBottomRight = false;
-    
+    protected boolean hasEnemyTeam = false;
     protected MoveablePokemon[] enemyTeam;
+    
+    protected int trainerIndexX;
+    protected int trainerIndexY;
+    //
     ArrayList<Coordinate> obstructionList = new ArrayList<Coordinate>();
     
     /**
@@ -32,8 +36,27 @@ public class RoomInfo
         this.hasBottomRight = hasBottomRight;
         this.image = image;
     }
-    public void addEnemyTeam(MoveablePokemon[] a){
+    public void addEnemyTeam(MoveablePokemon[] a, int trainerIndexX, int trainerIndexY){
         enemyTeam = a;
+        hasEnemyTeam = true;
+        this.trainerIndexX = trainerIndexX;
+        this.trainerIndexY = trainerIndexY;
+    }
+    
+    public int getTrainerIndexX(){
+        return trainerIndexX;
+    }
+    
+    public int getTrainerIndexY(){
+        return trainerIndexY;
+    }
+    
+    public MoveablePokemon[] getEnemyTeam(){
+        return enemyTeam;
+    }
+    
+    public boolean getHasEnemyTeam(){
+        return hasEnemyTeam;
     }
     
     public void addObstruction(Coordinate c){
@@ -63,6 +86,8 @@ public class RoomInfo
     public boolean getHasBottomRight(){
         return hasBottomRight;
     }
+    
+    
     
     
     

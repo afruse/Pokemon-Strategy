@@ -14,8 +14,8 @@ public class Wooper extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Wooper(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl){
-        super(mapIndexX,mapIndexY, isPlayer, lvl);
+    public Wooper(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
+        super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Water Gun";
         vAttackString = "Mud Slap";
         image = new GreenfootImage("images/Pokemon/woopere.png");
