@@ -20,6 +20,7 @@ public class TypingWorld extends World
     private HashMap<String, GreenfootImage> characters = new HashMap<String, GreenfootImage>();
     private SimpleTimer timer = new SimpleTimer();
     private boolean newFile;
+    private Alphabet[] alph = new Alphabet[7];
     public TypingWorld(boolean newFile)
     {    
         super(700, 600, 1, false);
@@ -46,7 +47,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 1){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 294, 220);
+            alph[0] = new Alphabet(characters.get(key));
+            addObject(alph[0], 294, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -54,7 +56,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 2){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 317, 220);
+            alph[1] = new Alphabet(characters.get(key));
+            addObject(alph[1], 317, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -62,7 +65,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 3){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 340, 220);
+            alph[2] = new Alphabet(characters.get(key));
+            addObject(alph[2], 340, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -70,7 +74,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 4){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 363, 220);
+            alph[3] = new Alphabet(characters.get(key));
+            addObject(alph[3], 363, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -78,7 +83,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 5){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 386, 220);
+            alph[4] = new Alphabet(characters.get(key));
+            addObject(alph[4], 386, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -86,7 +92,8 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 6){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 409, 220);
+            alph[5] = new Alphabet(characters.get(key));
+            addObject(alph[5], 409, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
@@ -94,11 +101,17 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 7){
             String key = Greenfoot.getKey();
-            addObject(new Alphabet(characters.get(key)), 432, 220);
+            alph[6] = new Alphabet(characters.get(key));
+            addObject(alph[6], 432, 220);
             if(key != null){
                 entry = entry + key;
                 spaceNumber++;
             }
+        }
+        String key = Greenfoot.getKey();
+        if("BACKSPACE".equals(key)){
+            removeObject(alph[spaceNumber - 1]);
+            System.out.println("weeeee");
         }
         if(Greenfoot.isKeyDown("ENTER")){
             if(!newFile){
