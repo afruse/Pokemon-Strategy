@@ -7,5 +7,5 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=int\ decideMovements()
-comment3.text=\r\n\ A\ method\ which\ decides\ how\ many\ moves\ the\ caller\ gets\r\n\ \r\n
+comment3.text=\r\n\ A\ method\ which\ decides\ how\ many\ moves\ the\ caller\ gets\r\n\ @return\ int\ \ \ \ \ \ Returns\ the\ number\ of\ tiles\ the\ player\ can\ move\r\n
 numComments=4

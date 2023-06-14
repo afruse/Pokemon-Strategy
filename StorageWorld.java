@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * This class acts as a storage base which declares, intitializes, and stores all the pokemon teams within the world allowing each world to pass 

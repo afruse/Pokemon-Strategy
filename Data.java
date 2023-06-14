@@ -31,16 +31,12 @@ public class Data {
         this.coordinateX = values.get(0)[2];
         this.coordinateY = values.get(0)[3];
         this.beatBoss = values.get(0)[4];
-        this.pokemon1 = values.get(1)[0];
-        this.HP = values.get(1)[1];
-        this.lvl = values.get(1)[2];
-        this.XP = values.get(1)[3];
-        this.XP_needed = values.get(1)[4];
-        this.pokemon2 = values.get(2)[0];
-        this.HP2 = values.get(2)[1];
-        this.lvl2 = values.get(2)[2];
-        this.XP2 = values.get(2)[3];
-        this.XP_needed2 = values.get(2)[4];
+        this.lvl = values.get(1)[0];
+        this.XP = values.get(1)[1];
+        this.XP_needed = values.get(1)[2];
+        this.lvl2 = values.get(2)[0];
+        this.XP2 = values.get(2)[1];
+        this.XP_needed2 = values.get(2)[2];
     }
     public void updateChanges(ArrayList<String []> values){
         this.values = values;

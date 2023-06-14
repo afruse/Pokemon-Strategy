@@ -19,7 +19,7 @@ public class BattleWorld extends StorageWorld
     protected MoveablePokemon[] enemyTeam;
     MoveablePokemon curAttacker;
     MoveablePokemon curVictim;
-    MovementDecider decider = new MovementDecider();
+    MovementDecider decider= new MovementDecider();
 
     protected boolean justStarted = true;
     GymWorld gw;
@@ -34,6 +34,7 @@ public class BattleWorld extends StorageWorld
         //Add a parameter to get an array for play party and another array for enemy party
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        decider = new MovementDecider();
         this.gw = gw;
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;

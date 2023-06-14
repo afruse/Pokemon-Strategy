@@ -72,6 +72,27 @@ public class GymWorld extends StorageWorld
         setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
     }
+    protected void saveDate(){
+        ArrayList<String[]> e = new ArrayList<String[]>();
+        String[] player = new String[5];
+        player[0] = "" + roomIndexX;
+        player[1] = "" + roomIndexY;
+        player[2] = "" + c.getMapIndexX();
+        player[3] = "" + c.getMapIndexY();
+        player[4] = "false";
+        String[] pokemon1 = new String[3];
+        pokemon1[0] = "" + pikachu.getLvl();
+        pokemon1[1] = "" + pikachu.getXp();
+        pokemon1[2] = "" + pikachu.getXpNeeded();
+        String[] pokemon2 = new String[3];
+        pokemon2[0] = "" + eevee.getLvl();
+        pokemon2[1] = "" + eevee.getXp();
+        pokemon2[2] = "" + eevee.getXpNeeded();
+        e.add(player);
+        e.add(pokemon1);
+        e.add(pokemon2);
+        data.saveChanges("test.csv", e);
+    }
     /**
      * A contructor to create the gymworld if there is no save file
      * 
@@ -120,7 +141,6 @@ public class GymWorld extends StorageWorld
         c.setMapIndexY(4);
 
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
-      
     }
 
     /**
@@ -158,6 +178,7 @@ public class GymWorld extends StorageWorld
      * @return boolean      Returns true if the player has mved sucessfuly and false otherwise
      */
     public boolean moveCharacter(MoveableCharacter a, int mapIndexX, int mapIndexY){
+        saveDate();
         try{
             nextRoom = false;
             //If boss room
