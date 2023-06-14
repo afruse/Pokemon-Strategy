@@ -105,6 +105,9 @@ public class TypingWorld extends World
                 Data d = new Data(entry + ".csv");
                 World w = new GymWorld(d);
                 Greenfoot.setWorld(w);
+            }else{
+                World w = new GymWorld();
+                Greenfoot.setWorld(w);
             }
         }
         //System.out.println(spaceNumber);

@@ -30,10 +30,10 @@ public class IntroWorld extends World
     public void act()
     {
        if(Greenfoot.isKeyDown("ENTER")){
-           GymWorld gw = new GymWorld();
+           //GymWorld gw = new GymWorld();
            OptionsWorld w = new OptionsWorld();
     
-           Greenfoot.setWorld(gw);
+           Greenfoot.setWorld(w);
        }
     }
 }
