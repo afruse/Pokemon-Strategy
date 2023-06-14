@@ -19,6 +19,8 @@ public class Bolt extends Attack
      */
     public Bolt(boolean bigBolt, int targetX, int targetY)
     {
+        image = new GreenfootImage("AttackSprites/bolt0.png");
+        setImage(image);
         this.bigBolt = bigBolt;
         this.targetX = targetX;
         this.targetY = targetY;

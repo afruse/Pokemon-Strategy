@@ -14,6 +14,9 @@ public class BottomTeeth extends Teeth
      */
     public BottomTeeth()
     {
+        image = new GreenfootImage("AttackSprites/bite teeth bottom (1).png");
+        setImage(image);
+
         this.getImage().scale(180, 80);
         this.getImage().setTransparency(5);
         direction = -1;
