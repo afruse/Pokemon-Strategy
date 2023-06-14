@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 /**
  * Write a description of class BattleManager here.
  * 
@@ -136,7 +138,7 @@ public class BattleManager extends Actor
             done = true;
             for (int x = 1; x < num.length - i; x++) {
 
-                if (num[x - 1].getSpeed() > num[x].getSpeed()) {
+                if (num[x - 1].getSpeed() < num[x].getSpeed()) {
 
                     MoveablePokemon temp = num[x - 1];
                     num[x - 1] = num[x];
