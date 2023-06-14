@@ -68,8 +68,8 @@ public class Data {
                 System.out.println("Error: " + e);
             }
     }
-    public String getCurrentWorld() {
-        return currentWorld;
+    public int getCurrentWorld() {
+        return Integer.parseInt(currentWorld);
     }
     public int getCoordinateX() {
         return Integer.parseInt(coordinateX);

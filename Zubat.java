@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wooper extends MoveablePokemon
+public class Zubat extends MoveablePokemon
 {
 
     /**
@@ -14,12 +14,12 @@ public class Wooper extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Wooper(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
+    public Zubat(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Water Gun";
         vAttackString = "Mud Slap";
-        image = new GreenfootImage("images/Pokemon/wooper.png");
-        animationImage = new GreenfootImage("images/Pokemon/wooper.png");
+        image = new GreenfootImage("images/Pokemon/Zubat.png");
+        animationImage = new GreenfootImage("images/Pokemon/Zubat.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
 

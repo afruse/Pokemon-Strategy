@@ -15,7 +15,6 @@ public class GymWorld extends StorageWorld
     //protected int roomIndexY = 4;
     protected int roomIndexX;
     protected int roomIndexY;
-    
 
     //ArrayList<Coordinate> t = 
     protected int tileLength;
@@ -32,8 +31,7 @@ public class GymWorld extends StorageWorld
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-       
-        
+
         /**
          * How it looks
          *   0  1  2  3  4
@@ -69,32 +67,33 @@ public class GymWorld extends StorageWorld
         roomOrder[4][2].addObstruction(map.get(2).get(3)); //Person
         roomOrder[4][2].addObstruction(map.get(2).get(1)); //Rock Left upper
         roomOrder[4][2].addObstruction(map.get(3).get(1)); //Rock Left Lower
-        
+
         roomOrder[4][2].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[4][2].addObstruction(map.get(2).get(7)); //Rock Right upper
 
         //roomOrder[1].addObstruction(map.get(0).get(4), true);
         //addObject(c, , );
         //delete this later idek what i did
-        roomIndexX = data.getCoordinateX();
-        roomIndexY = data.getCoordinateY();
-        c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
-        c.setMapIndexX(map.size()-1);
-        c.setMapIndexY(4);
-
+        roomIndexX = data.getCurrentWorld();
+        roomIndexY = data.getCurrentWorld();
+        c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
+        c.setMapIndexX(data.getCoordinateX());
+        c.setMapIndexY(data.getCoordinateY());
+        setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
         //1-2 for left
         //8-9 for right entrance
     }
-     public GymWorld()
+
+    public GymWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        
+
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        
+
         roomIndexY = 4;
         roomIndexX = 2;
-        
+
         /**
          * How it looks
          *   0  1  2  3  4
@@ -129,7 +128,7 @@ public class GymWorld extends StorageWorld
         roomOrder[4][2].addObstruction(map.get(2).get(3)); //Person
         roomOrder[4][2].addObstruction(map.get(2).get(1)); //Rock Left upper
         roomOrder[4][2].addObstruction(map.get(3).get(1)); //Rock Left Lower
-        
+
         roomOrder[4][2].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[4][2].addObstruction(map.get(2).get(7)); //Rock Right upper
 
@@ -143,14 +142,14 @@ public class GymWorld extends StorageWorld
         //1-2 for left
         //8-9 for right entrance
     }
+
     public void loadData(Data data){
         //c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
         //roomIndexX =  data.getCurrentWorld().charAt(0)
-        
-        
+
         
     }
-    
+
     public int getTileHeight(){
         return  tileHeight;
     }
@@ -180,7 +179,7 @@ public class GymWorld extends StorageWorld
                     a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
                     a.setMapIndexX(0);
                     a.setMapIndexY(1);
-                   
+
                     roomIndexX++;
                     //Switch to next array image
                     //Function to add all enemy
