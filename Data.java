@@ -15,7 +15,8 @@ import java.util.*;
 
 public class Data {
     private ArrayList<String[]> values;
-    private String currentWorld;
+    private String currentWorldX;
+    private String currentWorldY;
     private String coordinateX, coordinateY;
     private String beatBoss;
     private String pokemon1;
@@ -25,10 +26,11 @@ public class Data {
     public Data(String fileName) {
         scan = new ScanFile(fileName);
         this.values = scan.getInfo();
-        this.currentWorld = values.get(0)[0];
-        this.coordinateX = values.get(0)[1];
-        this.coordinateY = values.get(0)[2];
-        this.beatBoss = values.get(0)[3];
+        this.currentWorldX = values.get(0)[0];
+        this.currentWorldY = values.get(0)[1];
+        this.coordinateX = values.get(0)[2];
+        this.coordinateY = values.get(0)[3];
+        this.beatBoss = values.get(0)[4];
         this.pokemon1 = values.get(1)[0];
         this.HP = values.get(1)[1];
         this.lvl = values.get(1)[2];
@@ -50,11 +52,7 @@ public class Data {
                 System.out.println(fileName);
                 FileWriter out = new FileWriter(fileName);
                 PrintWriter output = new PrintWriter(out);
-                for (int j = 0; j < waitList.get(0).length; j++)
-                {
-                    output.print(waitList.get(0)[j] + ",");
-                }
-                for (int i = 1; i < waitList.size(); i++)
+                for (int i = 0; i < waitList.size(); i++)
                 {
                     for (int j = 0; j < waitList.get(i).length; j++)
                     {
@@ -68,8 +66,11 @@ public class Data {
                 System.out.println("Error: " + e);
             }
     }
-    public int getCurrentWorld() {
-        return Integer.parseInt(currentWorld);
+    public int getCurrentWorldX() {
+        return Integer.parseInt(currentWorldX);
+    }
+    public int getCurrentWorldY() {
+        return Integer.parseInt(currentWorldY);
     }
     public int getCoordinateX() {
         return Integer.parseInt(coordinateX);

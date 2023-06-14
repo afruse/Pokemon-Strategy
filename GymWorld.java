@@ -74,8 +74,8 @@ public class GymWorld extends StorageWorld
         //roomOrder[1].addObstruction(map.get(0).get(4), true);
         //addObject(c, , );
         //delete this later idek what i did
-        roomIndexX = data.getCurrentWorld();
-        roomIndexY = data.getCurrentWorld();
+        roomIndexX = data.getCurrentWorldX();
+        roomIndexY = data.getCurrentWorldY();
         c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
         c.setMapIndexX(data.getCoordinateX());
         c.setMapIndexY(data.getCoordinateY());
