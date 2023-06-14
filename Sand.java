@@ -48,6 +48,8 @@ public class Sand extends Attack
     
     public Sand(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original, int rotation)
     {
+        image = new GreenfootImage("AttackSprites/sandattack.png");
+        setImage(image);
         originX = a.getX();
         originY = a.getY();
         targetX = b.getX();
