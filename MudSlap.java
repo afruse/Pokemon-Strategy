@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Sand extends Attack
+public class MudSlap extends Attack
 {
     protected double originX;
     protected double originY;
@@ -25,9 +25,9 @@ public class Sand extends Attack
      * Act - do whatever the sandAttack wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Sand(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original)
+    public MudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original)
     {
-        image = new GreenfootImage("AttackSprites/sandattack.png");
+        image = new GreenfootImage("AttackSprites/mudslap.png");
         setImage(image);
         
         originX = a.getX();
@@ -46,7 +46,7 @@ public class Sand extends Attack
         distance = Math.sqrt( (targetY-originY)*(targetY-originY) + (targetX-originX)*(targetX-originX) );
     }
     
-    public Sand(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original, int rotation)
+    public MudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original, int rotation)
     {
         originX = a.getX();
         originY = a.getY();
@@ -57,7 +57,7 @@ public class Sand extends Attack
         
         this.getImage().setTransparency( Greenfoot.getRandomNumber(200) + 50);
         this.speed = Greenfoot.getRandomNumber(10) + 10;
-        this.getImage().scale( Greenfoot.getRandomNumber(20) + 30, Greenfoot.getRandomNumber(20) + 30 );
+        this.getImage().scale( Greenfoot.getRandomNumber(50) + 30, Greenfoot.getRandomNumber(50) + 30 );
         
         // Pythagorean theorem for distance
         distance = Math.sqrt( (targetY-originY)*(targetY-originY) + (targetX-originX)*(targetX-originX) );
@@ -74,8 +74,8 @@ public class Sand extends Attack
             {
                 int randomX = Greenfoot.getRandomNumber(200) - 75;
                 int randomY = Greenfoot.getRandomNumber(110) - 55;
-                Sand s = new Sand(a, b, false, rotation);
-                getWorld().addObject(s, a.getX() + randomX, a.getY() + randomY);
+                MudSlap m = new MudSlap(a, b, false, rotation);
+                getWorld().addObject(m, a.getX() + randomX, a.getY() + randomY);
             }
         }
         else

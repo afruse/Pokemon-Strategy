@@ -131,10 +131,27 @@ public class AttackAnimation extends World
         {
             sandAttack(attacker, victim);
         }
-        else if (Greenfoot.isKeyDown("space"))
-        {
+        else if (attack.equals("Quick Attack"))
+        {   
+            quickAttack(attacker, victim);
 
         }
+        else if (attack.equals("Mud Slap"))
+        {   
+            mudSlap(attacker, victim);
+
+        }
+        else if (attack.equals("Bubble Beam"))
+        {   
+            bubbleBeam(attacker, victim);
+
+        }
+        else if (attack.equals("Gust"))
+        {   
+            gust(victim);
+
+        }
+
     }
 
     public void bite(BattleOrderActionBlock pokemon)
@@ -167,6 +184,39 @@ public class AttackAnimation extends World
     public void setThundering(boolean b)
     {
         thundering = b;
+    }
+
+    // A is the pokemon using the attack
+    public void quickAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        QuickAttack q = new QuickAttack(a, b);
+        addObject(q, 0, 0);
+    }
+
+    // A is the origin, B is the target
+    public void waterGun(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        WaterGun w = new WaterGun(a, b);
+        addObject(w, a.getX(), a.getY());
+    }
+
+    public void mudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        MudSlap m = new MudSlap(a, b, true);
+        addObject(m, a.getX(), a.getY());
+    }
+
+    public void bubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        BubbleBeam bub = new BubbleBeam(a, b, true);
+        addObject(bub, a.getX(), a.getY());
+    }
+
+    // B is the target
+    public void gust(BattleOrderActionBlock b)
+    {
+        Gust g = new Gust(b, true);
+        addObject(g, b.getX() + (Greenfoot.getRandomNumber(20) - 10), b.getY() + (Greenfoot.getRandomNumber(20) - 10));
     }
 
 }
