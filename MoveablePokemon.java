@@ -182,7 +182,7 @@ public class MoveablePokemon extends Actor
                 if(Greenfoot.isKeyDown("tab")){
                     setAttackOutline();
                 }
-                else{
+                else if(bw.getObjects(SelectTile.class).size() != 0){
                     removeAllSelectTiles();
                 }
 
@@ -333,6 +333,7 @@ public class MoveablePokemon extends Actor
     }
 
     protected boolean checkKeyPress(String option){
+        sucessfulMovement = false;
         BattleWorld w = (BattleWorld)getWorld();
         if(option.length() == 0){
             String key = Greenfoot.getKey();
@@ -426,7 +427,7 @@ public class MoveablePokemon extends Actor
 
     public void setAttackOutline(){
         BattleWorld bw = (BattleWorld)getWorld();
-        removeAllSelectTiles();
+        
         bw.addObject(new SelectTile(), this.getX()+ bw.getTileLength(), this.getY());
         bw.addObject(new SelectTile(), this.getX()- bw.getTileLength(), this.getY());
         bw.addObject(new SelectTile(), this.getX(), this.getY()- bw.getTileHeight());

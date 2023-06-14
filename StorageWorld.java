@@ -10,43 +10,54 @@ public class StorageWorld extends World
 {
     static int startXpNeeded = 20;
     static Pikachu pikachu = new Pikachu(0,0, true, 20, 0, startXpNeeded);
+    static Pikachu pikachu1 = new Pikachu(0,0, true, 20, 0, startXpNeeded);
+
     static Eevee eevee = new Eevee(2,5,false, 5, 0, startXpNeeded);
-    static MoveablePokemon[] playerTeam = {pikachu};
-    static MoveablePokemon[] enemyTeamYEAH = {eevee};
-    
-    
-   
+    static Eevee eevee1 = new Eevee(2,5,false, 5, 0, startXpNeeded);
+
+    static MoveablePokemon[] playerTeam = {pikachu, pikachu1};
+    static MoveablePokemon[] enemyTeamYEAH = {eevee, eevee1};
+
     /**
-
     FIRST FLOOR - EASY
-    static Wooper wooper = new Wooper(someX,SomeY, false, 5); //water gun (water), mud slap (ground)
-    static Pidgey pidgey = new Pidgey(someX,SomeY, false, 5); //gust (wind), quick attack
+    static Wooper wooper = new Wooper(someX,SomeY, false, 5, startXpNeeded); //water gun (water), mud slap (ground)
+    static Pidgey pidgey = new Pidgey(someX,SomeY, false, 5, startXpNeeded); //gust (wind), quick attack
     static MoveablePokemon[] enemyTeam_1_Left = {wooper, pidgey};
-    
 
-    
-    2 MORE FIRST LEVEL GUYS
-    
+    static Rattata rattata = new Rattata(someX,SomeY, false, 5, startXpNeeded) // Stomp, Quick Attack
+    static Zubat zubat = new Zubat(someX, someY, false, 5, startXpNeeded) // Bite, Air Cutter
+    static MoveablePokemon[] enemyTeam_1_Right = {rattata, zubat};
+
     SECOND FLOOR - MEDIUM
-    static Misdreavus = new Misdreavus(someX,SomeY, false, 10); //confusion (psycic), spite (ghost)
-    static Rapidash = new Rapidash(someX,SomeY, false, 10); //ember (fire), stomp (norm.)
+    static Misdreavus = new Misdreavus(someX,SomeY, false, 10, startXpNeeded); //confusion (psycic), spite (ghost)
+    static Rapidash = new Rapidash(someX,SomeY, false, 10, startXpNeeded); //ember (fire), stomp (norm.)
     static MoveablePokemon[] enemyTeam_2_Left = {misdreavus, rapidash};
 
+    static Wartortle wartortle = new Wartortle(someX,SomeY,false,10, startXpNeeded); //water gun, bite
+    static Raticate raticate = new (someX,SomeY,false,10, startXpNeeded); //bite, hyper beam
+    static MoveablePokemon[] enemyTeam_2_Middle = {wartortle, raticate};
 
-    4 MORE SECOND LEVEL GUYS
+    static Tauros tauros = new Tauros(someX,SomeY,false,10, startXpNeeded); // stomp, tackle
+    static Lapras lapras = new Lapras(someX,SomeY,false,10, startXpNeeded); //Tackle, aurora beam
+    static MoveablePokemon[] enemyTeam_2_Right = {tauros, lapras};
 
+    
     
     THIRD FLOOR - HARD
-    static Dragonite = new Dragonite(someX,SomeY, false, 15); //outrage (dragon), wing attack (flying)
-    static Suicune = new Suicine(someX,SomeY, false, 15); //bubble beam (water), aurora beam (ice)
+    static Dragonite = new Dragonite(someX,SomeY, false, 15, startXpNeeded); //outrage (dragon), wing attack (flying)
+    static Suicune = new Suicine(someX,SomeY, false, 15, startXpNeeded); //bubble beam (water), aurora beam (ice)
     static MoveablePokemon[] enemyTeam_3_Left = {dragonite, suicune};
 
-    2 MORE THIRD LEVEL GUYS
-    
+    static Tyranitar tyranitar= new Tyranitar(someX,SomeY,false,15, startXpNeeded);// hyper  beam, bite
+    static Zapdos zapdos = new Zapdos(someX,SomeY,false,15, startXpNeeded); //thundershock, wing attack
+    static MoveablePokemon[] enemyTeam_3_Right = {tyranitar, zapdos};
+
+
     FOURTH FLOOR- BOSS
 
-    static GOD pidgey = new Pidgey(someX,SomeY, false, 20);
-    static GOD pidgey = new Pidgey(someX,SomeY, false, 20);
+    static Snorlax snorlax = new Snorlax(someX,SomeY, false, 20, startXpNeeded);
+    static Rayquaza rayquaza = new Rayquaza(someX,SomeY, false, 20, startXpNeeded);
+    static MoveablePokemon[] enemyTeam_4 = {snorlax, rayquaza};
 
      */
     protected static RoomInfo[][] roomOrder = new RoomInfo[5][5];
@@ -57,7 +68,7 @@ public class StorageWorld extends World
     public StorageWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(700, 600, 1); 
+        super(700, 600, 1, false); 
         /**
          * How it looks
          *   0  1  2  3  4
@@ -70,12 +81,11 @@ public class StorageWorld extends World
          * X = Room
          */
         roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
-        
-        
+
         roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
-        roomOrder[0][2].addEnemyTeam(enemyTeamYEAH,0,4);
+        roomOrder[0][2].addEnemyTeam(enemyTeamYEAH,0,4);// remove
         //roomOrder[0][2].addEnemyTeam(enemyTeam_4);
-        
+
         setBackground(roomOrder[4][2].getRoomImage());
 
         //Other Rooms
@@ -84,28 +94,33 @@ public class StorageWorld extends World
 
         roomOrder[2][0] = new RoomInfo(new GreenfootImage("[2][0].png"), 700, 600, false, true, false, true);
         //roomOrder[2][0].addEnemyTeam(enemyTeam_2_Left,1,4);
-        
+
         roomOrder[1][1] = new RoomInfo(new GreenfootImage("[1][1].png"), 700, 600,false, true, true, true);
         //roomOrder[1][1].addEnemyTeam(enemyTeam_3_Left,1,4);
+
+        
+        
         
         //Right side
         roomOrder[3][3] = new RoomInfo(new GreenfootImage("[3][3].png"), 700, 600, true, true, true, false);
         //roomOrder[3][3].addEnemyTeam(enemyTeam_1_Right,1,4);
-        
+
         roomOrder[2][4] = new RoomInfo(new GreenfootImage("[2][4].png"), 700, 600,true, false, true, false);
         //roomOrder[2][4].addEnemyTeam(enemyTeam_2_Right,1,4);
-        
+
         roomOrder[1][3] = new RoomInfo(new GreenfootImage("[1][3].png"), 700, 600, true, false, true, true);
         //roomOrder[1][3].addEnemyTeam(enemyTeam_2_Right,1,4);
-        
+
         //Middle
         roomOrder[2][2] = new RoomInfo(new GreenfootImage("[2][2].png"), 700, 600, true, true, true, true);
         //roomOrder[2][2].addEnemyTeam(EnemyTeam_2_Middle,1,4);
 
         
+                
+        
         
     }
-    
+
     protected void setPokemonTeam(String[][]team){
         if(team[0][0].equals("Pikachu")){
             //Pikachu p1 = new Pikachu(0,0, true, String)

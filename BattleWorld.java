@@ -39,9 +39,16 @@ public class BattleWorld extends StorageWorld
         curAttacker = b.getCurChar();
         curVictim = b.getCurChar();
         MoveablePokemon c = playerTeam[0];
+        MoveablePokemon c1 = playerTeam[1];
+
         MoveablePokemon e = enemyTeam[0];
+        MoveablePokemon e1 = enemyTeam[1];
+
         addObject(e,0,0);
+        addObject(e1,0,0);
+
         addObject(c,0,0);
+        addObject(c1,0,0);
 
         tileLength = 50;
         tileHeight = 50;
@@ -58,17 +65,30 @@ public class BattleWorld extends StorageWorld
         c.setLocation(map.get(map.size()-3).get(4).getXCoord(), map.get(map.size()-3).get(4).getYCoord());
         c.setMapIndexX(map.size()-3);
         c.setMapIndexY(4);
+
+        c1.setLocation(map.get(map.size()-3).get(7).getXCoord(), map.get(map.size()-3).get(7).getYCoord());
+        c1.setMapIndexX(map.size()-3);
+        c1.setMapIndexY(7);
+
         e.setLocation(map.get(3).get(5).getXCoord(), map.get(3).get(5).getYCoord());
         e.setMapIndexX(3);
         e.setMapIndexY(5);
+
+        e1.setLocation(map.get(3).get(6).getXCoord(), map.get(3).get(6).getYCoord());
+        e1.setMapIndexX(3);
+        e1.setMapIndexY(6);
+
         GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
         setBackground(backround);
         addObject(b, 0,0);
         justStarted = false;
 
-        addObject(decider, 25, 300);
-        c.spawnStatBar(100, getHeight()-50);
-        e.spawnStatBar(100, 50);
+        addObject(decider, getWidth()-25, 180);
+        c.spawnStatBar(getWidth()-100, getHeight()-50);
+        e.spawnStatBar(getWidth()-100, 50);
+        c1.spawnStatBar(getWidth()-100, getHeight()-110);
+        e1.spawnStatBar(getWidth()-100, 110);
+
     }
 
     public int getMovement(){

@@ -31,6 +31,9 @@ public class SelectTile extends Actor
             appearing = false;
         }
         setImage(image);
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+        }
     }
     
     

@@ -105,7 +105,7 @@ public class BattleManager extends Actor
             w.removeObject(p);
         }
         int x = w.getWidth()-25;
-        int y = 25;
+        int y = 250;
 
         for(BattleOrderActionBlock p : visualBattleOrder){
             int yIncrement = (p.getImage().getHeight()/2) + 15;
