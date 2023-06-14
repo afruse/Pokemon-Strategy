@@ -1,9 +1,10 @@
 #BlueJ class context
 comment0.target=StorageWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ StorageWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ class\ acts\ as\ a\ storage\ base\ which\ declares,\ intitializes,\ and\ stores\ all\ the\ pokemon\ teams\ within\ the\ world\ allowing\ each\ world\ to\ pass\ \r\n\ the\ status\ of\ each\ pokemon\ team\ whether\ they\ win/lose\r\n\ \r\n\ @author\ (Daniel)\ \r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=StorageWorld()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ StorageWorld.\r\n\ \r\n
+comment1.text=\r\n\ A\ costructer\ for\ the\ class\ StorageWorld\r\n\ Sets\ up\ all\ the\ rooms\ the\ player\ can\ move\ through\r\n\ \r\n
 comment2.params=team
 comment2.target=void\ setPokemonTeam(java.lang.String[][])
+comment2.text=\r\n\ This\ method\ sets\ the\ player's\ team\ from\ the\ save\ file\ when\ called\r\n
 numComments=3

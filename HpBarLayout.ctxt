@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=HpBarLayout
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ HpBarLayout\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ class\ just\ acts\ as\ a\ visual\ for\ the\ health\ bar\r\n\ \r\n\ @author\ (Daniel\ Tan)\ \r\n\ @version\ (1.0)\r\n
 comment1.params=
 comment1.target=HpBarLayout()
+comment1.text=\r\n\ Constructer\ sets\ the\ image\ to\ the\ given\ image\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

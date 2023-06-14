@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=AttackAnimation
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ AttackAnimation\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ a\ class\ from\ the\ subclas\ world.\ This\ class\ manages\ the\ attack\ animation\ that\ goes\ within\ the\ attack\ animation\ cut\ scene\r\n\ \r\n\ @authors\ Daniel\ Tan\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=bw\ attackerImage\ victimImage\ scenario\ attackType
 comment1.target=AttackAnimation(BattleWorld,\ greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ int,\ java.lang.String)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ AttackAnimation.\r\n\ \r\n
@@ -14,7 +14,7 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=attack\ attacker\ victim
 comment3.target=void\ doAttack(java.lang.String,\ BattleOrderActionBlock,\ BattleOrderActionBlock)
-comment3.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ new\ BattleOrderActionBlock(attacker);\r\n
+comment3.text=\r\n\ This\ method\ activates\ the\ attack\ animation\ when\ in\ the\ attack\ animation\ world\r\n\ @param\ attack\ \ \ \ A\ String\ that\ represents\ the\ type\ of\ attack\ the\ caller\ wants\r\n\ @param\ attacker\ \ An\ Object\ that\ represents\ the\ attacker\r\n\ @\ param\ victim\ \ \ An\ Object\ that\ represents\ the\ victim/reciever\ of\ the\ attack\r\n\ \r\n
 comment4.params=pokemon
 comment4.target=void\ bite(BattleOrderActionBlock)
 comment5.params=pokemon

@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Queue;
 
 /**
- * Write a description of class AttackAnimation here.
+ * This is a class from the subclas world. This class manages the attack animation that goes within the attack animation cut scene
  * 
- * @author (your name) 
+ * @authors Daniel Tan 
  * @version (a version number or a date)
  */
 public class AttackAnimation extends World
@@ -108,8 +108,11 @@ public class AttackAnimation extends World
     }
 
     /**
-     * Constructor for objects of class MyWorld.
-     * new BattleOrderActionBlock(attacker);
+     * This method activates the attack animation when in the attack animation world
+     * @param attack    A String that represents the type of attack the caller wants
+     * @param attacker  An Object that represents the attacker
+     * @ param victim   An Object that represents the victim/reciever of the attack
+     * 
      */
 
     public void doAttack(String attack, BattleOrderActionBlock attacker, BattleOrderActionBlock victim)

@@ -162,6 +162,7 @@ public class MoveablePokemon extends Actor
                 isTurnEnd = false;
                 isFirstRun = false;
                 victim = null;
+                alreadyAttacked = false;
             }
             if(isFirstRun && !isPlayer){
                 movement = bw.getMovement();
@@ -179,6 +180,12 @@ public class MoveablePokemon extends Actor
             }
             else if(isPlayer){
 
+                if(movement == 0 && alreadyAttacked){
+                    System.out.println("This");
+                    isTurnEnd = true;
+                    didMove = true;
+                    isFirstRun = true;
+                }
                 if(Greenfoot.isKeyDown("tab")){
                     setAttackOutline();
                 }
@@ -188,12 +195,14 @@ public class MoveablePokemon extends Actor
 
                 if(Greenfoot.isKeyDown("c")){
                     attackKey = "c";
+                    enemyUnHit();
                 }
                 else if(Greenfoot.isKeyDown("v")){
                     attackKey = "v";
+                    enemyUnHit();
                 }
 
-                if(!didMove && !attacking){
+                if(!attacking && movement > 0){
                     if(checkKeyPress("") && movement > 0){
                         movement--;
                         if(movement == 0){
@@ -202,7 +211,7 @@ public class MoveablePokemon extends Actor
                     }
                 }
 
-                if(attacking){
+                if(attacking && !alreadyAttacked){
                     if(isPlayer){
                         scenario = 1;
                     }
@@ -211,26 +220,26 @@ public class MoveablePokemon extends Actor
                     }
                     String key = Greenfoot.getKey();
 
-                    if (true)
-                    {
-                        //Check if it will error comparing a 0 length stirng with "c" or "v"
-                        if (attackKey.equals("c")){
-                            didMove = true;
-                            //System.out.println("c ATTACK " );
-                            //check if close enough
-                            attacking = false;
-                            attackAnimationSwitch(this, victim, scenario, this.getCAttack(), this.getCPower());
+                    //Check if it will error comparing a 0 length stirng with "c" or "v"
+                    if (attackKey.equals("c")){
+                        //didMove = true;
+                        //System.out.println("c ATTACK " );
+                        //check if close enough
+                        attacking = false;
+                        //alreadyAttacked = true;
+                        attackAnimationSwitch(this, victim, scenario, this.getCAttack(), this.getCPower());
 
-                        }
-                        else if(attackKey.equals("v")){
-                            didMove = true;
-                            //System.out.println("v ATTACK " );
-                            attacking = false;
-                            attackAnimationSwitch(this, victim, scenario, this.getVAttack(), this.getVPower());
-                            //check if close enough
-
-                        }
                     }
+                    else if(attackKey.equals("v")){
+                        //didMove = true;
+                        //System.out.println("v ATTACK " );
+                        attacking = false;
+                        //alreadyAttacked = true;
+                        attackAnimationSwitch(this, victim, scenario, this.getVAttack(), this.getVPower());
+                        //check if close enough
+
+                    }
+                    setAlreadyAttackedTrue();
 
                     //Do some algorithim crap
                 }
@@ -272,23 +281,15 @@ public class MoveablePokemon extends Actor
                     if (enemyAttackType.equals("c")){
                         didMove = true;
                         //System.out.println("c ATTACK " + cAttackRange);
-
                         //check if close enough
                         attackAnimationSwitch(this, victim, scenario, this.getCAttack(), this.getCPower());
-                        /**
-                        if(checkValidHit(cAttackRange, this, victim)){
-
-                        }
-                        else{
-                        System.out.println("TOO SHORT");
-                        }
-                         */
 
                     }
                     else if(enemyAttackType.equals("v")){
                         didMove = true;
                         //System.out.println("v ATTACK " + vAttackRange);
                         setExit();
+
                         attackAnimationSwitch(this, victim, scenario, this.getVAttack(), this.getVPower());
 
                         //check if close enough
@@ -314,18 +315,22 @@ public class MoveablePokemon extends Actor
         if(getWorld().getClass() == BattleWorld.class){
             BattleWorld bw = (BattleWorld)getWorld();
             MoveablePokemon curChar = bw.getCurChar();
-            if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() == null){
-
+            if(Greenfoot.mouseClicked(this) && !curChar.getAlreadyAttacked() && !isTurn && curChar.getVictim() == null){
+                //System.out.println("1 run");
                 curChar.enemyHit(this);
 
                 //get distance from mouse x,y & compare if not close to cur turn
                 //Do attack
             }
-            else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() != this.getX() && curChar.getVictim().getY() != this.getY()){
+            else if(Greenfoot.mouseClicked(this) && !curChar.getAlreadyAttacked() && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() != this.getX() && curChar.getVictim().getY() != this.getY()){
                 //If it is another actor
+                //System.out.println("2 run");
+
                 curChar.enemyHit(this);
             }
-            else if(Greenfoot.mouseClicked(this) && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() == this.getX() && curChar.getVictim().getY() == this.getY()){
+            else if(Greenfoot.mouseClicked(this) && !curChar.getAlreadyAttacked() && !isTurn && curChar.getVictim() != null && curChar.getVictim().getX() == this.getX() && curChar.getVictim().getY() == this.getY()){
+                //.out.println("3 run");
+
                 curChar.readyToAttack();
             }
         }
@@ -427,7 +432,7 @@ public class MoveablePokemon extends Actor
 
     public void setAttackOutline(){
         BattleWorld bw = (BattleWorld)getWorld();
-        
+
         bw.addObject(new SelectTile(), this.getX()+ bw.getTileLength(), this.getY());
         bw.addObject(new SelectTile(), this.getX()- bw.getTileLength(), this.getY());
         bw.addObject(new SelectTile(), this.getX(), this.getY()- bw.getTileHeight());
@@ -456,6 +461,10 @@ public class MoveablePokemon extends Actor
          * 
          */
 
+    }
+
+    protected int getMovement(){
+        return movement;
     }
 
     public void removeAllSelectTiles(){
@@ -506,12 +515,10 @@ public class MoveablePokemon extends Actor
     }
 
     public boolean checkExit(){
-        String key = Greenfoot.getKey();
-        if (key != null){
-            if(key.equals("p")){
-                isTurnEnd = true;
-                isFirstRun = true;
-            }
+        if(Greenfoot.isKeyDown("p")){
+            isTurnEnd = true;
+            isFirstRun = true;
+            didMove = true;
         }
         return false;
     }
@@ -667,26 +674,8 @@ public class MoveablePokemon extends Actor
         return null;
     }
 
-    protected void a(){
-        MouseInfo mouse = Greenfoot.getMouseInfo();
-        int mouseX = mouse.getX();
-        int mouseY = mouse.getY();
-        if(isPokemonOnSpace(mouseX, mouseY, this)){
-            victim = getPokemonOnSpace(mouseX, mouseY);
-            attacking = true;
-            // Make a variable whichs stores the key of the last pressed key(c , v) and use that as type of attack
-
-            //Get the actor the player clicked on
-            //get all the actors in the world
-            //check if the distance between each actor the the mouse coords is less by 1 coord
-            //return the actor
-
-            //check if the move can hit far enough to hit the enmy to proceed
-        }
-    }
-
     public void enemyHit(MoveablePokemon p){
-        System.out.println("ENEMY SET");
+        //System.out.println("ENEMY SET");
         victim = p;
         enemySet = true;
     }
@@ -697,7 +686,7 @@ public class MoveablePokemon extends Actor
                 attacking = true;
             }
             else{
-                System.out.println("TOO SHORT");
+               // System.out.println("TOO SHORT");
             }
         }
         else if(attackKey.equals("c")){
@@ -705,7 +694,7 @@ public class MoveablePokemon extends Actor
                 attacking = true;
             }
             else{
-                System.out.println("TOO SHORT");
+                //System.out.println("TOO SHORT");
             }
         }
 
@@ -718,6 +707,13 @@ public class MoveablePokemon extends Actor
     public void enemyUnHit(){
         attacking = false;
         victim = null;
+    }
+
+    protected boolean getIsEnemySet(){
+        if(enemySet == false){
+            return false;
+        }
+        return true;
     }
 
     public String getRandomDirectionKey(){
@@ -850,5 +846,13 @@ public class MoveablePokemon extends Actor
 
     protected void unSetWait(){
         waiting = false;
+    }
+
+    protected boolean getAlreadyAttacked(){
+        return alreadyAttacked;
+    }
+
+    protected void setAlreadyAttackedTrue(){
+        alreadyAttacked = true;
     }
 }

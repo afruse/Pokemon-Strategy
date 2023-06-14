@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HpBarLayout here.
+ * This class just acts as a visual for the health bar
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version (1.0)
  */
 public class HpBarLayout extends Actor
 {
@@ -13,7 +13,9 @@ public class HpBarLayout extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage image = new GreenfootImage("HpBar.png");
-    
+    /**
+     * Constructer sets the image to the given image
+     */
     public HpBarLayout(){
         image.scale(image.getWidth()/2, image.getHeight()/2);
         setImage(image);

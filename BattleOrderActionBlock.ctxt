@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=BattleOrderActionBlock
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleOrderActionBlock\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ class\ which\ represents\ the\ action\ order\ in\ BattleWorld\ and\ represents\ the\ pokemon\ on\ the\ field\ in\ AttackAnimation\ world\r\n\ \r\n\ @author\ (Daniel,\ Victor)\ \r\n\ @version\ (1.0)\r\n
 comment1.params=image
 comment1.target=BattleOrderActionBlock(greenfoot.GreenfootImage)
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BattleOrderActionBlock\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

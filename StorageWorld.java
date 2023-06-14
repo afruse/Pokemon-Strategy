@@ -1,15 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StorageWorld here.
+ * This class acts as a storage base which declares, intitializes, and stores all the pokemon teams within the world allowing each world to pass 
+ * the status of each pokemon team whether they win/lose
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel) 
+ * @version 1.0
  */
 public class StorageWorld extends World
 {
     //
     static int startXpNeeded = 20;
+    //Player team
     static Pikachu pikachu = new Pikachu(0,0, true, 20, 0, startXpNeeded);
     static Pikachu pikachu1 = new Pikachu(0,0, true, 20, 0, startXpNeeded);
 
@@ -17,9 +19,8 @@ public class StorageWorld extends World
     static Eevee eevee1 = new Eevee(2,5,false, 5, 0, startXpNeeded);
 
     static MoveablePokemon[] playerTeam = {pikachu, pikachu1};
-    static MoveablePokemon[] enemyTeamYEAH = {eevee, eevee1};
     
-   
+    //All enemy teams
     
     //FIRST FLOOR - EASY
     static Wooper wooper = new Wooper(2,5, false, 5, 0, startXpNeeded); //water gun (water), mud slap (ground)
@@ -64,7 +65,8 @@ public class StorageWorld extends World
      
     protected static RoomInfo[][] roomOrder = new RoomInfo[5][5];
     /**
-     * Constructor for objects of class StorageWorld.
+     * A costructer for the class StorageWorld
+     * Sets up all the rooms the player can move through
      * 
      */
     public StorageWorld()
@@ -82,7 +84,7 @@ public class StorageWorld extends World
          * 
          * X = Room
          */
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
+        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.png"), 700,600, true, true, false, false);
 
         roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
         //roomOrder[0][2].addEnemyTeam(enemyTeamYEAH,0,4);// remove
@@ -122,7 +124,9 @@ public class StorageWorld extends World
         
         
     }
-
+    /**
+     * This method sets the player's team from the save file when called
+     */
     protected void setPokemonTeam(String[][]team){
         if(team[0][0].equals("Pikachu")){
             //Pikachu p1 = new Pikachu(0,0, true, String)

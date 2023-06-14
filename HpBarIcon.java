@@ -1,16 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HpBarIcon here.
+ * This class just acts as a visual for the health bar
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version (1.0)
  */
 public class HpBarIcon extends Actor
 {
+   
     /**
-     * Act - do whatever the HpBarIcon wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructer sets the image to the given image
+     * @param image     Represents the image the actor will set it to
      */
     
     public HpBarIcon(GreenfootImage image){

@@ -1,24 +1,31 @@
 #BlueJ class context
 comment0.target=BattleManager
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ class\ is\ used\ to\ manage\ the\ battle\ order\ of\ the\ pokemon\ in\ BattlWorld\r\n\ \r\n\ @author\ (Daniel\ Tan)\ \r\n\ @version\ (1.0)\r\n
 comment1.params=playerTeam\ enemyTeam
 comment1.target=BattleManager(MoveablePokemon[],\ MoveablePokemon[])
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ BattleManager\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\r\n\ The\ constructer\ creates\ a\ new\ battle\ manager\r\n\ @param\ playerTeam\ \ \ \ An\ array\ of\ the\ MoveablePokemon\ class\ that\ represents\ the\ player\ team\r\n\ @param\ enemyTeam\ \ \ \ \ An\ array\ of\ the\ MoveablePOkemon\ class\ that\ represents\ the\ enemy\ team\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ The\ act\ method\ runs\ and\ manages\ the\ pokemon\ that\ moves\r\n
 comment3.params=
 comment3.target=void\ endTurn()
+comment3.text=\r\n\ This\ method\ ends\ the\ turn\ of\ the\ caller\ to\ rotate\ to\ the\ next\ person\ in\ the\ queue\r\n
 comment4.params=
 comment4.target=void\ renderVisualBattleOrder()
+comment4.text=\r\n\ This\ method\ renders\ the\ visual\ of\ the\ action\ order\ on\ the\ right\ of\ the\ screen\r\n
 comment5.params=
 comment5.target=java.util.Queue\ getBattleOrder()
+comment5.text=\r\n\ This\ method\ gets\ the\ current\ queue\ of\ pokemon\ next\ to\ move\r\n\ @return\ Queue<MoveablePokemon>\ \ \ \ \ \ \ Returns\ the\ queue\ of\ pokemon\ that\ moves\ in\ order\r\n
 comment6.params=
 comment6.target=MoveablePokemon\ getCurChar()
+comment6.text=\r\n\ This\ method\ gets\ the\ the\ current\ pokemon\ that\ is\ allowed\ to\ take\ their\ turn\r\n\ @return\ MoveablePokemon\ \ \ \ \ \ Returns\ the\ pokemon\ that\ is\ currently\ moving\r\n
 comment7.params=num
 comment7.target=MoveablePokemon[]\ bubbleSort(MoveablePokemon[])
-comment7.text=\r\n\ MyWorld\ world\ \=\ (MyWorld)\ getWorld();\r\n\ \ \ \ if(battleOrder.peek().getIsPlayer()){\r\n\r\n\ \ \ \ }\r\n
+comment7.text=\r\n\ This\ method\ sorts\ the\ given\ array\ if\ pokemon\ and\ sorts\ them\ from\ fastest\ to\ slowest\r\n\ @param\ num\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Represents\ the\ array\ of\ pokemon\ to\ be\ sorted\r\n\ @return\ MoveablePokemon[]\ \ \ \ \ \ \ \ Returns\ the\ sorted\ array\ of\ pokemon\r\n
 comment8.params=arr
 comment8.target=boolean\ isPlayerTeamDead(MoveablePokemon[])
+comment8.text=\r\n\ This\ method\ checks\ if\ the\ given\ team\ of\ pokemon\ is\ alive\ or\ not\r\n\ @param\ arr\ \ \ \ \ \ \ Represents\ the\ team\ of\ pokemon\ \r\n\ @return\ boolean\ \ Returns\ true\ if\ all\ the\ pokemon\ are\ dead\ and\ false\ otherwise\r\n
 comment9.params=arr
 comment9.target=boolean\ isEnemyTeamDead(MoveablePokemon[])
+comment9.text=\r\n\ This\ method\ checks\ if\ the\ given\ team\ of\ pokemon\ is\ alive\ or\ not\r\n\ @param\ arr\ \ \ \ \ \ \ Represents\ the\ team\ of\ pokemon\ \r\n\ @return\ boolean\ \ Returns\ true\ if\ all\ the\ pokemon\ are\ dead\ and\ false\ otherwise\r\n
 numComments=10

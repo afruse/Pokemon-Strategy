@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BattleOrderActionBlock here.
+ * A class which represents the action order in BattleWorld and represents the pokemon on the field in AttackAnimation world
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel, Victor) 
+ * @version (1.0)
  */
 public class BattleOrderActionBlock extends Actor
 {

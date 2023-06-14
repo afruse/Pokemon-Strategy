@@ -2,35 +2,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class GymWorld here.
+ * A class of world that represents the world the player moves around in to challenge enemies
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version 1.0
  */
 public class GymWorld extends StorageWorld
 {
-    //ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
     ArrayList<ArrayList<Coordinate>> map = new ArrayList<ArrayList<Coordinate>>();
-    //protected int roomIndexX = 2;
-    //protected int roomIndexY = 4;
+
     protected int roomIndexX;
     protected int roomIndexY;
 
-    //ArrayList<Coordinate> t = 
     protected int tileLength;
     protected int tileHeight;
     protected MoveableCharacter c = new MoveableCharacter(0,0);
-    //protected GreenfootImage[][]roomOrder = new GreenfwootImage[5][5];
     protected boolean nextRoom = false;
     /**
-     * Constructor for objects of class GymWorld.
+     * A contructor to create the gymworld if there is a save file being loaded
      * 
      */
     public GymWorld(Data data)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
 
         /**
          * How it looks
@@ -43,14 +36,8 @@ public class GymWorld extends StorageWorld
          * [2][2]
          * X = Room
          */
-        //int numer = 7;
-        //int deno = 8;
-        //backround.scale(numer*backround.getWidth()/deno, numer*backround.getHeight()/deno);
-        //backround.scale(700,600);
-        //setBackground(backround);
 
         int i = 0;
-
         addObject(c,0,0);
         tileLength = this.getWidth()/9;
         tileHeight = c.getImage().getHeight();
@@ -71,9 +58,6 @@ public class GymWorld extends StorageWorld
         roomOrder[4][2].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[4][2].addObstruction(map.get(2).get(7)); //Rock Right upper
 
-        //roomOrder[1].addObstruction(map.get(0).get(4), true);
-        //addObject(c, , );
-        //delete this later idek what i did
         roomIndexX = data.getCurrentWorldX();
         roomIndexY = data.getCurrentWorldY();
         c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
@@ -81,15 +65,15 @@ public class GymWorld extends StorageWorld
         c.setMapIndexY(data.getCoordinateY());
         setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
-        //1-2 for left
-        //8-9 for right entrance
+
     }
 
+    /**
+     * A contructor to create the gymworld if there is no save file
+     * 
+     */
     public GymWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
 
         roomIndexY = 4;
         roomIndexX = 2;
@@ -105,14 +89,8 @@ public class GymWorld extends StorageWorld
          * [2][2]
          * X = Room
          */
-        //int numer = 7;
-        //int deno = 8;
-        //backround.scale(numer*backround.getWidth()/deno, numer*backround.getHeight()/deno);
-        //backround.scale(700,600);
-        //setBackground(backround);
 
         int i = 0;
-
         addObject(c,0,0);
         tileLength = this.getWidth()/9;
         tileHeight = c.getImage().getHeight();
@@ -132,48 +110,62 @@ public class GymWorld extends StorageWorld
         roomOrder[4][2].addObstruction(map.get(3).get(7)); //Rock Right Lower
         roomOrder[4][2].addObstruction(map.get(2).get(7)); //Rock Right upper
 
-        //roomOrder[1].addObstruction(map.get(0).get(4), true);
-        //addObject(c, , );
+        
         c.setLocation(map.get(map.size()-1).get(4).getXCoord(), map.get(map.size()-1).get(4).getYCoord());
         c.setMapIndexX(map.size()-1);
         c.setMapIndexY(4);
 
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
-        //1-2 for left
-        //8-9 for right entrance
+      
     }
 
+    /**
+     * A method that loads the data from the save file
+     * @param data      Takes in the data object which stores all the saved files from a previous load file
+     * 
+     */
     public void loadData(Data data){
         //c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
         //roomIndexX =  data.getCurrentWorld().charAt(0)
 
-        
     }
 
+    /**
+     * A method that returns the tileHeight of the 2dArray
+     * @return int      Returns the tile height of the 2dArray
+     */
     public int getTileHeight(){
         return  tileHeight;
     }
 
+    /**
+     * A method that returns te tileLength of the 2dArray
+     * @return int      Returns the tileLength of the 2dArray
+     */
     public int getTileLength(){
         return tileLength;
     }
 
+    /**
+     * A method that attemps the move the playable character
+     * @param a
+     * @param mapIndexX     An int which represents the X-tile the player wants to move onto
+     * @param mapIndexY     An int which represents the Y-tile the player wants to move onto
+     * @return boolean      Returns true if the player has mved sucessfuly and false otherwise
+     */
     public boolean moveCharacter(MoveableCharacter a, int mapIndexX, int mapIndexY){
         try{
             nextRoom = false;
             //If boss room
             if(mapIndexX == 5 && (mapIndexY == 1 || mapIndexY == 2|| mapIndexY == 6 || mapIndexY == 7) && roomIndexX == 2 && roomIndexY == 0){
-                //System.out.println("Boss");
                 roomIndexY++;
 
-                //changeObstructionLayout();
                 if(mapIndexY == 1 || mapIndexY == 2){
                     a.setLocation(map.get(0).get(7).getXCoord(), map.get(0).get(7).getYCoord());
                     a.setMapIndexX(0);
                     a.setMapIndexY(7);
                     roomIndexX--;
-                    //Switch to next array image
-                    //Function to add all enemy
+                    
                 }
                 else if(mapIndexY == 7 || mapIndexY == 6){
                     a.setLocation(map.get(0).get(1).getXCoord(), map.get(0).get(1).getYCoord());
@@ -181,8 +173,7 @@ public class GymWorld extends StorageWorld
                     a.setMapIndexY(1);
 
                     roomIndexX++;
-                    //Switch to next array image
-                    //Function to add all enemy
+                    
                 }
                 setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
                 changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
@@ -191,7 +182,6 @@ public class GymWorld extends StorageWorld
             }
             //If moving up
             if(mapIndexX == -1 && ((mapIndexY == 1 && roomOrder[roomIndexY][roomIndexX].getHasTopLeft())|| (mapIndexY == 7 && roomOrder[roomIndexY][roomIndexX].getHasTopRight()))){
-                //System.out.println("Up " + mapIndexX);
 
                 roomIndexY--;
 
@@ -200,8 +190,7 @@ public class GymWorld extends StorageWorld
                     a.setMapIndexX(map.size()-1);
                     a.setMapIndexY(7);
                     roomIndexX--;
-                    //Switch to next array image
-                    //Function to add all enemy
+                   
 
                 }
                 else if(mapIndexY == 7){
@@ -209,14 +198,12 @@ public class GymWorld extends StorageWorld
                     a.setMapIndexX(map.size()-1);
                     a.setMapIndexY(1);
                     roomIndexX++;
-                    //Switch to next array image
-                    //Function to add all enemy
+                    
 
                 }
                 setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
                 changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
                 nextRoom = true;
-                //System.out.println(a.getMapIndexX());
                 return true;
             }
             //if moving down
@@ -270,6 +257,11 @@ public class GymWorld extends StorageWorld
         }
     }
 
+    /**
+     * This method checks if there is an enemy where the player is standing to go into battle
+     * @param p         Represnts the current player
+     * @return boolean  returns true if there is an enemy and false otherwise
+     */
     public boolean checkEnemy(MoveableCharacter p){
         if(roomOrder[roomIndexY][roomIndexX].getHasEnemyTeam()){
             if(p.getMapIndexX() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexX() && p.getMapIndexY() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexY()){
@@ -281,7 +273,12 @@ public class GymWorld extends StorageWorld
         }
         return false;
     }
-
+    
+    /**
+     * This method check if there is an obstruction at the given coordinate
+     * @param coord     Represents the coordinate of the 2dArraylist that needs to be checked
+     * @return boolean  Returns true if there is no onbstruction and false otherwise
+     */
     public boolean checkObstruction(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
@@ -292,11 +289,12 @@ public class GymWorld extends StorageWorld
         return isObstruction;
     }
 
-    public boolean checkEnemy(Coordinate coord){
-        int x = coord.getXCoord();
-        int y = coord.getYCoord();
-        return true;
-    }
+
+    /**
+     * A method that changes the obstruction layout of the room 
+     * @param locations     Represents the locations of the loaded room
+     * 
+     */    
 
     public void changeObstructionLayout(ArrayList<Coordinate> locations){
         ArrayList<Obstruction> list = (ArrayList<Obstruction>)getObjects(Obstruction.class);
@@ -309,4 +307,5 @@ public class GymWorld extends StorageWorld
         }
 
     }
+
 }

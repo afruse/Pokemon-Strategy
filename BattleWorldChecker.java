@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Checker here.
+ * A class that checks if there are any obstructions for BattleWorld
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel) 
+ * @version (1.0)
  */
 public class BattleWorldChecker extends Actor
 {
@@ -18,10 +18,12 @@ public class BattleWorldChecker extends Actor
         // Add your action code here.
     }
 
-    public BattleWorldChecker(){
-
-    }
-
+    
+    /**
+     * This method checks if there is an actor on the given cooridinate
+     * @param coord     Represents the coordinate that wants to be checked
+     * @return boolean  Returns true if there is an actor on that coordinate and false otherwise
+     */
     protected boolean check(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();

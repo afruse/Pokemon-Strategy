@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 /**
- * Write a description of class BattleManager here.
+ * This class is used to manage the battle order of the pokemon in BattlWorld
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version (1.0)
  */
 public class BattleManager extends Actor
 {
@@ -20,8 +20,10 @@ public class BattleManager extends Actor
     MoveablePokemon curChar;
     //ArrayList<Actor> speedOrder = new ArrayList();
     /**
-     * Act - do whatever the BattleManager wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * The constructer creates a new battle manager
+     * @param playerTeam    An array of the MoveablePokemon class that represents the player team
+     * @param enemyTeam     An array of the MoveablePOkemon class that represents the enemy team
+     * 
      */
 
     public BattleManager(MoveablePokemon[] playerTeam, MoveablePokemon[] enemyTeam){
@@ -45,6 +47,9 @@ public class BattleManager extends Actor
 
     }
 
+    /**
+     * The act method runs and manages the pokemon that moves
+     */
     public void act()
     {
         BattleWorld bw = (BattleWorld)getWorld();
@@ -92,6 +97,9 @@ public class BattleManager extends Actor
         }
     }
 
+    /**
+     * This method ends the turn of the caller to rotate to the next person in the queue
+     */
     public void endTurn(){
         MoveablePokemon curChar = battleOrder.poll();
         BattleOrderActionBlock topBlock = visualBattleOrder.poll();
@@ -100,6 +108,9 @@ public class BattleManager extends Actor
         curChar.flipTurn();
     }
 
+    /**
+     * This method renders the visual of the action order on the right of the screen
+     */
     public void renderVisualBattleOrder(){
         BattleWorld w = (BattleWorld)getWorld();
         ArrayList<BattleOrderActionBlock> battleOrderActionBlockList = (ArrayList<BattleOrderActionBlock>)w.getObjects(BattleOrderActionBlock.class);
@@ -116,21 +127,27 @@ public class BattleManager extends Actor
         }
     }
 
+    /**
+     * This method gets the current queue of pokemon next to move
+     * @return Queue<MoveablePokemon>       Returns the queue of pokemon that moves in order
+     */
     public Queue<MoveablePokemon> getBattleOrder(){
         return battleOrder;
     }
 
+    /**
+     * This method gets the the current pokemon that is allowed to take their turn
+     * @return MoveablePokemon      Returns the pokemon that is currently moving
+     */
     public MoveablePokemon getCurChar(){
         return curChar;
     }
 
     /**
-     * MyWorld world = (MyWorld) getWorld();
-    if(battleOrder.peek().getIsPlayer()){
-
-    }
+     * This method sorts the given array if pokemon and sorts them from fastest to slowest
+     * @param num                       Represents the array of pokemon to be sorted
+     * @return MoveablePokemon[]        Returns the sorted array of pokemon
      */
-
     public static MoveablePokemon[] bubbleSort (MoveablePokemon[] num)
     {
         boolean done = false;
@@ -150,6 +167,11 @@ public class BattleManager extends Actor
         return num;
     }
 
+    /**
+     * This method checks if the given team of pokemon is alive or not
+     * @param arr       Represents the team of pokemon 
+     * @return boolean  Returns true if all the pokemon are dead and false otherwise
+     */
     public boolean isPlayerTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
             if(arr[i].getHp() > 0){
@@ -159,6 +181,11 @@ public class BattleManager extends Actor
         return true;
     }
 
+    /**
+     * This method checks if the given team of pokemon is alive or not
+     * @param arr       Represents the team of pokemon 
+     * @return boolean  Returns true if all the pokemon are dead and false otherwise
+     */
     public boolean isEnemyTeamDead(MoveablePokemon[] arr){
         for(int i = 0; i < arr.length; i++){
             if(arr[i].getHp() > 0){

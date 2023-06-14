@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Attack here.
+ * This is a superclass that represents all the attack animations of the pokemon in AttackAnimations
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel) 
+ * @version (1.0)
  */
 public class Attack extends Actor
 {

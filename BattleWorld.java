@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 
 /**
- * Write a description of class BattleWorld here.
+ * This method represends the grid screen of when the pokemon are in battle
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel) 
+ * @version 1.0
  */
 public class BattleWorld extends StorageWorld
 {
@@ -24,7 +24,9 @@ public class BattleWorld extends StorageWorld
     protected boolean justStarted = true;
     GymWorld gw;
     /**
-     * Constructor for objects of class BattleWorld.
+     * A constructor for BattleWorld
+     * @param gw    Stores the world the trainer was in before entering battle
+     * @param enemyTeam     An array which represents the enemy team
      * 
      */
     public BattleWorld(GymWorld gw, MoveablePokemon[] enemyTeam)
@@ -74,9 +76,9 @@ public class BattleWorld extends StorageWorld
         e.setMapIndexX(3);
         e.setMapIndexY(5);
 
-        e1.setLocation(map.get(3).get(6).getXCoord(), map.get(3).get(6).getYCoord());
+        e1.setLocation(map.get(3).get(8).getXCoord(), map.get(3).get(8).getYCoord());
         e1.setMapIndexX(3);
-        e1.setMapIndexY(6);
+        e1.setMapIndexY(8);
 
         GreenfootImage backround = new GreenfootImage("GrassBackround1.png");
         setBackground(backround);
@@ -90,43 +92,88 @@ public class BattleWorld extends StorageWorld
         e1.spawnStatBar(getWidth()-100, 110);
 
     }
+    /**
+     * Acts and check if the player has clicked on the world to reset enemy selected
+     */
+    public void act(){
+        if(Greenfoot.mouseClicked(this) && getCurChar().getIsEnemySet()){
+            getCurChar().enemyUnHit();
+        }
+    }
 
+    /**
+     * A getter method that calls the decider object created to get the number of tiles the pokemon can move
+     */
     public int getMovement(){
         return decider.decideMovements();
     }
 
+    /**
+     * Sets the current attacker of the current pokemon
+     * @param p     The pokemon that's going to attack
+     */
     public void setCurAttacker(MoveablePokemon p){
         curAttacker = p;
     }
 
+    /**
+     * Sets the victim of the current attacker
+     * @param p     The pokemon thats going to be set as the target
+     */    
     public void setCurVictim(MoveablePokemon p){
         curVictim = p;
     }
 
-    public void act(){
-
-    }
-
+   
+    /**
+     * Gets the current queue of the pokemon that goes next
+     * @return Queue<MoveablePokemon>   Returns the battle order of the pokemon in battle
+     * 
+     */
     public Queue<MoveablePokemon> getBattleOrder(){
         return b.getBattleOrder();
     }
 
+    /**
+     * Returns the tileHeight of the 2d grid
+     * @return int  Returns the tile height
+     * 
+     */
     public int getTileHeight(){
         return  tileHeight;
     }
 
+    /**
+     * Returns tile length of the 2d grid
+     * return int Returns tile length
+     */
     public int getTileLength(){
         return tileLength;
     }
 
+    /**
+     * Gets the current pokemon thats taking action
+     * @return MoveablePokemon      Returns the pokemon at the front of the queue
+     */
     public MoveablePokemon getCurChar(){
         return b.getCurChar();
     }
 
+    /**
+     * Gets the 2d array of the battle world
+     * @return ArrayList<ArrayList<Coordinate>>     Returns the 2d arraylist of coordinates which rep grid tiles
+     */
     public ArrayList<ArrayList<Coordinate>> getMap(){
         return map;
     }
 
+    /**
+     * Moves the pokemon on teh 2d grid
+     * @param a     Represents the pokemon thats being moved
+     * @param mapIndexX     An int represents the xIndex of the 2d arraylist grid
+     * @param mapIndexY     An int that represents the yIndex of the 2d arraylist grid
+     * @return boolean      Returns true if character was able to move an false otherwise
+     */
     public boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
         try{
             Coordinate coord = map.get(mapIndexX).get(mapIndexY);
@@ -144,7 +191,12 @@ public class BattleWorld extends StorageWorld
             return false;
         }
     }
-
+    
+    /**
+     * A method that checks if there is an obsuruction in the player/enemy's wanted direction to avoid actors on the same tile
+     * @param coord     Represents the coordinate that needs to be checked in the 2d arrayList
+     * @return boolean   Returns true if there is no obstruction and false otherwise
+     */
     public boolean checkObstruction(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
@@ -155,16 +207,18 @@ public class BattleWorld extends StorageWorld
         return isObstruction;
     }
 
-    public boolean checkEnemy(Coordinate coord){
-        int x = coord.getXCoord();
-        int y = coord.getYCoord();
-        return true;
-    }
-
+    
+    
+    /**
+     * A method that ends the current character's turn
+     */
     public void endCharTurn(){
         b.endTurn();
     }
 
+    /**
+     * A method that switches the world back to the player's world where they challenged the enemy
+     */
     public void switchToGymWorld(){
         Greenfoot.setWorld(gw);
     }
