@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StorageWorld extends World
 {
+    //
     static int startXpNeeded = 20;
     static Pikachu pikachu = new Pikachu(0,0, true, 20, 0, startXpNeeded);
     static Pikachu pikachu1 = new Pikachu(0,0, true, 20, 0, startXpNeeded);
