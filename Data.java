@@ -86,7 +86,7 @@ public class Data {
             return false;
         }
     }
-    public int getHP() {
+    public int getHp() {
         return Integer.parseInt(HP);
     }
     public int getLvl()
@@ -99,21 +99,24 @@ public class Data {
     public String getPokemon2(){
         return pokemon2;
     }
-    public int getXP() {
+    public int getXp() {
         return Integer.parseInt(XP);
     }
-    public int getXPNeeded() {
+    public int getXpNeeded() {
         return Integer.parseInt(XP_needed);
     }
-    public int getHP2()
+    public int getHp2()
     {
         return Integer.parseInt(HP2);
     }
-    public int getXP2()
+    public int getLvl2(){
+        return Integer.parseInt(lvl2);
+    }
+    public int getXp2()
     {
         return Integer.parseInt(XP2);
     }
-    public int getXP_needed1()
+    public int getXpNeeded2()
     {
         return Integer.parseInt(XP_needed2);
     }

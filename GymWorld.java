@@ -18,13 +18,13 @@ public class GymWorld extends StorageWorld
     protected int tileHeight;
     protected MoveableCharacter c = new MoveableCharacter(0,0);
     protected boolean nextRoom = false;
+    protected Data data;
     /**
      * A contructor to create the gymworld if there is a save file being loaded
      * 
      */
     public GymWorld(Data data)
     {    
-
         /**
          * How it looks
          *   0  1  2  3  4
@@ -36,7 +36,13 @@ public class GymWorld extends StorageWorld
          * [2][2]
          * X = Room
          */
-
+        pikachu.setXp(data.getXp());
+        pikachu.setMaxXp(data.getXpNeeded());
+        pikachu.setLevel(data.getLvl());
+        eevee.setXp(data.getXp2());
+        eevee.setMaxXp(data.getXpNeeded2());
+        eevee.setLevel(data.getLvl2());
+        this.data = data;
         int i = 0;
         addObject(c,0,0);
         tileLength = this.getWidth()/9;
@@ -65,9 +71,7 @@ public class GymWorld extends StorageWorld
         c.setMapIndexY(data.getCoordinateY());
         setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
-
     }
-
     /**
      * A contructor to create the gymworld if there is no save file
      * 

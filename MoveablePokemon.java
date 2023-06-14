@@ -101,7 +101,15 @@ public class MoveablePokemon extends Actor
         int width = 90;
 
     }
-
+    public void setMaxXp(int xpNeeded){
+        this.xpNeeded = xpNeeded;
+    }
+    public void setXp(int xp){
+        this.curXp = xp;
+    }
+    public void setLevel(int level){
+        this.lvl = level;
+    }
     /**
      * A method which returns the enlarged image version of the pokemon
      * @return GreenfootImage       returns the enlarged version of the pokemon as an image 

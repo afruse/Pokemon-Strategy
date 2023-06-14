@@ -48,7 +48,6 @@ public class TypingWorld extends World
                 spaceNumber--;
                 System.out.println(spaceNumber);
                 removeObject(alph[spaceNumber - 1]);
-                System.out.println("weeeee");
             }
         }
         else if(Greenfoot.isKeyDown("ENTER")){

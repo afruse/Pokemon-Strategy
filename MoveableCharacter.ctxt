@@ -18,5 +18,5 @@ comment5.target=int\ getMapIndexX()
 comment5.text=\r\n\ This\ method\ returns\ the\ x\ Index\ of\ the\ 2dArray\ the\ player\ is\ on\r\n\ @return\ int\ \ \ \ \ \ Returns\ the\ x\ Index\ of\ the\ 2d\ Array\r\n
 comment6.params=
 comment6.target=int\ getMapIndexY()
-comment6.text=\r\n\ This\ method\ returns\ the\ y\ Index\ of\ the\ 2dArray\ the\ player\ is\ on\r\n\ @return\ int\ \ \ \ \ \ Returns\ the\ x\ Index\ of\ the\ 2d\ Array\r\n
+comment6.text=\r\n\ This\ method\ returns\ the\ y\ Index\ of\ the\ 2dArray\ the\ player\ is\ on\r\n\ @return\ int\ \ \ \ \ \ Returns\ the\ y\ Index\ of\ the\ 2d\ Array\r\n
 numComments=7
