@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=MovementDecider
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MovementDecider\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\nA\ method\ which\ decides\ how\ many\ tiles\ each\ pokemon\ can\ move\r\n\ \r\n\ @author\ (Daniel\ Tan)\ \r\n\ @version\ (1.0)\r\n
 comment1.params=
 comment1.target=MovementDecider()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=int\ decideMovements()
+comment3.text=\r\n\ A\ method\ which\ decides\ how\ many\ moves\ the\ caller\ gets\r\n\ \r\n
 numComments=4

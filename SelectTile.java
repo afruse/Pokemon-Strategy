@@ -1,17 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SelectTile here.
+ * A class which rep the tiles for attack range of moves
  * 
- * @author (your name) 
+ * @author (Daniel, Aphan) 
  * @version (a version number or a date)
  */
 public class SelectTile extends Actor
 {
-    /**
-     * Act - do whatever the SelectTile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage image = new GreenfootImage("Select_ind1.png");;
     private boolean appearing = false;
     
