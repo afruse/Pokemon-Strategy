@@ -71,7 +71,6 @@ public class StorageWorld extends World
      */
     public StorageWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1, false); 
         /**
          * How it looks
@@ -84,10 +83,9 @@ public class StorageWorld extends World
          * 
          * X = Room
          */
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.png"), 700,600, true, true, false, false);
+        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
 
         roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
-        //roomOrder[0][2].addEnemyTeam(enemyTeamYEAH,0,4);// remove
         roomOrder[0][2].addEnemyTeam(enemyTeam_4,0,4);
 
         setBackground(roomOrder[4][2].getRoomImage());

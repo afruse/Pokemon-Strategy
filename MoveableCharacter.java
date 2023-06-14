@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MoveableCharacter here.
+ * Moveable Character is a class that is used to represent the player in the world with the trainer's and different rooms
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version (1.0)
  */
 public class MoveableCharacter extends Actor
 {
@@ -24,6 +24,11 @@ public class MoveableCharacter extends Actor
     GreenfootImage front = new GreenfootImage("front.png");
     GreenfootImage curImage;
     protected World world;
+    /**
+     * Constructer that takes in the index of the 2dArray in Gymworld to set position
+     * @param mapIndexX     An int that represents the x Index of the 2dArray
+     * @param mapIndexY     An int that represents the y Index of the 2dArray
+     */
     public MoveableCharacter(int mapIndexX, int mapIndexY){
         this.mapIndexX = mapIndexX;
         this.mapIndexY = mapIndexY;
@@ -39,7 +44,9 @@ public class MoveableCharacter extends Actor
         setImage(front);
         curImage = front;
     }
-
+    /**
+     * The act method constantly checks if the player has pressed any of the game conctrols and acts accordingly toward it (WASD, Enter)
+     */
     public void act()
     {
         // Add your action code here.
@@ -100,27 +107,38 @@ public class MoveableCharacter extends Actor
                 mapIndexY = previousMapIndexY;
             }
             else{
-                //System.out.println(mapIndexX + "    " + mapIndexY);
             }
             previousKey = key;
         }
     }
     
+    /**
+     * This method sets the xIndex of the 2dArray to change positions
+     * @param x     An integer which represents the new x Value of the 2dArray
+     */
     protected void setMapIndexX(int x){
         mapIndexX = x;
-        //previousMapIndexX = x;
     }
+    /**
+     * This method sets the yIndex of the 2dArray to change positions
+     * @param y     An integer which represents the new y Value of the 2dArray
+     */
     protected void setMapIndexY(int y){
         mapIndexY = y;
-        //previousMapIndexY = y;
     }
-    public boolean interact(){
-        return true;
-    }
-    
+   
+    /**
+     * This method returns the x Index of the 2dArray the player is on
+     * @return int      Returns the x Index of the 2d Array
+     */ 
     protected int getMapIndexX(){
         return mapIndexX;
     }
+    
+    /**
+     * This method returns the y Index of the 2dArray the player is on
+     * @return int      Returns the y Index of the 2d Array
+     */ 
     protected int getMapIndexY(){
         return mapIndexY;
     }
