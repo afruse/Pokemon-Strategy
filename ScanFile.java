@@ -65,7 +65,7 @@ public class ScanFile
      * -
      */
     private String[] getTokens (String input) {
-        String[] tokens = new String[4];
+        String[] tokens = new String[5];
         for (int i = 0; i < tokens.length; i++){
             tokens[i] = "";
         }

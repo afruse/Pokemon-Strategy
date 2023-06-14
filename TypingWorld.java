@@ -46,63 +46,65 @@ public class TypingWorld extends World
         }
         if(spaceNumber == 1){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 294, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 2){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 317, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 3){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 340, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 4){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 363, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 5){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 386, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 6){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 409, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(spaceNumber == 7){
             String key = Greenfoot.getKey();
-            entry = entry + key;
             addObject(new Alphabet(characters.get(key)), 432, 220);
             if(key != null){
+                entry = entry + key;
                 spaceNumber++;
             }
         }
         if(Greenfoot.isKeyDown("ENTER")){
             if(!newFile){
                 Data d = new Data(entry + ".csv");
+                World w = new GymWorld(d);
+                Greenfoot.setWorld(w);
             }
         }
         //System.out.println(spaceNumber);
