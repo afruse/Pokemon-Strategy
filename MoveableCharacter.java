@@ -92,7 +92,7 @@ public class MoveableCharacter extends Actor
                     sucessfulMovement = w.moveCharacter(this, mapIndexX, ++mapIndexY);
                 }
             }
-            else if (key.equals("space")){
+            else if (key.equals("enter")){
                 w.checkEnemy(this);
             }
             if(!sucessfulMovement){

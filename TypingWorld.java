@@ -103,7 +103,7 @@ public class TypingWorld extends World
         if(Greenfoot.isKeyDown("ENTER")){
             if(!newFile){
                 Data d = new Data(entry + ".csv");
-                World w = new GymWorld(d);
+                GymWorld w = new GymWorld(d);
                 Greenfoot.setWorld(w);
             }else{
                 World w = new GymWorld();

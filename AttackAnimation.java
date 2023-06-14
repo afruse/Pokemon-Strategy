@@ -151,6 +151,9 @@ public class AttackAnimation extends World
             gust(victim);
 
         }
+        else if(attack.equals("Water Gun")){
+            waterGun(attacker, victim);
+        }
 
     }
 

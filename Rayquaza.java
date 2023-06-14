@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wooper extends MoveablePokemon
+public class Rayquaza extends MoveablePokemon
 {
 
     /**
@@ -14,19 +14,19 @@ public class Wooper extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Wooper(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
+    public Rayquaza(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
-        cAttackString = "Bubble Beam";
-        vAttackString = "Mud Slap";
-        image = new GreenfootImage("images/Pokemon/wooper.png");
-        animationImage = new GreenfootImage("images/Pokemon/wooper.png");
+        cAttackString = "Hyper Beam";
+        vAttackString = "Quick Attack";
+        image = new GreenfootImage("images/Pokemon/rayquaza.png");
+        animationImage = new GreenfootImage("images/Pokemon/rayquaza.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
 
-        baseHp = 55;
-        baseAtk = (25 + 45)/2;
-        baseDef = (45+25)/2;
-        baseSpeed = 15;
+        baseHp = 105;
+        baseAtk = (150 + 150)/2;
+        baseDef = (90+90)/2;
+        baseSpeed = 95;
         
         
         maxHp = (int)Math.floor((baseHp*2)*lvl/100) + lvl + 10;
@@ -35,9 +35,9 @@ public class Wooper extends MoveablePokemon
         def = (int)Math.floor((baseDef*2)*lvl/100) + 5;
         speed = (int)Math.floor((baseSpeed*2)*lvl/100) + 5;
 
-        cPower = 40; 
-        vPower = 20;
-        cAttackRange = 1;
+        cPower = 90; 
+        vPower = 40;
+        cAttackRange = 2;
         vAttackRange = 2;
     }
 

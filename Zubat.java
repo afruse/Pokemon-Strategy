@@ -16,17 +16,17 @@ public class Zubat extends MoveablePokemon
 
     public Zubat(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
-        cAttackString = "Water Gun";
-        vAttackString = "Mud Slap";
-        image = new GreenfootImage("images/Pokemon/Zubat.png");
-        animationImage = new GreenfootImage("images/Pokemon/Zubat.png");
+        cAttackString = "Bite";
+        vAttackString = "Air Cutter";
+        image = new GreenfootImage("images/Pokemon/zubat.png");
+        animationImage = new GreenfootImage("images/Pokemon/zubat.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
 
-        baseHp = 55;
-        baseAtk = (25 + 45)/2;
-        baseDef = (45+25)/2;
-        baseSpeed = 15;
+        baseHp = 30;
+        baseAtk = (56 + 25)/2;
+        baseDef = (35+35)/2;
+        baseSpeed = 72;
         
         
         maxHp = (int)Math.floor((baseHp*2)*lvl/100) + lvl + 10;
@@ -35,8 +35,8 @@ public class Zubat extends MoveablePokemon
         def = (int)Math.floor((baseDef*2)*lvl/100) + 5;
         speed = (int)Math.floor((baseSpeed*2)*lvl/100) + 5;
 
-        cPower = 40; 
-        vPower = 20;
+        cPower = 60; 
+        vPower = 50;
         cAttackRange = 1;
         vAttackRange = 2;
     }

@@ -36,8 +36,8 @@ public class Pidgey extends MoveablePokemon
 
         cPower = 60; 
         vPower = 30;
-        cAttackRange = 40;
-        vAttackRange = 35;
+        cAttackRange = 1;
+        vAttackRange = 2;
     }
 
     public void act()

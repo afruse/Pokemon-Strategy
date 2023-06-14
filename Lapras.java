@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Wooper extends MoveablePokemon
+public class Lapras extends MoveablePokemon
 {
 
     /**
@@ -14,19 +14,19 @@ public class Wooper extends MoveablePokemon
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Wooper(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
+    public Lapras(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
-        cAttackString = "Bubble Beam";
-        vAttackString = "Mud Slap";
-        image = new GreenfootImage("images/Pokemon/wooper.png");
-        animationImage = new GreenfootImage("images/Pokemon/wooper.png");
+        cAttackString = "Tackle";
+        vAttackString = "Aurora Beam";
+        image = new GreenfootImage("images/Pokemon/lapras.png");
+        animationImage = new GreenfootImage("images/Pokemon/lapras.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
         setImage(image);
 
-        baseHp = 55;
-        baseAtk = (25 + 45)/2;
-        baseDef = (45+25)/2;
-        baseSpeed = 15;
+        baseHp = 130;
+        baseAtk = (85 + 80)/2;
+        baseDef = (80+95)/2;
+        baseSpeed = 60;
         
         
         maxHp = (int)Math.floor((baseHp*2)*lvl/100) + lvl + 10;
@@ -35,8 +35,8 @@ public class Wooper extends MoveablePokemon
         def = (int)Math.floor((baseDef*2)*lvl/100) + 5;
         speed = (int)Math.floor((baseSpeed*2)*lvl/100) + 5;
 
-        cPower = 40; 
-        vPower = 20;
+        cPower = 50; 
+        vPower = 45;
         cAttackRange = 1;
         vAttackRange = 2;
     }

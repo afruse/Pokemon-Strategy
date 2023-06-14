@@ -20,14 +20,14 @@ public class BubbleBeam extends Attack
     protected int rotation;
     protected BattleOrderActionBlock a;
     protected BattleOrderActionBlock b;
-    
+
     /**
      * Act - do whatever the sandAttack wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public BubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original)
     {
-        image = new GreenfootImage("AttackSprites/bubblebeam().png");
+        image = new GreenfootImage("AttackSprites/bubblebeam0.png");
         setImage(image);
         originX = a.getX();
         originY = a.getY();
@@ -40,28 +40,30 @@ public class BubbleBeam extends Attack
         this.getImage().setTransparency(255);
         this.speed = 15;
         this.getImage().scale(40, 40);
-        
+
         // Pythagorean theorem for distance
         distance = Math.sqrt( (targetY-originY)*(targetY-originY) + (targetX-originX)*(targetX-originX) );
     }
-    
+
     public BubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b, boolean original, int rotation)
     {
+        image = new GreenfootImage("AttackSprites/bubblebeam0.png");
+        setImage(image);
         originX = a.getX();
         originY = a.getY();
         targetX = b.getX();
         targetY = b.getY();
         this.rotation = rotation;
         original = false;
-        
+
         this.getImage().setTransparency( Greenfoot.getRandomNumber(200) + 50);
         this.speed = Greenfoot.getRandomNumber(10) + 10;
         this.getImage().scale( Greenfoot.getRandomNumber(50) + 30, Greenfoot.getRandomNumber(50) + 30 );
-        
+
         // Pythagorean theorem for distance
         distance = Math.sqrt( (targetY-originY)*(targetY-originY) + (targetX-originX)*(targetX-originX) );
     }
-    
+
     public void act()
     {
         if (original && !turned)
@@ -81,7 +83,7 @@ public class BubbleBeam extends Attack
         {
             setRotation(rotation);
         }
-        
+
         if (travelled < distance)
         {
             move(speed);
