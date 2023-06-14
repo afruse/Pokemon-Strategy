@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MovementDecider here.
+ *A method which decides how many tiles each pokemon can move
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Daniel Tan) 
+ * @version (1.0)
  */
 public class MovementDecider extends Actor
 {
@@ -44,7 +44,10 @@ public class MovementDecider extends Actor
             continuedActs = 0;
         }
     }
-
+    /**
+     * A method which decides how many moves the caller gets
+     * @return int      Returns the number of tiles the player can move
+     */
     protected int decideMovements(){
         changingFrames = true;
         savedImage = 1+ Greenfoot.getRandomNumber(3);

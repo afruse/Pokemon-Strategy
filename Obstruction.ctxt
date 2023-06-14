@@ -1,13 +1,10 @@
 #BlueJ class context
 comment0.target=Obstruction
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Obstruction\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ \ Acts\ as\ an\ invisible\ object\ which\ acts\ as\ places\ the\ player\ can't\ move\ to\r\n\ \r\n\ @author\ (Daniel\ Tan)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=length\ height
 comment1.target=Obstruction(int,\ int)
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Obstruction\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\r\n\ Constructer\ which\ creates\ an\ obstruction\r\n\ @param\ height\ \ \ \ Rep\ the\ height\ of\ the\ obstruction\r\n\ @param\ length\ \ \ \ Rep\ the\ length\ of\ the\ obstruction\r\n
 comment2.params=length\ height\ isEnemy
 comment2.target=Obstruction(int,\ int,\ boolean)
-comment3.params=
-comment3.target=boolean\ getIsEnemy()
-comment4.params=
-comment4.target=void\ act()
-numComments=5
+comment2.text=\r\n\ Constructer\ which\ creates\ an\ obstruction\r\n\ @param\ height\ \ \ \ Rep\ the\ height\ of\ the\ obstruction\r\n\ @param\ length\ \ \ \ Rep\ the\ length\ of\ the\ obstruction\r\n\ @param\ isEnemy\ \ \ Boolean\ which\ rep\ if\ it\ is\ an\ enemy\ or\ not\r\n
+numComments=3

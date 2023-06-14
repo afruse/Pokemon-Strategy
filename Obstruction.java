@@ -1,37 +1,35 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Obstruction here.
+ *  Acts as an invisible object which acts as places the player can't move to
  * 
- * @author (your name) 
+ * @author (Daniel Tan) 
  * @version (a version number or a date)
  */
 public class Obstruction extends Actor
 {
     protected boolean isEnemy = false;
     /**
-     * Act - do whatever the Obstruction wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructer which creates an obstruction
+     * @param height    Rep the height of the obstruction
+     * @param length    Rep the length of the obstruction
      */
     public Obstruction(int length, int height){
         GreenfootImage image = new GreenfootImage(length,height);
         setImage(image);
     }
 
+    /**
+     * Constructer which creates an obstruction
+     * @param height    Rep the height of the obstruction
+     * @param length    Rep the length of the obstruction
+     * @param isEnemy   Boolean which rep if it is an enemy or not
+     */
     public Obstruction(int length, int height, boolean isEnemy){
         GreenfootImage image = new GreenfootImage(length,height);
         setImage(image);
         this.isEnemy = isEnemy;
     }
 
-    
-    public boolean getIsEnemy(){
-        return isEnemy;
-    }
-    public void act()
-    {
-        // Add your action code here.
-    }
 
-    
 }
