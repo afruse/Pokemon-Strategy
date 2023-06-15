@@ -76,8 +76,9 @@ public class GymWorld extends StorageWorld
         c.setMapIndexY(data.getCoordinateY());
         setBackground(roomOrder[roomIndexY][roomIndexX].getRoomImage());
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
+        started();
     }
-    protected void saveDate(){
+    protected void saveData(){
         ArrayList<String[]> e = new ArrayList<String[]>();
         String[] player = new String[5];
         player[0] = "" + roomIndexX;
@@ -107,12 +108,12 @@ public class GymWorld extends StorageWorld
     }
     public void started()
     {
-        battleWorldSound.playLoop();
+        gymWorldSound.playLoop();
     }
     
     public void stopped()
     {
-        battleWorldSound.stop();
+        gymWorldSound.stop();
     }
     /**
      * A contructor to create the gymworld if there is no save file
@@ -163,6 +164,7 @@ public class GymWorld extends StorageWorld
         c.setMapIndexY(4);
 
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
+        started();
     }
 
     /**
@@ -200,7 +202,7 @@ public class GymWorld extends StorageWorld
      * @return boolean      Returns true if the player has mved sucessfuly and false otherwise
      */
     public boolean moveCharacter(MoveableCharacter a, int mapIndexX, int mapIndexY){
-        saveDate();
+        saveData();
         try{
             nextRoom = false;
             //If boss room
@@ -313,7 +315,7 @@ public class GymWorld extends StorageWorld
         if(roomOrder[roomIndexY][roomIndexX].getHasEnemyTeam()){
             if(p.getMapIndexX() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexX() && p.getMapIndexY() == roomOrder[roomIndexY][roomIndexX].getTrainerIndexY()){
                 GymWorld gw = this;
-
+                stopped();
                 Greenfoot.setWorld(new BattleWorld(gw, roomOrder[roomIndexY][roomIndexX].getEnemyTeam()));
                 return true;
             }

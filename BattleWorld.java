@@ -91,7 +91,7 @@ public class BattleWorld extends StorageWorld
         e.spawnStatBar(getWidth()-100, 50);
         c1.spawnStatBar(getWidth()-100, getHeight()-110);
         e1.spawnStatBar(getWidth()-100, 110);
-
+        started();
     }
     /**
      * Acts and check if the player has clicked on the world to reset enemy selected

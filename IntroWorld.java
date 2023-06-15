@@ -14,6 +14,7 @@ public class IntroWorld extends World
      * Constructor for objects of class IntroWorld.
      * 
      */
+    private GreenfootSound introWorldSound;
     private GifIntroWorldBackground backGroundAni;
     public IntroWorld()
     {    
@@ -23,6 +24,16 @@ public class IntroWorld extends World
         addObject(backGroundAni, -400, -300);
         addObject(new GifOverlay(), 350, 300);
         setBackground(backGroundAni.getImage());
+        introWorldSound = new GreenfootSound("intro.mp3");
+    }
+    public void started()
+    {
+        introWorldSound.playLoop();
+    }
+    
+    public void stopped()
+    {
+        introWorldSound.stop();
     }
     /**
      * Checks to see if user wants to start
@@ -32,7 +43,7 @@ public class IntroWorld extends World
        if(Greenfoot.isKeyDown("ENTER")){
            //GymWorld gw = new GymWorld();
            OptionsWorld w = new OptionsWorld();
-    
+           stopped();
            Greenfoot.setWorld(w);
        }
     }
