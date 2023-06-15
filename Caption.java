@@ -1,17 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Caption here.
+ * The main bulk of code of the cutscenes, as it includes captions linked to the
+ * audio, and enables user to skip at any point in time. It also is run through
+ * a system timer to enable seamless cutscenes and perfect timing.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jacob Omdara
+ * @version June 2023
  */
 public class Caption extends Actor
 {
     private GreenfootImage dialogue0, dialogue1, dialogue2, dialogue3, dialogue4, dialogue5, dialogue6, dialogue7;
     private GreenfootSound sound0, sound1, sound2, hourslater;
     private int person, systemTimer;
-    OptionsWorld w = new OptionsWorld();
+    Instructions w = new Instructions();
+    /**
+     * Constructor, loads and initializes all captions as well as audio.
+     * 
+     * @param person    it passes a person integer to indicate which person,
+     * the mother or the main character 
+     */
     public Caption(int person)
     {
         this.person = person;
@@ -28,7 +36,11 @@ public class Caption extends Actor
         sound2 = new GreenfootSound("dialogue2.mp3");
         hourslater = new GreenfootSound("2hourslater.mp3");
     }
-
+    /**
+     * allows the user to skip the intro lore if wanted, also runs the whole
+     * dialogue and times the captions to the audio and movement of characters.
+     * 
+     */
     public void act()
     {
         if(Greenfoot.isKeyDown("SPACE")){

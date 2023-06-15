@@ -1,15 +1,18 @@
 #BlueJ class context
 comment0.target=LorePerson
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ LorePerson\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ is\ the\ character\ that\ moves\ in\ the\ intro\ lore,\ and\ have\ functions\ such\r\n\ as\ movement\ and\ turning\ during\ cutscenes.\r\n\ \r\n\ @author\ Jacob\ Omdara\ \r\n\ @version\ June\ 2023\r\n
 comment1.params=
 comment1.target=LorePerson()
-comment1.text=\r\n\ Constructor,\ passes\ in\ a\ specific\ integer\ and\ saves\ it\r\n\ param\ int\ person\r\n
+comment1.text=\r\n\ Constructor,\ grabs\ image\ and\ initializes\ it,\ sets\ it\ \r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ this\ runs\ the\ scenes\ using\ an\ act\ system\ timer,\ allowing\ timed\ cutscenes\r\n\ to\ be\ delivered\ to\ the\ user.\r\n
 comment3.params=
 comment3.target=void\ scene1()
+comment3.text=\ \r\n\ This\ scene\ allows\ Brendan\ to\ move\ to\ the\ door\ and\ leave.\r\n
 comment4.params=
 comment4.target=void\ scene2()
+comment4.text=\r\n\ these\ 2\ scenes\ set\ new\ positions\ for\ Brendan,\ allowing\ the\ scenes\ to\ flow\r\n\ seamlessly.\r\n
 comment5.params=
 comment5.target=void\ scene3()
 numComments=6

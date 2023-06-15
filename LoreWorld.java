@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LoreWorld here.
+ * This program explains the lore and the plot of the game. Customized with 
+ * animations, voiceover, and world class art, this is one of the best
+ * intro scenes in games.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jacob Omdara
+ * @version June 2023
  */
 public class LoreWorld extends World
 {
@@ -42,7 +44,10 @@ public class LoreWorld extends World
             scene4();
         systemTimer++;
     }
-
+    /**
+     * all the scenes below are processed with a system timer through the act 
+     * method, and will add new objects into the scenes, with their own movement patterns.
+     **/
     public void scene1()
     {
         addObject(new LorePerson(), 350, 420);
