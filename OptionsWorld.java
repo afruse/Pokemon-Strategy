@@ -13,33 +13,43 @@ public class OptionsWorld extends World
      * Constructor for objects of class OptionsWorld.
      * 
      */
-    private SelectAni selectUp;
+    private SelectAni selectUpLeft;
+    private SelectAni selectUpRight;
     private boolean newFile;
-    private SelectAni selectDown;
+    private SelectAni selectDownLeft;
+    private SelectAni selectDownRight;
     private String key;
     private SimpleTimer timer = new SimpleTimer();
     public OptionsWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(480, 320, 1);
-        selectUp = new SelectAni(false);
-        selectDown = new SelectAni(true);
+        super(700, 600, 1);
+        selectUpLeft = new SelectAni(false, false);
+        selectDownLeft = new SelectAni(true, true);
+        selectUpRight = new SelectAni(false, true);
+        selectDownRight = new SelectAni(true, false);
         GreenfootImage image = new GreenfootImage("Options.png");
-        image.scale(480, 320);
+        image.scale(700, 600);
         setBackground(image);
-        addObject(selectUp, 244, 65);
-        addObject(selectDown, 244, 85);
+        addObject(selectUpLeft, 280, 125);
+        addObject(selectDownLeft, 280, 155);
+        addObject(selectUpRight, 434, 125);
+        addObject(selectDownRight, 434, 155);
         timer.mark();
     }
     public void act(){
         if(Greenfoot.isKeyDown("UP")){
-            selectUp.setLocation(244, 65);
-            selectDown.setLocation(244, 85);
+            selectUpLeft.setLocation(280, 125);
+            selectDownLeft.setLocation(280, 155);
+            selectUpRight.setLocation(434, 125);
+            selectDownRight.setLocation(434, 155);
             newFile = false;
         }
         if(Greenfoot.isKeyDown("DOWN")){
-            selectUp.setLocation(244, 160);
-            selectDown.setLocation(244, 180);
+            selectUpLeft.setLocation(245, 307);
+            selectDownLeft.setLocation(245, 337);
+            selectUpRight.setLocation(470, 307);
+            selectDownRight.setLocation(470, 337);
             newFile = true;
         }
         if(Greenfoot.isKeyDown("ENTER") && timer.millisElapsed() > 300){

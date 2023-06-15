@@ -13,11 +13,9 @@ public class StorageWorld extends World
     //
     static int startXpNeeded = 20;
     //Player team
-    static Pikachu pikachu = new Pikachu(0,0, true, 20, 0, startXpNeeded);
-    static Pikachu pikachu1 = new Pikachu(0,0, false, 20, 0, startXpNeeded);
+    static Pikachu pikachu = new Pikachu(0,0, true, 5, 0, startXpNeeded);
 
     static Eevee eevee = new Eevee(2,5,true, 5, 0, startXpNeeded);
-    static Eevee eevee1 = new Eevee(2,5,false, 5, 0, startXpNeeded);
 
     static MoveablePokemon[] playerTeam = {pikachu, eevee};
     
