@@ -22,6 +22,7 @@ public class MovementDecider extends Actor
         for(int i = 1; i < 5; i++){
             images[i-1] = new GreenfootImage("Numbers/" + i + ".png");
         }
+        setImage(images[0]);
     }
 
     public void act()

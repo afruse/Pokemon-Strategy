@@ -31,10 +31,13 @@ public class BattleWorld extends StorageWorld
      */
     public BattleWorld(GymWorld gw, MoveablePokemon[] enemyTeam)
     {    
+
         //Add a parameter to get an array for play party and another array for enemy party
 
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         decider = new MovementDecider();
+        addObject(decider, getWidth()-25, 180);
+
         this.gw = gw;
         this.playerTeam = playerTeam;
         this.enemyTeam = enemyTeam;
@@ -46,7 +49,6 @@ public class BattleWorld extends StorageWorld
 
         MoveablePokemon e = enemyTeam[0];
         MoveablePokemon e1 = enemyTeam[1];
-
         addObject(e,0,0);
         addObject(e1,0,0);
 
@@ -86,13 +88,13 @@ public class BattleWorld extends StorageWorld
         addObject(b, 0,0);
         justStarted = false;
 
-        addObject(decider, getWidth()-25, 180);
         c.spawnStatBar(getWidth()-100, getHeight()-50);
         e.spawnStatBar(getWidth()-100, 50);
         c1.spawnStatBar(getWidth()-100, getHeight()-110);
         e1.spawnStatBar(getWidth()-100, 110);
         started();
     }
+
     /**
      * Acts and check if the player has clicked on the world to reset enemy selected
      */
@@ -108,16 +110,18 @@ public class BattleWorld extends StorageWorld
     public int getMovement(){
         return decider.decideMovements();
     }
+
     public void started()
     {
         battleWorldSound.playLoop();
     }
-    
+
     public void stopped()
     {
-    
+
         battleWorldSound.stop();
     }
+
     /**
      * Sets the current attacker of the current pokemon
      * @param p     The pokemon that's going to attack
@@ -137,7 +141,7 @@ public class BattleWorld extends StorageWorld
     public void removeFromQueue(MoveablePokemon p){
         b.removePokemon(p);
     }
-    
+
     /**
      * Gets the current queue of the pokemon that goes next
      * @return Queue<MoveablePokemon>   Returns the battle order of the pokemon in battle
@@ -204,7 +208,7 @@ public class BattleWorld extends StorageWorld
             return false;
         }
     }
-    
+
     /**
      * A method that checks if there is an obsuruction in the player/enemy's wanted direction to avoid actors on the same tile
      * @param coord     Represents the coordinate that needs to be checked in the 2d arrayList
@@ -220,7 +224,6 @@ public class BattleWorld extends StorageWorld
         return isObstruction;
     }
 
-    
     
     /**
      * A method that ends the current character's turn
