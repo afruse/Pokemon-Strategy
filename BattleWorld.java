@@ -58,7 +58,7 @@ public class BattleWorld extends StorageWorld
         int i = 0;
         for(int yStart = tileHeight/4; yStart < this.getHeight()-tileHeight/4; yStart += tileHeight){
             map.add(new ArrayList<Coordinate>());
-            for(int xStart = tileLength/4; xStart < this.getWidth()-tileLength/4; xStart += tileLength){
+            for(int xStart = tileLength/4; xStart < this.getWidth()-(tileLength/4)-200; xStart += tileLength){
                 Coordinate curCoord = new Coordinate(xStart+15, yStart);
                 map.get(i).add(curCoord);
             }
@@ -134,7 +134,10 @@ public class BattleWorld extends StorageWorld
         curVictim = p;
     }
 
-   
+    public void removeFromQueue(MoveablePokemon p){
+        b.removePokemon(p);
+    }
+    
     /**
      * Gets the current queue of the pokemon that goes next
      * @return Queue<MoveablePokemon>   Returns the battle order of the pokemon in battle

@@ -79,6 +79,9 @@ public class BattleManager extends Actor
         }
         curChar = battleOrder.peek();
         BattleOrderActionBlock topBlock = visualBattleOrder.peek();
+        if(curChar.getImage() != visualBattleOrder.peek().getImage()){
+            visualBattleOrder.poll();
+        }
         if(!curChar.getIsTurn()){
             curChar.flipTurn();
             //  System.out.println(curChar.getClass());
@@ -95,6 +98,10 @@ public class BattleManager extends Actor
             visualBattleOrder.add(topBlock);
             curChar.flipTurn();
         }
+       
+    }
+    public void removePokemon(MoveablePokemon p){
+        battleOrder.remove(p);
     }
 
     /**
