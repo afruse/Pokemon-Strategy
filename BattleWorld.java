@@ -108,7 +108,16 @@ public class BattleWorld extends StorageWorld
     public int getMovement(){
         return decider.decideMovements();
     }
-
+    public void started()
+    {
+        battleWorldSound.playLoop();
+    }
+    
+    public void stopped()
+    {
+    
+        battleWorldSound.stop();
+    }
     /**
      * Sets the current attacker of the current pokemon
      * @param p     The pokemon that's going to attack

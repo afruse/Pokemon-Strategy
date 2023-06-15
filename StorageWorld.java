@@ -19,6 +19,9 @@ public class StorageWorld extends World
 
     static MoveablePokemon[] playerTeam = {pikachu, eevee};
     
+    static GreenfootSound gymWorldSound = new GreenfootSound("gym.mp3");
+    
+    static GreenfootSound battleWorldSound = new GreenfootSound("battle.mp3");
     //All enemy teams
     
     //FIRST FLOOR - EASY

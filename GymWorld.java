@@ -105,6 +105,15 @@ public class GymWorld extends StorageWorld
         }
         data.saveChanges(fileName, e);
     }
+    public void started()
+    {
+        battleWorldSound.playLoop();
+    }
+    
+    public void stopped()
+    {
+        battleWorldSound.stop();
+    }
     /**
      * A contructor to create the gymworld if there is no save file
      * 
