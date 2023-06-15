@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.target=Alphabet
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Alphabet\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ making\ letters\ for\ TypingWorld\r\n\ \r\n\ @author\ Affan\ H\ \r\n\ @version\ 1.0\r\n
 comment1.params=image
 comment1.target=Alphabet(greenfoot.GreenfootImage)
+comment1.text=\r\n\ Contructor\ for\ Alphabet\ class\r\n\ \r\n\ @param\ image\ takes\ in\ image\ to\ set\ as\r\n
 numComments=2

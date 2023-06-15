@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * A class which rep the tiles for attack range of moves
  * 
- * @author (Daniel, Aphan) 
+ * @author (Daniel, Affan) 
  * @version (a version number or a date)
  */
 public class SelectTile extends Actor

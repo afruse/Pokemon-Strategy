@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SelectTile
-comment0.text=\r\n\ A\ class\ which\ rep\ the\ tiles\ for\ attack\ range\ of\ moves\r\n\ \r\n\ @author\ (Daniel,\ Aphan)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ class\ which\ rep\ the\ tiles\ for\ attack\ range\ of\ moves\r\n\ \r\n\ @author\ (Daniel,\ Affan)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=SelectTile()
 comment2.params=

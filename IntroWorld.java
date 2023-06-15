@@ -1,4 +1,15 @@
-
+/**
+ * Credits:
+ * Visual:
+ * Intro GIF: https://gfycat.com/keysarcasticgangesdolphin
+ * Options Sprite: https://www.spriters-resource.com/fullview/3853/?source=genre
+ * Music:
+ * Intro music: https://www.youtube.com/watch?v=rg6CiPI6h2g
+ * Gym world music: https://soundcloud.com/pokemon-gameboy-music/indigo-plateau-1
+ * Battle World music: https://www.youtube.com/watch?v=VxFadPqMbfM
+ * Code:
+ * Anthony W for GifIntroWorldBackground class
+ */
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**

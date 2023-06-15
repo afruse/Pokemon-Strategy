@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GifOverlay here.
+ * GIF overlay to replace original GIF title
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Affan
+ * @version 1.0
  */
 public class GifOverlay extends Actor
 {
+    /**
+     * contructor to set image and scale
+     */
     public GifOverlay(){
         GreenfootImage image = new GreenfootImage("GIF_Overlay.png");
         image.scale(700, 600);

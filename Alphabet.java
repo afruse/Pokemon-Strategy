@@ -1,13 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Alphabet here.
+ * Class making letters for TypingWorld
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Affan H 
+ * @version 1.0
  */
 public class Alphabet extends Actor
 {
+    /**
+     * Contructor for Alphabet class
+     * 
+     * @param image takes in image to set as
+     */
     public Alphabet(GreenfootImage image){
         setImage(image);
     }
