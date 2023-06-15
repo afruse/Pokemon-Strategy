@@ -46,17 +46,16 @@ public class TypingWorld extends World
             if((lastRunAct + 15) < actCount && spaceNumber > 1){
                 lastRunAct = actCount;
                 spaceNumber--;
-                System.out.println(spaceNumber);
                 removeObject(alph[spaceNumber - 1]);
             }
         }
         else if(Greenfoot.isKeyDown("ENTER")){
             if(!newFile){
                 Data d = new Data(entry + ".csv");
-                GymWorld w = new GymWorld(d);
+                GymWorld w = new GymWorld(d, (entry + ".csv"));
                 Greenfoot.setWorld(w);
             }else{
-                World w = new GymWorld();
+                World w = new GymWorld((entry + ".csv"));
                 Greenfoot.setWorld(w);
             }
         }

@@ -38,14 +38,17 @@ public class Data {
         this.XP2 = values.get(2)[1];
         this.XP_needed2 = values.get(2)[2];
     }
+    public Data() {
+    }
     public void updateChanges(ArrayList<String []> values){
         this.values = values;
     }
     public void saveChanges(String fileName, ArrayList<String []> values){
+        System.out.println(fileName);
+        System.out.println("bru");
         this.values = values;
         ArrayList<String[]> waitList = values;
             try{
-                System.out.println(fileName);
                 FileWriter out = new FileWriter(fileName);
                 PrintWriter output = new PrintWriter(out);
                 for (int i = 0; i < waitList.size(); i++)

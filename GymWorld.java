@@ -1,5 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  * A class of world that represents the world the player moves around in to challenge enemies
@@ -13,7 +17,7 @@ public class GymWorld extends StorageWorld
 
     protected int roomIndexX;
     protected int roomIndexY;
-
+    protected String fileName;
     protected int tileLength;
     protected int tileHeight;
     protected MoveableCharacter c = new MoveableCharacter(0,0);
@@ -23,7 +27,7 @@ public class GymWorld extends StorageWorld
      * A contructor to create the gymworld if there is a save file being loaded
      * 
      */
-    public GymWorld(Data data)
+    public GymWorld(Data data, String fileName)
     {    
         /**
          * How it looks
@@ -42,6 +46,7 @@ public class GymWorld extends StorageWorld
         eevee.setXp(data.getXp2());
         eevee.setMaxXp(data.getXpNeeded2());
         eevee.setLevel(data.getLvl2());
+        this.fileName = fileName;
         this.data = data;
         int i = 0;
         addObject(c,0,0);
@@ -91,13 +96,20 @@ public class GymWorld extends StorageWorld
         e.add(player);
         e.add(pokemon1);
         e.add(pokemon2);
-        data.saveChanges("test.csv", e);
+        File file = new File(fileName);
+        try{
+            file.createNewFile();
+        }
+        catch(IOException exception){
+            System.out.println(exception);
+        }
+        data.saveChanges(fileName, e);
     }
     /**
      * A contructor to create the gymworld if there is no save file
      * 
      */
-    public GymWorld()
+    public GymWorld(String fileName)
     {    
 
         roomIndexY = 4;
@@ -114,7 +126,8 @@ public class GymWorld extends StorageWorld
          * [2][2]
          * X = Room
          */
-
+        this.fileName = fileName;
+        data = new Data();
         int i = 0;
         addObject(c,0,0);
         tileLength = this.getWidth()/9;

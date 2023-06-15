@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=GymWorld
 comment0.text=\r\n\ A\ class\ of\ world\ that\ represents\ the\ world\ the\ player\ moves\ around\ in\ to\ challenge\ enemies\r\n\ \r\n\ @author\ (Daniel\ Tan)\ \r\n\ @version\ 1.0\r\n
-comment1.params=data
-comment1.target=GymWorld(Data)
+comment1.params=data\ fileName
+comment1.target=GymWorld(Data,\ java.lang.String)
 comment1.text=\r\n\ A\ contructor\ to\ create\ the\ gymworld\ if\ there\ is\ a\ save\ file\ being\ loaded\r\n\ \r\n
 comment10.params=locations
 comment10.target=void\ changeObstructionLayout(java.util.ArrayList)
 comment10.text=\r\n\ A\ method\ that\ changes\ the\ obstruction\ layout\ of\ the\ room\ \r\n\ @param\ locations\ \ \ \ \ Represents\ the\ locations\ of\ the\ loaded\ room\r\n\ \r\n
 comment2.params=
 comment2.target=void\ saveDate()
-comment3.params=
-comment3.target=GymWorld()
+comment3.params=fileName
+comment3.target=GymWorld(java.lang.String)
 comment3.text=\r\n\ A\ contructor\ to\ create\ the\ gymworld\ if\ there\ is\ no\ save\ file\r\n\ \r\n
 comment4.params=data
 comment4.target=void\ loadData(Data)
