@@ -2,18 +2,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.HashMap;
 import java.util.List;
 /**
- * Write a description of class TypingWorld here.
+ * Get's input from user on file name
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Affan Bin Hasnat 
+ * @version 1.0
  */
 public class TypingWorld extends World
 {
-
-    /**
-     * Constructor for objects of class TypingWorld.
-     * 
-     */
     private String entry = "";
     private GreenfootImage[] images = new GreenfootImage[26];
     private int spaceNumber = 0;
@@ -24,6 +19,12 @@ public class TypingWorld extends World
     private int actCount = 0;
     private int lastRunAct = actCount;
     private boolean inRow = false;
+    /**
+     * Constructor for objects of class TypingWorld.
+     * 
+     * @param newFile   which determines whether it loads or creates new file
+     * 
+     */
     public TypingWorld(boolean newFile)
     {    
         super(700, 600, 1, false);
@@ -39,16 +40,31 @@ public class TypingWorld extends World
         }
         timer.mark();
     }
+    /**
+     * updates string file so backspace comes in effect
+     */
+    public void returning(){
+        String returning = "";
+        for(int i = 0; i < entry.length() - 1; i++){
+            returning = returning + entry.charAt(i);
+        }
+        entry = returning;
+    }
+    /**
+     * the act method that contantly checks for any button pressed on does the corrosponding action
+     */
     public void act(){
         if(timer.millisElapsed() > 300){
-        //String nonsense = Greenfoot.getKey();
+        //backspace
         if(Greenfoot.isKeyDown("BACKSPACE")){
             if((lastRunAct + 15) < actCount && spaceNumber > 1){
                 lastRunAct = actCount;
                 spaceNumber--;
+                returning();
                 removeObject(alph[spaceNumber - 1]);
             }
         }
+        //enter
         else if(Greenfoot.isKeyDown("ENTER")){
             if(!newFile){
                 Data d = new Data(entry + ".csv");
@@ -59,6 +75,7 @@ public class TypingWorld extends World
                 Greenfoot.setWorld(w);
             }
         }
+        //filler so last world input dont effect
         else if(spaceNumber == 0){
             String key = Greenfoot.getKey();
             if(key != null){

@@ -42,7 +42,7 @@ public class IntroWorld extends World
     {
        if(Greenfoot.isKeyDown("ENTER")){
            //GymWorld gw = new GymWorld();
-           OptionsWorld w = new OptionsWorld();
+           LoreWorld w = new LoreWorld();
            stopped();
            Greenfoot.setWorld(w);
        }

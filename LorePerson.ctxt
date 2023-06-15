@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=LorePerson
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LorePerson\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=LorePerson()
+comment1.text=\r\n\ Constructor,\ passes\ in\ a\ specific\ integer\ and\ saves\ it\r\n\ param\ int\ person\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ scene1()
+comment4.params=
+comment4.target=void\ scene2()
+comment5.params=
+comment5.target=void\ scene3()
+numComments=6
