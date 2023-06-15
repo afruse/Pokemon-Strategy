@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Caption
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Caption\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ The\ main\ bulk\ of\ code\ of\ the\ cutscenes,\ as\ it\ includes\ captions\ linked\ to\ the\r\n\ audio,\ and\ enables\ user\ to\ skip\ at\ any\ point\ in\ time.\ It\ also\ is\ run\ through\r\n\ a\ system\ timer\ to\ enable\ seamless\ cutscenes\ and\ perfect\ timing.\r\n\ \r\n\ @author\ Jacob\ Omdara\r\n\ @version\ June\ 2023\r\n
 comment1.params=person
 comment1.target=Caption(int)
+comment1.text=\r\n\ Constructor,\ loads\ and\ initializes\ all\ captions\ as\ well\ as\ audio.\r\n\ \r\n\ @param\ person\ \ \ \ it\ passes\ a\ person\ integer\ to\ indicate\ which\ person,\r\n\ the\ mother\ or\ the\ main\ character\ \r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ allows\ the\ user\ to\ skip\ the\ intro\ lore\ if\ wanted,\ also\ runs\ the\ whole\r\n\ dialogue\ and\ times\ the\ captions\ to\ the\ audio\ and\ movement\ of\ characters.\r\n\ \r\n
 numComments=3

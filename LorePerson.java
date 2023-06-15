@@ -1,25 +1,30 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LorePerson here.
+ * This is the character that moves in the intro lore, and have functions such
+ * as movement and turning during cutscenes.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jacob Omdara 
+ * @version June 2023
  */
 public class LorePerson extends Actor
 {
     private GreenfootImage left;
     private int systemTimer, counter0 = 0, counter1 = 0;
     /**
-     * Constructor, passes in a specific integer and saves it
-     * param int person
+     * Constructor, grabs image and initializes it, sets it 
+     * 
      */
     public LorePerson()
     {
         left = new GreenfootImage("Brendan_3.png");
         this.setImage(left);
     }
-
+    
+    /**
+     * this runs the scenes using an act system timer, allowing timed cutscenes
+     * to be delivered to the user.
+     */
     public void act()
     {
         this.getImage().scale(56, 84);
@@ -32,10 +37,11 @@ public class LorePerson extends Actor
         if (systemTimer == 2420)
             scene3();
         systemTimer++;     
-        //section2();
-        //section3();
     }
-
+    
+    /** 
+     * This scene allows Brendan to move to the door and leave.
+     */
     public void scene1()
     {
         if (systemTimer > 1200 && systemTimer < 1290)
@@ -58,6 +64,10 @@ public class LorePerson extends Actor
         }
     }
     
+    /**
+     * these 2 scenes set new positions for Brendan, allowing the scenes to flow
+     * seamlessly.
+     */
     public void scene2()
     {
         this.setLocation(295,200);

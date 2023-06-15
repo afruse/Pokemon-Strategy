@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LoreWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ LoreWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ program\ explains\ the\ lore\ and\ the\ plot\ of\ the\ game.\ Customized\ with\ \r\n\ animations,\ voiceover,\ and\ world\ class\ art,\ this\ is\ one\ of\ the\ best\r\n\ intro\ scenes\ in\ games.\r\n\ \r\n\ @author\ Jacob\ Omdara\r\n\ @version\ June\ 2023\r\n
 comment1.params=
 comment1.target=LoreWorld()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ LoreWorld.\r\n\ \r\n
@@ -8,6 +8,7 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ scene1()
+comment3.text=\r\n\ all\ the\ scenes\ below\ are\ processed\ with\ a\ system\ timer\ through\ the\ act\ \r\n\ method,\ and\ will\ add\ new\ objects\ into\ the\ scenes,\ with\ their\ own\ movement\ patterns.\r\n
 comment4.params=
 comment4.target=void\ scene2()
 comment5.params=
