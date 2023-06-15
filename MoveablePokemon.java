@@ -101,21 +101,27 @@ public class MoveablePokemon extends Actor
         int width = 90;
 
     }
+
     public void setMaxXp(int xpNeeded){
         this.xpNeeded = xpNeeded;
     }
+
     public void setXp(int xp){
         this.curXp = xp;
     }
+
     public void setLevel(int level){
         this.lvl = level;
     }
+
     public int getXp(){
         return curXp;
     }
+
     public int getXpNeeded(){
         return xpNeeded;
     }
+
     /**
      * A method which returns the enlarged image version of the pokemon
      * @return GreenfootImage       returns the enlarged version of the pokemon as an image 
@@ -190,9 +196,9 @@ public class MoveablePokemon extends Actor
      * The method which decides what each player and pokemon can do
      */
     public void doSomething(){
-
+        BattleWorld bw = (BattleWorld)getWorld();
+        
         if(isTurn && getWorld().getClass() == BattleWorld.class){
-            BattleWorld bw = (BattleWorld)getWorld();
             if(isFirstRun && isPlayer){
                 movement = bw.getMovement();
                 didMove = false;
@@ -323,7 +329,6 @@ public class MoveablePokemon extends Actor
 
         }
         if(getWorld().getClass() == BattleWorld.class){
-            BattleWorld bw = (BattleWorld)getWorld();
             MoveablePokemon curChar = bw.getCurChar();
             if(Greenfoot.mouseClicked(this) && !curChar.getAlreadyAttacked() && !isTurn && curChar.getVictim() == null){
                 curChar.enemyHit(this);
@@ -338,7 +343,10 @@ public class MoveablePokemon extends Actor
                 curChar.readyToAttack();
             }
         }
-
+        if(hp <= 0){
+            bw.removeFromQueue(this);
+            bw.removeObject(this);
+        }
     }
 
     /**
@@ -951,6 +959,7 @@ public class MoveablePokemon extends Actor
     protected void unSetWait(){
         waiting = false;
     }
+
     /**
      * A method which returns if the caller has already attacled
      * @return boolean      Returns true if already attacked and false otherwise
@@ -958,6 +967,7 @@ public class MoveablePokemon extends Actor
     protected boolean getAlreadyAttacked(){
         return alreadyAttacked;
     }
+
     /**
      * A method that updates the caller has attacked
      */

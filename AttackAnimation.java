@@ -35,6 +35,9 @@ public class AttackAnimation extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
+        GreenfootImage image = new GreenfootImage("grass.png");
+        image.scale(700,600);
+        setBackground(image);
         this.attacker = new BattleOrderActionBlock(attackerImage);
         this.victim = new BattleOrderActionBlock(victimImage);
         this.list = list;
@@ -148,6 +151,22 @@ public class AttackAnimation extends World
         else if(attack.equals("Water Gun")){
             waterGun(attacker, victim);
         }
+        else if(attack.equals("Spite")){
+            spite(attacker, victim);
+        }
+        else if(attack.equals("Surf")){
+           surf(attacker, victim);
+        }
+        else if(attack.equals("Ember")){
+            ember(victim);
+        }
+        else if(attack.equals("Stomp")){
+            stomp(victim);
+        }
+         else if(attack.equals("Hydro Cannon")){
+            hydroCannon(attacker, victim);
+        }
+        
 
     }
 
@@ -215,5 +234,39 @@ public class AttackAnimation extends World
         Gust g = new Gust(b, true);
         addObject(g, b.getX() + (Greenfoot.getRandomNumber(20) - 10), b.getY() + (Greenfoot.getRandomNumber(20) - 10));
     }
+    
+    
+     public void spite(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        Spite s = new Spite(a, b);
+        addObject(s, 0, 0);
+    }
+    
+    public void ember(BattleOrderActionBlock b)
+    {
+        Ember e = new Ember(b);
+        addObject(e, b.getX(), b.getY() - (b.getImage().getHeight() / 2));
+    }
+    
+    public void stomp(BattleOrderActionBlock b)
+    {
+        Stomp s = new Stomp(b);
+        addObject(s, b.getX(), b.getY() - 255);
+    }
+    
+    
+    public void surf(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        Surf s = new Surf(a, b);
+        addObject(s, a.getX(), a.getY());
+    }
+    
+    // A is the origin, B is the target
+    public void hydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        HydroCannon h = new HydroCannon(a, b);
+        addObject(h, a.getX(), a.getY());
+    }
+    
 
 }
