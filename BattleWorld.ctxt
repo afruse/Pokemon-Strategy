@@ -1,11 +1,10 @@
 #BlueJ class context
 comment0.target=BattleWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BattleWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ This\ method\ represends\ the\ grid\ screen\ of\ when\ the\ pokemon\ are\ in\ battle\r\n\ \r\n\ @author\ (Daniel)\ \r\n\ @version\ 1.0\r\n
 comment1.params=gw\ enemyTeam
 comment1.target=BattleWorld(GymWorld,\ MoveablePokemon[])
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BattleWorld.\r\n\ \r\n
+comment1.text=\r\n\ A\ constructor\ for\ BattleWorld\r\n\ @param\ gw\ \ \ \ Stores\ the\ world\ the\ trainer\ was\ in\ before\ entering\ battle\r\n\ @param\ enemyTeam\ \ \ \ \ An\ array\ which\ represents\ the\ enemy\ team\r\n\ \r\n
 comment10.params=
-<<<<<<< Updated upstream
 comment10.target=int\ getTileHeight()
 comment10.text=\r\n\ Returns\ the\ tileHeight\ of\ the\ 2d\ grid\r\n\ @return\ int\ \ Returns\ the\ tile\ height\r\n\ \r\n
 comment11.params=
@@ -51,33 +50,3 @@ comment9.params=
 comment9.target=java.util.Queue\ getBattleOrder()
 comment9.text=\r\n\ Gets\ the\ current\ queue\ of\ the\ pokemon\ that\ goes\ next\r\n\ @return\ Queue<MoveablePokemon>\ \ \ Returns\ the\ battle\ order\ of\ the\ pokemon\ in\ battle\r\n\ \r\n
 numComments=18
-=======
-comment10.target=java.util.ArrayList\ getMap()
-comment11.params=a\ mapIndexX\ mapIndexY
-comment11.target=boolean\ moveCharacter(MoveablePokemon,\ int,\ int)
-comment12.params=coord
-comment12.target=boolean\ checkObstruction(Coordinate)
-comment13.params=coord
-comment13.target=boolean\ checkEnemy(Coordinate)
-comment14.params=
-comment14.target=void\ endCharTurn()
-comment15.params=
-comment15.target=void\ switchToGymWorld()
-comment2.params=
-comment2.target=int\ getMovement()
-comment3.params=p
-comment3.target=void\ setCurAttacker(MoveablePokemon)
-comment4.params=p
-comment4.target=void\ setCurVictim(MoveablePokemon)
-comment5.params=
-comment5.target=void\ act()
-comment6.params=
-comment6.target=java.util.Queue\ getBattleOrder()
-comment7.params=
-comment7.target=int\ getTileHeight()
-comment8.params=
-comment8.target=int\ getTileLength()
-comment9.params=
-comment9.target=MoveablePokemon\ getCurChar()
-numComments=16
->>>>>>> Stashed changes

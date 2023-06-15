@@ -38,45 +38,51 @@ public class Data {
         this.XP2 = values.get(2)[1];
         this.XP_needed2 = values.get(2)[2];
     }
+
     public Data() {
     }
+
     public void updateChanges(ArrayList<String []> values){
         this.values = values;
     }
+
     public void saveChanges(String fileName, ArrayList<String []> values){
-        System.out.println(fileName);
-        System.out.println("bru");
         this.values = values;
         ArrayList<String[]> waitList = values;
-            try{
-                FileWriter out = new FileWriter(fileName);
-                PrintWriter output = new PrintWriter(out);
-                for (int i = 0; i < waitList.size(); i++)
+        try{
+            FileWriter out = new FileWriter(fileName);
+            PrintWriter output = new PrintWriter(out);
+            for (int i = 0; i < waitList.size(); i++)
+            {
+                for (int j = 0; j < waitList.get(i).length; j++)
                 {
-                    for (int j = 0; j < waitList.get(i).length; j++)
-                    {
-                        output.print(waitList.get(i)[j] + ",");
-                    }
-                    output.println();
+                    output.print(waitList.get(i)[j] + ",");
                 }
-                output.close();
+                output.println();
             }
-            catch(IOException e){
-                System.out.println("Error: " + e);
-            }
+            output.close();
+        }
+        catch(IOException e){
+            System.out.println("Error: " + e);
+        }
     }
+
     public int getCurrentWorldX() {
         return Integer.parseInt(currentWorldX);
     }
+
     public int getCurrentWorldY() {
         return Integer.parseInt(currentWorldY);
     }
+
     public int getCoordinateX() {
         return Integer.parseInt(coordinateX);
     }
+
     public int getCoordinateY() {
         return Integer.parseInt(coordinateY);
     }
+
     public boolean getBeatBoss() {
         if(beatBoss.equals("true")){
             return true;
@@ -85,36 +91,46 @@ public class Data {
             return false;
         }
     }
+
     public int getHp() {
         return Integer.parseInt(HP);
     }
+
     public int getLvl()
     {
         return Integer.parseInt(lvl);
     }
+
     public String getPokemon1(){
         return pokemon1;
     }
+
     public String getPokemon2(){
         return pokemon2;
     }
+
     public int getXp() {
         return Integer.parseInt(XP);
     }
+
     public int getXpNeeded() {
         return Integer.parseInt(XP_needed);
     }
+
     public int getHp2()
     {
         return Integer.parseInt(HP2);
     }
+
     public int getLvl2(){
         return Integer.parseInt(lvl2);
     }
+
     public int getXp2()
     {
         return Integer.parseInt(XP2);
     }
+
     public int getXpNeeded2()
     {
         return Integer.parseInt(XP_needed2);

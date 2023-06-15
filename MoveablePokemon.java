@@ -224,7 +224,6 @@ public class MoveablePokemon extends Actor
             else if(isPlayer){
 
                 if(movement == 0 && alreadyAttacked){
-                    System.out.println("This");
                     isTurnEnd = true;
                     didMove = true;
                     isFirstRun = true;
