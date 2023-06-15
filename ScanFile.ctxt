@@ -2,13 +2,15 @@
 comment0.target=ScanFile
 comment1.params=file
 comment1.target=ScanFile(java.lang.String)
+comment1.text=\r\n\ This\ is\ the\ constructor\ for\ our\ file\ scanning\ using\ the\ tokenizer\r\n\ @\ param\ file\ \ \ This\ takes\ in\ a\ file\r\n
 comment2.params=
 comment2.target=void\ run()
 comment3.params=
 comment3.target=int\ getTransactions()
+comment3.text=\r\n\ This\ method\ gets\ the\ size\ of\ the\ arraylist\r\n\ @\ return\ int\ \ \ \ \ This\ returns\ the\ size\ of\ the\ arraylist\r\n
 comment4.params=
 comment4.target=java.util.ArrayList\ getInfo()
 comment5.params=input
 comment5.target=java.lang.String[]\ getTokens(java.lang.String)
-comment5.text=\r\n\ To\ analyze\ the\ awkward\ tokens\ in\ Visa's\ CSV\ files\:\r\n\ -\ Comma-separated\ but\ ..\r\n\ -\ Sometimes\ there\ are\ comma's\ in\ the\ name,\ within\ quotes\r\n\ -\r\n
+comment5.text=\r\n\ To\ analyze\ the\ awkward\ tokens\ in\ Visa's\ CSV\ files\:\r\n\ -\ Comma-separated\ but\ ..\r\n\ -\ Sometimes\ there\ are\ comma's\ in\ the\ name,\ within\ quotes\r\n\ @param\ input\ \ \ \ \ This\ is\ the\ input\ for\ analyzing\ tokens\ with\ commas\ in\ between\ in\ awkward\ places\r\n
 numComments=6

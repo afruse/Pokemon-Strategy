@@ -1,18 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.InterruptedException;
 /**
- * Write a description of class OptionsWorld here.
+ * Determines whether or not user wants to make new file
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Affan H
+ * @version 1.0
  */
 public class OptionsWorld extends World
 {
-
-    /**
-     * Constructor for objects of class OptionsWorld.
-     * 
-     */
     private SelectAni selectUpLeft;
     private SelectAni selectUpRight;
     private boolean newFile;
@@ -20,6 +15,10 @@ public class OptionsWorld extends World
     private SelectAni selectDownRight;
     private String key;
     private SimpleTimer timer = new SimpleTimer();
+    /**
+     * Constructor for objects of class OptionsWorld.
+     * 
+     */
     public OptionsWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -37,6 +36,9 @@ public class OptionsWorld extends World
         addObject(selectDownRight, 434, 155);
         timer.mark();
     }
+    /**
+     * Checks if UP, DOWN or ENTER and does the corresponding action
+     */
     public void act(){
         if(Greenfoot.isKeyDown("UP")){
             selectUpLeft.setLocation(280, 125);

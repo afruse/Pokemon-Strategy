@@ -55,7 +55,7 @@ public class Data {
     /**
      * A method which updates the changes to the players data
      * @param values    This represents all key player data, including the currentWorld, coordinates and the level
-     
+     * 
      */
     public void updateChanges(ArrayList<String []> values){
         this.values = values;
@@ -64,7 +64,7 @@ public class Data {
      * A method which saves the changes from the player data and writes it into a file
      * @param fileName    This represents the filename
      * @param values      This represents the player data in the form of an arraylist
-     
+     * 
      */
     public void saveChanges(String fileName, ArrayList<String []> values){
         

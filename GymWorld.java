@@ -78,6 +78,9 @@ public class GymWorld extends StorageWorld
         changeObstructionLayout(roomOrder[roomIndexY][roomIndexX].getObstructionList());
         started();
     }
+    /**
+     * Saves the current information of the game
+     */
     protected void saveData(){
         ArrayList<String[]> e = new ArrayList<String[]>();
         String[] player = new String[5];
@@ -106,11 +109,16 @@ public class GymWorld extends StorageWorld
         }
         data.saveChanges(fileName, e);
     }
+    /**
+     * starts music when world started
+     */
     public void started()
     {
         gymWorldSound.playLoop();
     }
-    
+    /**
+     * stops music when world or code stopped
+     */
     public void stopped()
     {
         gymWorldSound.stop();

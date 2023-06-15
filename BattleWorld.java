@@ -110,12 +110,16 @@ public class BattleWorld extends StorageWorld
     public int getMovement(){
         return decider.decideMovements();
     }
-
+    /**
+     * starts music when world started
+     */
     public void started()
     {
         battleWorldSound.playLoop();
     }
-
+    /**
+     * stops music when world or code stopped
+     */
     public void stopped()
     {
 

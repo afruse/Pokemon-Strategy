@@ -2,10 +2,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class IntroWorld here.
+ * The intro screen plays a GIF and music
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Affan H 
+ * @version 1.0
  * 
  * Instructions: Your goal is to beat the gymleader by going through the doors
  * and beating the pokemon trainers along the way. Although we did give the player to 
@@ -43,15 +43,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *  
  * 
  */
+
 public class IntroWorld extends World
 {
-
+    private GreenfootSound introWorldSound;
+    private GifIntroWorldBackground backGroundAni;
     /**
      * Constructor for objects of class IntroWorld.
      * 
      */
-    private GreenfootSound introWorldSound;
-    private GifIntroWorldBackground backGroundAni;
     public IntroWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -62,11 +62,16 @@ public class IntroWorld extends World
         setBackground(backGroundAni.getImage());
         introWorldSound = new GreenfootSound("intro.mp3");
     }
+    /**
+     * checks when code is started then starts playing music
+     */
     public void started()
     {
         introWorldSound.playLoop();
     }
-    
+    /**
+     * stops playing music when code stopped or world switched
+     */
     public void stopped()
     {
         introWorldSound.stop();
