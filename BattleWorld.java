@@ -19,7 +19,7 @@ public class BattleWorld extends StorageWorld
     protected MoveablePokemon[] enemyTeam;
     MoveablePokemon curAttacker;
     MoveablePokemon curVictim;
-    MovementDecider decider= new MovementDecider();
+    MovementDecider decider;
 
     protected boolean justStarted = true;
     GymWorld gw;
@@ -230,6 +230,8 @@ public class BattleWorld extends StorageWorld
      * A method that switches the world back to the player's world where they challenged the enemy
      */
     public void switchToGymWorld(){
+        stopped();
+        gw.started();
         Greenfoot.setWorld(gw);
     }
 }

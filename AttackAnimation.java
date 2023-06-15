@@ -94,16 +94,7 @@ public class AttackAnimation extends World
         }
 
         if(finished){
-            //attacker.setAttackingFalse();
-            //attacker.swapToGridImage();
-            //victim.swapToGridImage();
             Greenfoot.setWorld(bw);
-            /**
-            for(BattleOrderActionBlock p: list){
-            //p.setLocation(map.get(p.getMapIndexX()).get(p.getMapIndexY()).getXCoord(), map.get(p.getMapIndexX()).get(p.getMapIndexY()).getYCoord()); 
-            p.setLocation(300, 400);
-            }
-             */
         }
     }
 
