@@ -19,7 +19,7 @@ public class Confusion extends Attack
     protected int originalBY;
     protected int originalWidth;
     protected int originalHeight;
-    
+    protected GreenfootImage savedImage;    
     public Confusion(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         this.originalAX = a.getX();
@@ -30,6 +30,7 @@ public class Confusion extends Attack
         this.originalHeight = b.getImage().getHeight();
         this.a = a;
         this.b = b;
+        savedImage = new GreenfootImage(b.getImage());         
     }
     
     /**
@@ -86,6 +87,7 @@ public class Confusion extends Attack
         else
         {
             b.setLocation(originalBX, originalBY);
+            b.setImage(savedImage);
             getWorld().removeObject(this);
         } 
     }
