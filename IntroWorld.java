@@ -27,6 +27,21 @@
  * Code:
  * Anthony W for GifIntroWorldBackground class
  */
+
+/**
+ * Features:
+ *  - Auto save
+ *  - 8 unique pokemon teams
+ *  - different moves for each pokemon
+ *  - multiple 2D data structures
+ *  - Animated intro
+ *  - LOTS OF ANIMATION
+ *  - used queue
+ *  - custom cutscene
+ *  - elite voice acting
+ *  - advanced file saving and loading
+ *  - advanced ish typing world and options screen
+ */
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
