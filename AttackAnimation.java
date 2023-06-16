@@ -38,6 +38,7 @@ public class AttackAnimation extends World
         GreenfootImage image = new GreenfootImage("grass.png");
         image.scale(700,600);
         setBackground(image);
+        setPaintOrder(Stomp.class, Ember.class, HurtImage.class, Gust.class, WingAttack.class, Waterfall.class, HyperBeam.class, AuroraBeam.class,Bolt.class, BattleOrderActionBlock.class, WaterGun.class, Surf.class, HydroCannon.class);
         this.attacker = new BattleOrderActionBlock(attackerImage);
         this.victim = new BattleOrderActionBlock(victimImage);
         this.list = list;
@@ -109,7 +110,7 @@ public class AttackAnimation extends World
      * 
      */
 
-    protected void doAttack(String attack, BattleOrderActionBlock attacker, BattleOrderActionBlock victim)
+    public void doAttack(String attack, BattleOrderActionBlock attacker, BattleOrderActionBlock victim)
     {
         if (attack.equals("hurt"))
         {
@@ -155,7 +156,7 @@ public class AttackAnimation extends World
             spite(attacker, victim);
         }
         else if(attack.equals("Surf")){
-           surf(attacker, victim);
+            surf(attacker, victim);
         }
         else if(attack.equals("Ember")){
             ember(victim);
@@ -163,14 +164,28 @@ public class AttackAnimation extends World
         else if(attack.equals("Stomp")){
             stomp(victim);
         }
-         else if(attack.equals("Hydro Cannon")){
-            hydroCannon(attacker, victim);
+        else if(attack.equals("Wing Attack")){
+            wingAttack(attacker, victim);
         }
-        
+        else if(attack.equals("Outrage")){
+            outrage(attacker);
+        }
+        else if(attack.equals("Confusion")){
+            confusion(attacker, victim);
+        }
+        else if(attack.equals("Aurora Beam")){
+            auroraBeam(attacker, victim);
+        }
+        else if(attack.equals("Hyper Beam")){
+            hyperBeam(attacker, victim);
+        }
+        else if(attack.equals("Tackle")){
+            tackle(attacker, victim);
+        }
 
     }
 
-    protected void bite(BattleOrderActionBlock pokemon)
+    public void bite(BattleOrderActionBlock pokemon)
     {
         Teeth top = new TopTeeth();
         Teeth bottom = new BottomTeeth();
@@ -178,7 +193,7 @@ public class AttackAnimation extends World
         addObject(bottom, pokemon.getX(), pokemon.getY() + 150);
     }
 
-    protected void thunderbolt(BattleOrderActionBlock pokemon)
+    public void thunderbolt(BattleOrderActionBlock pokemon)
     {
         // Big bolts
         for (int i = 0; i < 5; i++)
@@ -191,82 +206,115 @@ public class AttackAnimation extends World
     }
 
     // A is origin, B is target
-    protected void sandAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void sandAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Sand sand = new Sand(a, b, true);
         addObject(sand, a.getX(), a.getY());
     }
 
-    protected void setThundering(boolean b)
+    public void setThundering(boolean b)
     {
         thundering = b;
     }
 
     // A is the pokemon using the attack
-    protected void quickAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void quickAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         QuickAttack q = new QuickAttack(a, b);
         addObject(q, 0, 0);
     }
 
     // A is the origin, B is the target
-    protected void waterGun(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void waterGun(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         WaterGun w = new WaterGun(a, b);
         addObject(w, a.getX(), a.getY());
     }
 
-    protected void mudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void mudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         MudSlap m = new MudSlap(a, b, true);
         addObject(m, a.getX(), a.getY());
     }
 
-    protected void bubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void bubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         BubbleBeam bub = new BubbleBeam(a, b, true);
         addObject(bub, a.getX(), a.getY());
     }
 
     // B is the target
-    protected void gust(BattleOrderActionBlock b)
+    public void gust(BattleOrderActionBlock b)
     {
         Gust g = new Gust(b, true);
         addObject(g, b.getX() + (Greenfoot.getRandomNumber(20) - 10), b.getY() + (Greenfoot.getRandomNumber(20) - 10));
     }
-    
-    
-    protected void spite(BattleOrderActionBlock a, BattleOrderActionBlock b)
+
+    public void spite(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Spite s = new Spite(a, b);
         addObject(s, 0, 0);
     }
-    
-    protected void ember(BattleOrderActionBlock b)
+
+    public void ember(BattleOrderActionBlock b)
     {
         Ember e = new Ember(b);
         addObject(e, b.getX(), b.getY() - (b.getImage().getHeight() / 2));
     }
-    
-    protected void stomp(BattleOrderActionBlock b)
+
+    public void stomp(BattleOrderActionBlock b)
     {
         Stomp s = new Stomp(b);
         addObject(s, b.getX(), b.getY() - 255);
     }
-    
-    
-    protected void surf(BattleOrderActionBlock a, BattleOrderActionBlock b)
+
+    public void surf(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Surf s = new Surf(a, b);
         addObject(s, a.getX(), a.getY());
     }
-    
+
     // A is the origin, B is the target
-    protected void hydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    public void hydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         HydroCannon h = new HydroCannon(a, b);
         addObject(h, a.getX(), a.getY());
     }
-    
+
+    public void wingAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        WingAttack w = new WingAttack(a, b, true);
+        addObject(w, a.getX(), a.getY());
+    }
+
+    public void outrage(BattleOrderActionBlock b)
+    {
+        Outrage o = new Outrage(b, true);
+        addObject(o, b.getX(), b.getY());
+    }
+
+    public void confusion(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        Confusion c = new Confusion(a, b);
+        addObject(c, 0, 0);
+    }
+
+    public void auroraBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        AuroraBeam beam = new AuroraBeam(a, b, true);
+        addObject(beam, a.getX(), a.getY());
+    }
+
+    public void hyperBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        HyperBeam beam = new HyperBeam(a, b, true);
+        addObject(beam, a.getX(), a.getY());
+    }
+
+    public void tackle(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    {
+        Tackle t = new Tackle(a, b);
+        addObject(t, 0, 0);
+    }
 
 }

@@ -15,7 +15,7 @@ public class Stomp extends Attack
     
     public Stomp(BattleOrderActionBlock b)
     {
-        GreenfootImage image = new GreenfootImage("stomp.png");
+        GreenfootImage image = new GreenfootImage("AttackSprites/stomp.png");
         this.setImage(image);
         this.getImage().scale(100, 125);
         this.b = b;

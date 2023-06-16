@@ -19,7 +19,7 @@ public class Waterfall extends Attack
      */
     public Waterfall(BattleOrderActionBlock b)
     {
-        GreenfootImage image = new GreenfootImage("watergun0.png");
+        GreenfootImage image = new GreenfootImage("AttackSprites/watergun0.png");
         this.setImage(image);
         this.getImage().setTransparency(0);
         this.getImage().scale(255, 600);

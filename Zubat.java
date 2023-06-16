@@ -17,7 +17,7 @@ public class Zubat extends MoveablePokemon
     public Zubat(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl,  int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Bite";
-        vAttackString = "Air Cutter";
+        vAttackString = "Wing Attack";
         image = new GreenfootImage("images/Pokemon/zubat.png");
         animationImage = new GreenfootImage("images/Pokemon/zubat.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);

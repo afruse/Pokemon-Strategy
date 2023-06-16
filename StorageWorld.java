@@ -123,7 +123,7 @@ public class StorageWorld extends World
         roomOrder[2][4].addEnemyTeam(enemyTeam_2_Right,1,4);
 
         roomOrder[1][3] = new RoomInfo(new GreenfootImage("[1][3].png"), 700, 600, true, false, true, true);
-        roomOrder[1][3].addEnemyTeam(enemyTeam_2_Right,1,4);
+        roomOrder[1][3].addEnemyTeam(enemyTeam_3_Right,1,4);
 
         //Middle
         roomOrder[2][2] = new RoomInfo(new GreenfootImage("[2][2].png"), 700, 600, true, true, true, true);

@@ -19,7 +19,7 @@ public class HydroCannon extends Attack
      */
     public HydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
-        GreenfootImage image = new GreenfootImage("watergun0.png");
+        GreenfootImage image = new GreenfootImage("AttackSprites/watergun0.png");
         this.setImage(image);
         this.getImage().setTransparency(0);
         this.getImage().scale(450, 140);

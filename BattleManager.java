@@ -63,6 +63,7 @@ public class BattleManager extends Actor
 
             for(int i = 0; i < enemyTeam.length; i++){
                 enemyTeam[i].healToFull();
+                bw.removeObject(enemyTeam[i]);
             }
             bw.switchToGymWorld();
             //End game
