@@ -109,14 +109,14 @@ public class Data {
         return Integer.parseInt(coordinateX);
     }
     /**
-     * A method which gets current y 
+     * A method which gets current y in 2D ArrayList grid
      * @return int  This returns the y coordinate
      */
     public int getCoordinateY() {
         return Integer.parseInt(coordinateY);
     }
     /**
-     * A method which determines if bos is beaten 
+     * A method which determines if boss is beaten 
      * @return boolean  This returns if boss is beaten
      */
     public boolean getBeatBoss() {
@@ -128,39 +128,64 @@ public class Data {
         }
     }
     /**
-     * A method which gets current HP
+     * A method which gets max HP of first pokemon
      * @return int  This returns the HP value
      */
     public int getHp() {
         return Integer.parseInt(HP);
     }
+    /**
+     * A method to get first pokemon level
+     * @return int level of pokemon
+     */
     public int getLvl()
     {
         return Integer.parseInt(lvl);
     }
-    public String getPokemon1(){
-        return pokemon1;
-    }
-    public String getPokemon2(){
-        return pokemon2;
-    }
+    /**
+     * A method to get the xp of first pokemon
+     * 
+     * @return int pokemon xp
+     */
     public int getXp() {
         return Integer.parseInt(XP);
     }
+    /**
+     * A method to get amount of xp needed to level up first pokemon
+     * 
+     * @return int xp needed
+     */
     public int getXpNeeded() {
         return Integer.parseInt(XP_needed);
     }
+    /**
+     * A method which gets max hp of second pokemon
+     * @return int  This returns the HP value
+     */
     public int getHp2()
     {
         return Integer.parseInt(HP2);
     }
+    /**
+     * A method to get second pokemon level
+     * @return int level of pokemon
+     */
     public int getLvl2(){
         return Integer.parseInt(lvl2);
     }
-    public int getXp2()
-    {
+    /**
+     * A method to get the xp of first pokemon
+     * 
+     * @return int pokemon xp
+     */
+    public int getXp2(){
         return Integer.parseInt(XP2);
     }
+    /**
+     * A method to get amount of xp needed to level up second pokemon
+     * 
+     * @return int xp needed
+     */
     public int getXpNeeded2()
     {
         return Integer.parseInt(XP_needed2);

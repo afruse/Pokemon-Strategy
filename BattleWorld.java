@@ -107,7 +107,7 @@ public class BattleWorld extends StorageWorld
     /**
      * A getter method that calls the decider object created to get the number of tiles the pokemon can move
      */
-    public int getMovement(){
+    protected int getMovement(){
         return decider.decideMovements();
     }
     /**
@@ -130,7 +130,7 @@ public class BattleWorld extends StorageWorld
      * Sets the current attacker of the current pokemon
      * @param p     The pokemon that's going to attack
      */
-    public void setCurAttacker(MoveablePokemon p){
+    protected void setCurAttacker(MoveablePokemon p){
         curAttacker = p;
     }
 
@@ -138,11 +138,11 @@ public class BattleWorld extends StorageWorld
      * Sets the victim of the current attacker
      * @param p     The pokemon thats going to be set as the target
      */    
-    public void setCurVictim(MoveablePokemon p){
+    protected void setCurVictim(MoveablePokemon p){
         curVictim = p;
     }
 
-    public void removeFromQueue(MoveablePokemon p){
+    protected void removeFromQueue(MoveablePokemon p){
         b.removePokemon(p);
     }
 
@@ -151,7 +151,7 @@ public class BattleWorld extends StorageWorld
      * @return Queue<MoveablePokemon>   Returns the battle order of the pokemon in battle
      * 
      */
-    public Queue<MoveablePokemon> getBattleOrder(){
+    protected Queue<MoveablePokemon> getBattleOrder(){
         return b.getBattleOrder();
     }
 
@@ -160,7 +160,7 @@ public class BattleWorld extends StorageWorld
      * @return int  Returns the tile height
      * 
      */
-    public int getTileHeight(){
+    protected int getTileHeight(){
         return  tileHeight;
     }
 
@@ -168,7 +168,7 @@ public class BattleWorld extends StorageWorld
      * Returns tile length of the 2d grid
      * return int Returns tile length
      */
-    public int getTileLength(){
+    protected int getTileLength(){
         return tileLength;
     }
 
@@ -176,7 +176,7 @@ public class BattleWorld extends StorageWorld
      * Gets the current pokemon thats taking action
      * @return MoveablePokemon      Returns the pokemon at the front of the queue
      */
-    public MoveablePokemon getCurChar(){
+    protected MoveablePokemon getCurChar(){
         return b.getCurChar();
     }
 
@@ -184,7 +184,7 @@ public class BattleWorld extends StorageWorld
      * Gets the 2d array of the battle world
      * @return ArrayList<ArrayList<Coordinate>>     Returns the 2d arraylist of coordinates which rep grid tiles
      */
-    public ArrayList<ArrayList<Coordinate>> getMap(){
+    protected ArrayList<ArrayList<Coordinate>> getMap(){
         return map;
     }
 
@@ -195,7 +195,7 @@ public class BattleWorld extends StorageWorld
      * @param mapIndexY     An int that represents the yIndex of the 2d arraylist grid
      * @return boolean      Returns true if character was able to move an false otherwise
      */
-    public boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
+    protected boolean moveCharacter(MoveablePokemon a, int mapIndexX, int mapIndexY){
         try{
             Coordinate coord = map.get(mapIndexX).get(mapIndexY);
             if(checkObstruction(coord) == false){
@@ -218,7 +218,7 @@ public class BattleWorld extends StorageWorld
      * @param coord     Represents the coordinate that needs to be checked in the 2d arrayList
      * @return boolean   Returns true if there is no obstruction and false otherwise
      */
-    public boolean checkObstruction(Coordinate coord){
+    protected boolean checkObstruction(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
         BattleWorldChecker c = new BattleWorldChecker();
@@ -232,14 +232,14 @@ public class BattleWorld extends StorageWorld
     /**
      * A method that ends the current character's turn
      */
-    public void endCharTurn(){
+    protected void endCharTurn(){
         b.endTurn();
     }
 
     /**
      * A method that switches the world back to the player's world where they challenged the enemy
      */
-    public void switchToGymWorld(){
+    protected void switchToGymWorld(){
         stopped();
         gw.started();
         Greenfoot.setWorld(gw);

@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
 
 /**
  * This class acts as a storage base which declares, intitializes, and stores all the pokemon teams within the world allowing each world to pass 
@@ -85,9 +86,18 @@ public class StorageWorld extends World
          * 
          * X = Room
          */
-        roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
-
-        roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
+        try{
+            roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.png"), 700,600, true, true, false, false);
+        }
+        catch(IllegalArgumentException e){
+            roomOrder[4][2] = new RoomInfo(new GreenfootImage("GymStart.PNG"), 700,600, true, true, false, false);
+        }
+        try{
+            roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.PNG"), 700, 600, false, false, true, true);
+        }
+        catch(IllegalArgumentException e){
+            roomOrder[0][2] = new RoomInfo(new GreenfootImage("GymEnd.png"), 700, 600, false, false, true, true);
+        }
         roomOrder[0][2].addEnemyTeam(enemyTeam_4,0,4);
 
         setBackground(roomOrder[4][2].getRoomImage());

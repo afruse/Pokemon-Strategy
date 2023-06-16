@@ -48,25 +48,25 @@ public class LoreWorld extends World
      * all the scenes below are processed with a system timer through the act 
      * method, and will add new objects into the scenes, with their own movement patterns.
      **/
-    public void scene1()
+    protected void scene1()
     {
         addObject(new LorePerson(), 350, 420);
         addObject(new Caption(0), 350, 560);
         addObject(new Caption(1), 350, 560);
     }
     
-    public void scene2()
+    protected void scene2()
     {
         setBackground(bscene2);
     }
     
-    public void scene3()
+    protected void scene3()
     {
         setBackground("2hourslater.png");
         getBackground().scale(700,600);
     }
     
-    public void scene4()
+    protected void scene4()
     {
         setBackground(bscene3);
     }

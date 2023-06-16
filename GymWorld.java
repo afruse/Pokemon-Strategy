@@ -60,7 +60,6 @@ public class GymWorld extends StorageWorld
             }
             i++;
         }
-        loadData(data);
 
         roomOrder[4][2].addObstruction(map.get(2).get(3)); //Person
         roomOrder[4][2].addObstruction(map.get(2).get(1)); //Rock Left upper
@@ -176,21 +175,10 @@ public class GymWorld extends StorageWorld
     }
 
     /**
-     * A method that loads the data from the save file
-     * @param data      Takes in the data object which stores all the saved files from a previous load file
-     * 
-     */
-    public void loadData(Data data){
-        //c.setLocation(map.get(data.getCoordinateX()).get(data.getCoordinateY()).getXCoord(), map.get(data.getCoordinateX()).get(data.getCoordinateY()).getYCoord());
-        //roomIndexX =  data.getCurrentWorld().charAt(0)
-
-    }
-
-    /**
      * A method that returns the tileHeight of the 2dArray
      * @return int      Returns the tile height of the 2dArray
      */
-    public int getTileHeight(){
+    protected int getTileHeight(){
         return  tileHeight;
     }
 
@@ -198,7 +186,7 @@ public class GymWorld extends StorageWorld
      * A method that returns te tileLength of the 2dArray
      * @return int      Returns the tileLength of the 2dArray
      */
-    public int getTileLength(){
+    protected int getTileLength(){
         return tileLength;
     }
 
@@ -336,7 +324,7 @@ public class GymWorld extends StorageWorld
      * @param coord     Represents the coordinate of the 2dArraylist that needs to be checked
      * @return boolean  Returns true if there is no onbstruction and false otherwise
      */
-    public boolean checkObstruction(Coordinate coord){
+    protected boolean checkObstruction(Coordinate coord){
         int x = coord.getXCoord();
         int y = coord.getYCoord();
         GymWorldChecker c = new GymWorldChecker();
@@ -353,7 +341,7 @@ public class GymWorld extends StorageWorld
      * 
      */    
 
-    public void changeObstructionLayout(ArrayList<Coordinate> locations){
+    protected void changeObstructionLayout(ArrayList<Coordinate> locations){
         ArrayList<Obstruction> list = (ArrayList<Obstruction>)getObjects(Obstruction.class);
         for(Obstruction l: list){
             removeObject(l);

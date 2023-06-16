@@ -43,7 +43,7 @@ public class TypingWorld extends World
     /**
      * updates string file so backspace comes in effect
      */
-    public void returning(){
+    protected void returning(){
         String returning = "";
         for(int i = 0; i < entry.length() - 1; i++){
             returning = returning + entry.charAt(i);

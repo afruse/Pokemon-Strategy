@@ -8,6 +8,8 @@
 // for Scanning
 import java.util.Scanner;
 import java.util.NoSuchElementException;
+import greenfoot.World;
+
 // for Files
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,18 +36,21 @@ public class ScanFile
         arrayTokens = new ArrayList<String[]>();
         try{
             scanFile = new Scanner(new File(file));
+            while(true){
+                if(scanFile.hasNextLine()){
+                    arrayTokens.add(getTokens(scanFile.nextLine()));
+                }
+                if(!scanFile.hasNextLine()){
+                    run = false;
+                    break;
+                }
+            }
         }
         catch(FileNotFoundException e){
             System.out.println("File not found");
         }
-        while(true){
-            if(scanFile.hasNextLine()){
-                arrayTokens.add(getTokens(scanFile.nextLine()));
-            }
-            if(!scanFile.hasNextLine()){
-                run = false;
-                break;
-            }
+        catch(NullPointerException f){
+            System.out.println("E");
         }
         /**
          * printing help from Aous

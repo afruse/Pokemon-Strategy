@@ -109,7 +109,7 @@ public class AttackAnimation extends World
      * 
      */
 
-    public void doAttack(String attack, BattleOrderActionBlock attacker, BattleOrderActionBlock victim)
+    protected void doAttack(String attack, BattleOrderActionBlock attacker, BattleOrderActionBlock victim)
     {
         if (attack.equals("hurt"))
         {
@@ -170,7 +170,7 @@ public class AttackAnimation extends World
 
     }
 
-    public void bite(BattleOrderActionBlock pokemon)
+    protected void bite(BattleOrderActionBlock pokemon)
     {
         Teeth top = new TopTeeth();
         Teeth bottom = new BottomTeeth();
@@ -178,7 +178,7 @@ public class AttackAnimation extends World
         addObject(bottom, pokemon.getX(), pokemon.getY() + 150);
     }
 
-    public void thunderbolt(BattleOrderActionBlock pokemon)
+    protected void thunderbolt(BattleOrderActionBlock pokemon)
     {
         // Big bolts
         for (int i = 0; i < 5; i++)
@@ -191,78 +191,78 @@ public class AttackAnimation extends World
     }
 
     // A is origin, B is target
-    public void sandAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void sandAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Sand sand = new Sand(a, b, true);
         addObject(sand, a.getX(), a.getY());
     }
 
-    public void setThundering(boolean b)
+    protected void setThundering(boolean b)
     {
         thundering = b;
     }
 
     // A is the pokemon using the attack
-    public void quickAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void quickAttack(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         QuickAttack q = new QuickAttack(a, b);
         addObject(q, 0, 0);
     }
 
     // A is the origin, B is the target
-    public void waterGun(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void waterGun(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         WaterGun w = new WaterGun(a, b);
         addObject(w, a.getX(), a.getY());
     }
 
-    public void mudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void mudSlap(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         MudSlap m = new MudSlap(a, b, true);
         addObject(m, a.getX(), a.getY());
     }
 
-    public void bubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void bubbleBeam(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         BubbleBeam bub = new BubbleBeam(a, b, true);
         addObject(bub, a.getX(), a.getY());
     }
 
     // B is the target
-    public void gust(BattleOrderActionBlock b)
+    protected void gust(BattleOrderActionBlock b)
     {
         Gust g = new Gust(b, true);
         addObject(g, b.getX() + (Greenfoot.getRandomNumber(20) - 10), b.getY() + (Greenfoot.getRandomNumber(20) - 10));
     }
     
     
-     public void spite(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void spite(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Spite s = new Spite(a, b);
         addObject(s, 0, 0);
     }
     
-    public void ember(BattleOrderActionBlock b)
+    protected void ember(BattleOrderActionBlock b)
     {
         Ember e = new Ember(b);
         addObject(e, b.getX(), b.getY() - (b.getImage().getHeight() / 2));
     }
     
-    public void stomp(BattleOrderActionBlock b)
+    protected void stomp(BattleOrderActionBlock b)
     {
         Stomp s = new Stomp(b);
         addObject(s, b.getX(), b.getY() - 255);
     }
     
     
-    public void surf(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void surf(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         Surf s = new Surf(a, b);
         addObject(s, a.getX(), a.getY());
     }
     
     // A is the origin, B is the target
-    public void hydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
+    protected void hydroCannon(BattleOrderActionBlock a, BattleOrderActionBlock b)
     {
         HydroCannon h = new HydroCannon(a, b);
         addObject(h, a.getX(), a.getY());
