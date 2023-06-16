@@ -17,7 +17,7 @@ public class Rayquaza extends MoveablePokemon
     public Rayquaza(int mapIndexX, int mapIndexY, boolean isPlayer, int lvl, int curXp, int xpNeeded){
         super(mapIndexX,mapIndexY, isPlayer, lvl, curXp, xpNeeded);
         cAttackString = "Hyper Beam";
-        vAttackString = "Quick Attack";
+        vAttackString = "Outrage";
         image = new GreenfootImage("images/Pokemon/rayquaza.png");
         animationImage = new GreenfootImage("images/Pokemon/rayquaza.png");
         animationImage.scale(animationImage.getWidth()*imageMulti, animationImage.getHeight()*imageMulti);
@@ -38,7 +38,7 @@ public class Rayquaza extends MoveablePokemon
         cPower = 90; 
         vPower = 40;
         cAttackRange = 2;
-        vAttackRange = 2;
+        vAttackRange = 3;
     }
 
     public void act()

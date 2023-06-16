@@ -17,7 +17,7 @@ public class Ember extends Attack
      */
     public Ember(BattleOrderActionBlock b)
     {
-        GreenfootImage image = new GreenfootImage("ember2.png");
+        GreenfootImage image = new GreenfootImage("AttackSprites/ember2.png");
         this.setImage(image);
         this.getImage().scale(100, 200);
         this.getImage().setTransparency(200);

@@ -37,8 +37,8 @@ public class Dragonite extends MoveablePokemon
 
         cPower = 60; 
         vPower = 60;
-        cAttackRange = 120;
-        vAttackRange = 2;
+        cAttackRange = 2;
+        vAttackRange = 3;
     }
 
     public void act()
