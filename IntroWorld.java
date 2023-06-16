@@ -3,6 +3,23 @@
  * Visual:
  * Intro GIF: https://gfycat.com/keysarcasticgangesdolphin
  * Options Sprite: https://www.spriters-resource.com/fullview/3853/?source=genre
+ * WASD & ARROW key pics: https://www.freepik.com/premium-vector/keyboard-button-arrow-wasd-set-icon-simple-minimal-flat-vector-app-web-design_25481867.htm
+ * Pokemon move pictures/sprites: https://www.smogon.com/forums/threads/move-ability-animations-thread.3568451/
+ * Leafeon sprites: https://pokemondb.net/sprites/leafeon
+ * Battle Backgroun: https://pokemon-reborn.fandom.com/wiki/Grassy_Terrain
+ * Gym Background: http://www.psypokes.com/emerald/gymlayouts.php
+ * Pokemon pictures: https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_catch_rate
+ * Pokemon move sprites: https://www.spriters-resource.com/fullview/28883/
+ * HP bar picture: https://iwanrjonesproductions.wordpress.com/2019/01/11/game-dev-narrative-story/
+ * Tilesets: https://reliccastle.com/resources/15/
+ * Pokemon Calculations:
+ * https://bulbapedia.bulbagarden.net/wiki/Stat
+ * https://bulbapedia.bulbagarden.net/wiki/Damage
+ * https://bulbapedia.bulbagarden.net/wiki/Thunder_Shock_(move)
+ * https://bulbapedia.bulbagarden.net/wiki/Bite_(move)
+ * https://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
+ * https://pokemondb.net/pokedex/eevee
+ * https://pokemondb.net/pokedex/pikachu
  * Music:
  * Intro music: https://www.youtube.com/watch?v=rg6CiPI6h2g
  * Gym world music: https://soundcloud.com/pokemon-gameboy-music/indigo-plateau-1
